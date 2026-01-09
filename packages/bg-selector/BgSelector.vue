@@ -1,7 +1,18 @@
 <template>
-  <div class="jui-bgSelector-container">
+  <div class="ml-bgSelector-container">
+     <el-popover placement="right" :width="400" trigger="click">
+      <template #reference>
+        <el-button style="margin-right: 16px">Click to activate</el-button>
+      </template>
+      <el-table :data="[]">
+        <el-table-column width="150" property="date" label="date" />
+        <el-table-column width="100" property="name" label="name" />
+        <el-table-column width="300" property="address" label="address" />
+      </el-table>
+    </el-popover>
+
+
     <el-popover
-      v-model:visible="visible"
       placement="right"
       width="333"
       :disabled="disabled"
@@ -12,10 +23,12 @@
           <i class="el-icon-arrow-right"></i>
         </div>
       </template>
-      <div class="jui-bgSelector-container">
+
+      <div class="ml-bgSelector-container">
         <div v-for="(item,index) in list" :key="index" class="item" :class="item.name" @click="select(item)">{{ item.title }}</div>
         <div class="item" @click="clear()"><i class="el-icon-circle-close"></i></div>
       </div>
+    
     </el-popover>
   </div>
 </template>
@@ -24,7 +37,7 @@
 import { ref, computed } from 'vue'
 
 export default {
-  name: 'JBgSelector',
+  name: 'MlBgSelector',
   props: {
     modelValue: {
       default: '',

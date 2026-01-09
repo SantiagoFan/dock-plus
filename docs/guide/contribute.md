@@ -1,79 +1,42 @@
 # 开发指南
 
-本节将介绍如何参与 dock-next 的开发和贡献。
+----
 
-## 项目结构
+## 初始化项目
 
-```
-dock-next/
-├── docs/                 # VitePress 文档
-├── lib/                  # 构建后的文件
-├── packages/             # 组件源码
-│   ├── advanced-query/   # 高级查询组件
-│   ├── bg-selector/      # 背景选择器组件
-│   ├── clipboard/        # 剪贴板组件
-│   ├── link-viewer/      # 链接查看器组件
-│   ├── position-selector/ # 位置选择器组件
-│   ├── qrcode/           # 二维码组件
-│   ├── sku-spec/         # SKU 规格组件
-│   ├── sku-table/        # SKU 表格组件
-│   ├── svg-icon/         # SVG 图标组件
-│   ├── theme-chalk/      # 主题文件
-│   └── title-bar/        # 标题栏组件
-├── examples/             # 示例文件 (已备份)
-└── public/               # 静态资源
-```
+```js
+git clone https://github.com/SantiagoFan/dock-plus
 
-## 开发环境搭建
+cd dock-plus
 
-克隆项目：
+# 初始化项目、安装依赖
+npm run init
 
-```bash
-git clone https://github.com/santiago-fan/dock-next.git
-cd dock-next
-npm install
-```
-
-启动开发服务器：
-
-```bash
+# 本地开发模式
 npm run dev
+
+# 样式开发单独启动一个服务
+npm run dev:style
+
 ```
 
-## 创建新组件
+浏览器访问 [http://localhost:8080](http://localhost:8080) 就可以看到所有组件的示例了
 
-使用脚本创建新组件：
+## 添加新组件和样式
+请按照 `packages` 目录下的文件夹结构添加新的组件，如需新的样式请在 `packages/theme-chalk/src` 添加。
 
-```bash
-npm run new:comp
+## 添加组件示例和文档
+请在 `examples/demos` 目录下添加新的组件示例。如需添加文档，请在 `examples/docs` 下添加新的文档，同时要在 `nav.config.json` 中添加新的路由才能预览。
+
+## 发布NPM包和文档
+```js
+# 发布npm包
+npm run release
+
+# 发布文档
+npm run publish:docs
 ```
+具体执行命令，可查看对应脚本。
 
-## 构建
-
-构建组件库：
-
-```bash
-npm run lib
-```
-
-构建文档：
-
-```bash
-npm run build:docs
-```
-
-## 发布
-
-发布到 npm：
-
-```bash
-npm publish
-```
-
-## 代码规范
-
-- 使用 ESLint 进行代码检查
-- 使用 Prettier 进行代码格式化
-- 组件命名使用帕斯卡命名法
-- Props 使用驼峰命名法
-- 组件文件使用 `.vue` 扩展名
+## 生成CHANGELOG
+Todo

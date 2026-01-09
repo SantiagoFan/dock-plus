@@ -1,19 +1,15 @@
 # 介绍
+----
 
-dock-next 是一个基于 Vue 3 和 Element Plus 的 UI 组件库，旨在提供一套优雅、实用的组件解决方案。
+`dock-plus` 是一款基于 `Vue.js 2` 的前端 UI 组件库，主要用于快速开发 PC 网站中后台产品
+框架依赖 Element UI 作为实际开发中的补充UI 库，内部更多的是业务相关的组件，框架支持按需引入，推荐按需引入需要多组件
 
 ## 特性
 
-- 基于 Vue 3 Composition API
-- 使用 Element Plus 作为基础组件库
-- 完整的 TypeScript 支持
-- 按需加载，减小打包体积
-- 丰富的组件库，满足日常开发需求
+- 基于 `Vue` 开发的 UI 组件
+- 使用 npm + vite + babel 的工作流，支持 ES2015
+- 提供友好的 API，可灵活的使用组件
 
-## 浏览器支持
+## 贡献
 
-- Chrome 52+
-- Firefox 54+
-- Safari 10+
-- Edge 15+
-- IE 11 (需要 polyfills)
+如果你在使用 `dock-plus` 时遇到问题，或者有好的建议，欢迎给我们提 [Issue](https://github.com/SantiagoFan/dock-plus/issues) 或 [Pull Request](https://github.com/SantiagoFan/dock-plus/pulls)

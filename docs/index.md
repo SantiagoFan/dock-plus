@@ -2,7 +2,7 @@
 layout: home
 
 hero:
-  name: dock-next
+  name: dock-plus
   text: 基于 Vue 3 和 Element Plus 的 UI 组件库
   tagline: 一套优雅、实用的 UI 组件库
   actions:
@@ -11,7 +11,7 @@ hero:
       link: /guide/start
     - theme: alt
       text: 查看组件
-      link: /components/
+      link: /component/
 
 features:
   - title: Vue 3 驱动

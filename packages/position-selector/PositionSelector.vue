@@ -1,5 +1,5 @@
 <template>
-  <div class="j-position-selector">
+  <div class="ml-position-selector">
     <el-card shadow="hover">
       <template #header>
         <div style="padding:0px 10px;">
@@ -18,7 +18,7 @@
       </div>
     </el-card>
     <!-- 弹窗选择 -->
-    <el-dialog custom-class="j-position-selector-dialog" v-model="dialogVisible" title="选择地图" width="1000px" append-to-body>
+    <el-dialog custom-class="ml-position-selector-dialog" v-model="dialogVisible" title="选择地图" width="1000px" append-to-body>
       <div class="map">
         
         <!-- 地图 -->
@@ -61,7 +61,7 @@
 import { ref, reactive, toRefs } from 'vue'
 
 export default {
-  name: 'JPositionSelector',
+  name: 'MlPositionSelector',
   props: {
     mapKey:{
       type:String,

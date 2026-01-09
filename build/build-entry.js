@@ -1,5 +1,4 @@
 // 自动生成入口文件
-
 const fs = require('fs-extra')
 const path = require('path')
 const uppercamelize = require('uppercamelcase')
@@ -8,8 +7,9 @@ const Components = require('./get-components')()
 const packageJson = require('../package.json')
 
 const version = process.env.VERSION || packageJson.version
-const tips = `/* eslint-disable */
-// This file is auto gererated by build/build-entry.js`
+const tips = `/*
+  本文件由build/build-entry.js脚本自动生成，切勿修改
+*/`
 // const root = path.join(__dirname, '../')
 // const join = dir => path.join(root, dir)
 

@@ -1,66 +1,82 @@
 <template>
   <div>
-    <div id="qrcode" ref="qrCodeDiv" class="qrcode-container" style="display: inline-block;"></div>
+    <canvas ref="canvasRef" class="qrcode-container"></canvas>
   </div>
 </template>
-<script>
-import QRCode from 'qrcodejs2'
-export default {
-  name: 'JQrcode',
-  props: {
+<script setup>
+import{ ref, watch,nextTick}  from "vue"
+defineOptions({
+  name: 'MlQrcode'
+})
+
+import QRCode from "qrcode";
+
+const props =  defineProps({
     text: {
       type: String,
       default: ' '
     },
     width: {
       type: Number,
-      default: 132
+      default: 150
     },
     height: {
       type: Number,
-      default: 132
+      default: 150
+    },
+    level: {
+      type: String,
+      default: 'L'
     },
     colorDark: {
       type: String,
-      default: '#000'
+      default: '#000000'
     },
     colorLight: {
       type: String,
-      default: '#fff'
+      default: '#ffffff'
     }
-  },
-  data() {
-    return {
-      qrcode: null
-    }
-  },
-  watch: {
-    text: {
-      handler() {
-        this.build()
-      }
-    }
-  },
-  mounted() {
-    this.$nextTick(function() {
-      this.qrcode = new QRCode(this.$refs.qrCodeDiv, {
-        width: this.width,
-        height: this.height,
-        text: this.text, // 二维码地址
-        colorDark: this.colorDark,
-        colorLight: this.colorLight,
-        correctLevel: QRCode.CorrectLevel.L
-      })
-    })
-  },
-  methods: {
-    build() {
-      if (this.qrcode) {
-        this.qrcode.makeCode(this.text) // 生成另一个新的二维码
-      }
-    }
-  }
+})
 
+const canvasRef = ref(null)
+const error = ref(null)
+
+const updateQR = async () => {
+  nextTick(()=>{
+    try {
+    error.value = null
+    QRCode.toCanvas(canvasRef.value, props.text, {
+        width: props.width,
+        height: props.height,
+        errorCorrectionLevel: props.level,
+        color: {
+          light: props.colorLight,
+          dark: props.colorDark,
+        },
+        margin: 1
+      })
+    } catch (err) {
+      console.error('二维码生成失败:', err)
+      error.value = err.message
+    }
+  })
+
+  
+  
+ 
+
+
+  //  this.qrcode = QRCode. QRCode(this.$refs.qrCodeDiv, {
+
+  //       colorDark: this.colorDark,
+  //       colorLight: this.colorLight,
+  //     })
 }
+// 初始渲染
+// onMounted(updateQR)
+
+// // 响应 value 或尺寸变化
+watch(() => [props.text, props.width, props.height], updateQR, { deep: true, immediate: true })
+ 
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="jui-sku-container">
+  <div class="ml-sku-container">
     <div class="example">
       <table class="stock-table el-table el-table--border" cellspacing="0" cellpadding="0">
         <thead>
@@ -111,7 +111,7 @@ function descartes(list) {
 }
 
 export default {
-  name: 'JSkuTable',
+  name: 'MlSkuTable',
   props: {
     defaultPrice:{
       type: Number,

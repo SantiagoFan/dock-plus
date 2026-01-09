@@ -19,12 +19,14 @@ function compile() {
     })]))
     .pipe(cssmin())
     .pipe(dest('./lib'));
+
 }
 
 function copyfont() {
   return src('./src/fonts/**')
     .pipe(cssmin())
     .pipe(dest('./lib/fonts'));
+
 }
 
 const { series } = require('gulp');

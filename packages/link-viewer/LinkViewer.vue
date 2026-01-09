@@ -1,9 +1,9 @@
 <template>
-  <el-popover class="j-linkViewer" placement="bottom" width="286" :trigger="trigger">
+  <el-popover class="ml-linkViewer" placement="bottom" width="286" :trigger="trigger">
       <el-input :model-value="url" disabled size="small" style="width:200px;" />
       <el-button
-        v-clipboard:copy="url"
-        v-clipboard:success="clipboardSuccess"
+        v-copyText="url" 
+        v-copyText:callback="clipboardSuccess"
         size="small"
         type="primary"
       >复制</el-button>
@@ -19,12 +19,12 @@
 <script>
 import { getCurrentInstance } from 'vue'
 import qrcode from '../qrcode'
-import clipboard from '../clipboard/index.js' // use clipboard by v-directive
+import copyText from '../utils/copyText'
 
 export default {
-  name: 'JLinkViewer',
+  name: 'MlLinkViewer',
   components: { qrcode },
-  directives: { clipboard },
+  directives: { copyText },
   props: {
     url: {
       type: String,

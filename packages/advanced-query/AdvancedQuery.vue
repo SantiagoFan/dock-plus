@@ -1,5 +1,5 @@
 <template>
-  <div class="j-advanced-query">
+  <div class="ml-advanced-query">
     <el-tooltip effect="dark"
       :disabled="!isUse"
       placement="top-start">
@@ -91,7 +91,7 @@
 import { ref, computed } from 'vue'
 
 export default {
-  name: 'JAdvancedQuery', 
+  name: 'MlAdvancedQuery', 
   props: {
     modelValue: {
       default: null,

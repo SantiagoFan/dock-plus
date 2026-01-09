@@ -1,6 +1,6 @@
 <template>
   <div
-    class="j-title-bar"
+    class="ml-title-bar"
     :class="{'shadow':shadow,'radius':radius}"
     :style="{'background':background,'color':color }"
   >
@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: 'JTitleBar',
+  name: 'MlTitleBar',
   props: {
     shadow: { // 阴影
       type: Boolean,

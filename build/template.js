@@ -4,7 +4,7 @@ module.exports = {
         // compoenntName = compoenntName.charAt(0).toLowerCase() + compoenntName.slice(1)
         return `<template>
 
-  <div class="j-${input_name}">
+  <div class="ml-${input_name}">
 
     ${compoenntName}
 
@@ -13,7 +13,7 @@ module.exports = {
 
 <script>
 export default {
-  name: 'J${compoenntName}', 
+  name: 'Ml${compoenntName}', 
 
   data () {
 
@@ -31,7 +31,7 @@ export default {
 </script>
 
 <style lang="scss" scope>
-.j-${input_name}{}
+.ml-${input_name}{}
 </style>
 `
     },
@@ -52,39 +52,39 @@ if (typeof window !== 'undefined' && window.Vue) {
     },
     mdDocs: (title) => {
 
-        return `# ${title}
-
-
+        return `# ` + title + `
 
 ---
 
+## 基础用法
 
-## 如何使用
+\`\`\`vue
+<template>
+  <div>
+    <!-- 组件使用示例 -->
+  </div>
+</template>
 
+<script>
+import { ` + title.replace(' 组件', '') + ` } from 'dock-plus'
 
+export default {
+  components: { ` + title.replace(' 组件', '') + ` }
+}
+</script>
+\`\`\`
 
 ## Attributes
 
+| 参数 | 说明 | 类型 | 可选值 | 默认值 |
+|------|------|------|--------|--------|
+| - | - | - | - | - |
 
+## Events
 
-| 参数  | 说明  | 类型  | 可选值 | 默认值 |
-|-----|-----|-----|-----|-----|
-| -   | -   | -   | -   | -   |
+| 事件名 | 说明 | 回调参数 |
+|--------|------|----------|
+| - | - | - |
 
-`
-    },
-    entryTemplate: compoenntName => {
-        return `import ${compoenntName} from './${compoenntName}'
-
-  ${compoenntName}.install = function(Vue) {
-    Vue.component(${compoenntName}.name, ${compoenntName})
-}
-
-export default ${compoenntName}
-
-if (typeof window !== 'undefined' && window.Vue) {
-    window.Vue.component(${compoenntName}.name, ${compoenntName})
-}
-`
-    }
+`}
 }

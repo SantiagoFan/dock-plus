@@ -1,91 +1,67 @@
 # 快速上手
-本节将介绍如何在项目中安装和使用 dock-next。
-<demo></demo>
-
+----
 
 ## 安装
 
-使用 npm 安装：
-
-```bash
-npm install dock-next
+```shell
+npm install dock-plus --save
 ```
 
-或使用 yarn：
+## 引入
+### 方式一.自动按需引入组件 (推荐)
+babel-plugin-import 是一款 babel 插件，它会在编译过程中将 import 的写法自动转换为按需引入的方式
 
-```bash
-yarn add dock-next
+```shell
+# 安装插件
+npm i babel-plugin-component -D
+```
+```
+// 对于使用 babel7 的用户，可以在 babel.config.js 中配置
+module.exports = {
+  plugins: [
+    [
+      "component",
+      {
+        "libraryName": "dock-plus",
+        "styleLibraryName": "theme-chalk"
+      }
+    ]
+  ]
+};
+```
+```
+// 接着你可以在代码中直接引入 JoinUI 组件
+// 插件会自动将代码转化为方式二中的按需引入形式
+import Vue from 'vue';
+import { Qrcode, BgSelector } from 'dock-plus';
+import App from './App.vue';
+
+Vue.component(Qrcode.name, Qrcode);
+Vue.component(BgSelector.name, BgSelector);
+/* 或写为
+ * Vue.use(Qrcode)
+ * Vue.use(BgSelector)
+ */
+
+new Vue({
+  el: '#app',
+  render: h => h(App)
+});
+```
+### 方式二.手动按需引入组件
+在不使用插件的情况下，可以手动引入需要的组件。
+```
+import JBgSelector from 'dock-plus/lib/bg-selector';
+import 'dock-plus/lib/theme-chalk/bg-selector.css';
 ```
 
-## 完整引入
-
+### 方式三. 导入所有组件
+JoinUI 支持一次性导入所有组件，引入所有组件会增加代码包体积，因此不推荐这种做法。
 ```js
-import { createApp } from 'vue'
-import App from './App.vue'
-import JoinUI from 'dock-next'
-import 'dock-next/lib/theme-chalk/index.css'
+import Vue from 'vue';
+import jui from 'dock-plus' // 引入组件库
+import 'dock-plus/lib/theme-chalk/index.css'
 
-const app = createApp(App)
-app.use(JoinUI)
-app.mount('#app')
+Vue.use(jui);
 ```
-
-## 按需引入
-
-借助插件可以实现按需加载：
-
-```js
-import { createApp } from 'vue'
-import App from './App.vue'
-import { Button, Input } from 'dock-next'
-
-const app = createApp(App)
-app.use(Button)
-app.use(Input)
-app.mount('#app')
-```
-
-## 使用组件
-
-安装并引入组件库后，就可以在项目中使用组件了：
-
-```vue
-<template>
-  <div>
-    <j-advanced-query v-model="queryData" :fields="fields" @change="handleQuery" />
-    <j-bg-selector v-model="bgColor" />
-    <j-position-selector v-model:lng="lng" v-model:lat="lat" />
-  </div>
-</template>
-
-<script>
-import { ref } from 'vue'
-
-export default {
-  setup() {
-    const queryData = ref({})
-    const bgColor = ref('')
-    const lng = ref(116.397502)
-    const lat = ref(39.908802)
-    
-    const fields = ref([
-      { name: 'name', label: '姓名', type: 'text' },
-      { name: 'age', label: '年龄', type: 'number' }
-    ])
-    
-    const handleQuery = () => {
-      console.log('Query changed:', queryData.value)
-    }
-    
-    return {
-      queryData,
-      bgColor,
-      lng,
-      lat,
-      fields,
-      handleQuery
-    }
-  }
-}
-</script>
-```
+Tips: 配置按需引入后，将不允许直接导入所有组件。

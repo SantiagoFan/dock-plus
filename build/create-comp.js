@@ -77,7 +77,7 @@ process.stdin.on('data', async chunk => {
     }
 
     // 这里生成自定义组件说明文档
-    const docsDirectory = resolve('../examples/docs')
+    const docsDirectory = resolve('../docs/component')
     const docsMdName = resolve(docsDirectory, `${inputName}.md` )
 
     try {

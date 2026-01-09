@@ -1,6 +1,6 @@
 
 <template>
-  <div class="jui-sku-container">
+  <div class="ml-sku-container">
     <!-- 规格设置 -->
     <div class="specification">
       <ul class="spec-list">
@@ -45,7 +45,7 @@
 <script>
 
 export default {
-  name: 'JSkuSpec',
+  name: 'MlSkuSpec',
   props: {
     // 最多可添加规格项
     limit:{

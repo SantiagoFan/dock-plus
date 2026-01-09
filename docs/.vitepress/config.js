@@ -1,13 +1,14 @@
 /** @type {import('vitepress').UserConfig} */
 const config = {
-  title: 'dock-next',
-  description: '基于 Vue 3 和 Element Plus 的 UI 组件库',
-  base: '/dock-next/',
+  title: 'dock-plus',
+  description: 'MinkLink 基于 Vue 3 和 Element Plus 的 UI 业务组件库',
+  base: '/dock-plus/',
   themeConfig: {
+    logo: '/logo.png',
     nav: [
       { text: '首页', link: '/' },
-      { text: '指南', link: '/guide/' },
-      { text: '组件', link: '/components/' }
+      { text: '指南', link: '/guide/introduce' },
+      { text: '组件', link: '/component/index' }
     ],
     sidebar: {
       '/guide/': [
@@ -20,29 +21,32 @@ const config = {
           ]
         }
       ],
-      '/components/': [
+      '/component/': [
         {
           text: '基础组件',
           items: [
-            { text: '二维码', link: '/components/qrcode' },
-            { text: '链接展示器', link: '/components/LinkViewer' },
-            { text: '背景颜色选择器', link: '/components/BgSelector' },
-            { text: 'svg 图标', link: '/components/SvgIcon' },
-            { text: '标题栏', link: '/components/TitleBar' }
+            { text: '安装', link: '/component/index' },
+            { text: '二维码', link: '/component/qrcode' },
+            { text: '链接展示器', link: '/component/LinkViewer' },
+            { text: '背景颜色选择器', link: '/component/BgSelector' },
+            { text: 'svg 图标', link: '/component/SvgIcon' },
+            { text: '标题栏', link: '/component/TitleBar' },
+            { text: '文件组', link: '/component/FileGroup' },
+            { text: '文件列表', link: '/component/RmFileList' }
           ]
         },
         {
           text: '拓展组件',
           items: [
-            { text: 'SKU 商品规格', link: '/components/sku' },
-            { text: '高级查询', link: '/components/AdvancedQuery' },
-            { text: '位置选择器', link: '/components/PositionSelector' }
+            { text: 'SKU 商品规格', link: '/component/Sku' },
+            { text: '高级查询', link: '/component/AdvancedQuery' },
+            { text: '位置选择器', link: '/component/PositionSelector' }
           ]
         }
       ]
     },
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/santiago-fan/dock-next' }
+      { icon: 'github', link: 'https://github.com/santiago-fan/dock-plus' }
     ]
   },
   vite: {
