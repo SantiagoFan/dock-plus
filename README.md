@@ -1,27 +1,27 @@
-# join-ui
-### 灵集科技 UI组件库
+# dock-plus
+### 思链科技 UI组件库
 文档地址：
-https://santiagofan.github.io/join-ui/
+https://santiagofan.github.io/dock-plus/
 
-github: https://github.com/SantiagoFan/join-ui  
+github: https://github.com/SantiagoFan/dock-plus  
 Author: san_fan@qq.com  
 PC端  推荐使用ElementUI     
-![join-ui](https://socialify.git.ci/SantiagoFan/join-ui/image?description=1&font=Inter&language=1&owner=1&pattern=Circuit%20Board&theme=Light)
+![dock-plus](https://socialify.git.ci/SantiagoFan/dock-plus/image?description=1&font=Inter&language=1&owner=1&pattern=Circuit%20Board&theme=Light)
 
 
 ## npm 安装
 ```
-npm install join-ui -S
+npm install dock-plus -S
 ```
 
 ##  使用
-https://santiagofan.github.io/join-ui/#/start
+https://santiagofan.github.io/dock-plus/#/start
 
 
 ## NPM 源地址
 ```
-https://www.npmjs.com/package/join-ui
-https://npm.taobao.org/package/join-ui
+https://www.npmjs.com/package/dock-plus
+https://npm.taobao.org/package/dock-plus
 
 ```
 # 组件列表

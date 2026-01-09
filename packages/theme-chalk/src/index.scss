@@ -1,9 +1,9 @@
-@import "./base.scss";
+@use "./base.scss";
 // 背景选择器
-@import "./qrcode.scss";
-@import "./bg-selector.scss";
-@import "./sku-spec.scss";
-@import "./sku-table.scss";
-@import "./title-bar.scss";
-@import "./advanced-query.scss";
-@import "./position-selector.scss";
+@use "./qrcode.scss";
+@use "./bg-selector.scss";
+@use "./sku-spec.scss";
+@use "./sku-table.scss";
+@use "./title-bar.scss";
+@use "./advanced-query.scss";
+@use "./position-selector.scss";

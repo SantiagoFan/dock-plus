@@ -1,13 +1,15 @@
 <template>
   <div class="j-position-selector">
     <el-card shadow="hover">
-      <div slot="header" style="padding:0px 10px;">
-        <span><i class="el-icon-map-location"></i> 地址坐标</span>
-        <el-button style="float: right; padding: 10px 0" type="text" @click="showMap">选择地址</el-button>
-      </div>
+      <template #header>
+        <div style="padding:0px 10px;">
+          <span><i class="el-icon-map-location"></i> 地址坐标</span>
+          <el-button style="float: right; padding: 10px 0" type="text" @click="showMap">选择地址</el-button>
+        </div>
+      </template>
       <div class="item">
         <el-row>
-          <span>地址：{{ address?address:'未设置' }}</span>
+          <span>地址：{{ address ? address : '未设置' }}</span>
         </el-row>
         <el-row class="sub-info">
           <el-col :span="12">经度：{{ lng }}</el-col>
@@ -16,7 +18,7 @@
       </div>
     </el-card>
     <!-- 弹窗选择 -->
-    <el-dialog custom-class="j-position-selector-dialog" :visible.sync="dialogVisible" title="选择地图" width="1000px" append-to-body>
+    <el-dialog custom-class="j-position-selector-dialog" v-model="dialogVisible" title="选择地图" width="1000px" append-to-body>
       <div class="map">
         
         <!-- 地图 -->
@@ -31,29 +33,33 @@
           </div>
         </div>
       </div>
-      <span slot="footer" class="dialog-footer">
-        <el-row :gutter="10">
-          <el-col :span="6">
-            <el-input disabled v-model="center.lng" placeholder="坐标经度">
-              <template slot="prepend">经度</template>
-            </el-input>
-          </el-col>
-          <el-col :span="6">
-            <el-input disabled v-model="center.lat" placeholder="坐标纬度">
-              <template slot="prepend">纬度</template>
-            </el-input>
-          </el-col>
-          <el-col :span="12">
-            <el-button @click="dialogVisible = false">取 消</el-button>
-            <el-button type="primary" @click="Select">确 定</el-button>
-          </el-col>
-        </el-row>
-      </span>
+      <template #footer>
+        <span class="dialog-footer">
+          <el-row :gutter="10">
+            <el-col :span="6">
+              <el-input disabled v-model="center.lng" placeholder="坐标经度">
+                <template #prepend>经度</template>
+              </el-input>
+            </el-col>
+            <el-col :span="6">
+              <el-input disabled v-model="center.lat" placeholder="坐标纬度">
+                <template #prepend>纬度</template>
+              </el-input>
+            </el-col>
+            <el-col :span="12">
+              <el-button @click="dialogVisible = false">取 消</el-button>
+              <el-button type="primary" @click="Select">确 定</el-button>
+            </el-col>
+          </el-row>
+        </span>
+      </template>
     </el-dialog>
   </div>
 </template>
 
 <script>
+import { ref, reactive, toRefs } from 'vue'
+
 export default {
   name: 'JPositionSelector',
   props: {
@@ -90,92 +96,94 @@ export default {
       default:''
     }
   },
+  emits: ['update:lng', 'update:lat', 'update:province', 'update:city', 'update:district', 'update:adcode', 'update:address', 'change'],
 
-  data() {
-    return {
-      dialogVisible: false,
-      TMap: null,// 对象
-      map: null, // 实例
-      marker: null, // 标记点
+  setup(props, { emit }) {
+    const dialogVisible = ref(false)
+    const TMap = ref(null)// 对象
+    const map = ref(null) // 实例
+    const marker = ref(null) // 标记点
+    const nearPois = ref([])// 附近搜索建议
+    
+    const state = reactive({
       center: {
         height:0,
-        lng: null,
-        lat: null
+        lng: props.lng || 116.397502,
+        lat: props.lat || 39.908802
       },
       detail:{ //地址临时分量
-        adcode:'',
-        province:'',
-        city:'',
-        district:'',
-        address:''
+        adcode: props.adcode || '',
+        province: props.province || '',
+        city: props.city || '',
+        district: props.district || '',
+        address: props.address || ''
       },
-      searchService:null, //关键字搜索服务
-      suggestService:null,// 搜索建议服务
-      geocoderService:null,// 地址解析
-      nearPois: [],// 附近搜索建议
+      searchService: null, //关键字搜索服务
+      suggestService: null,// 搜索建议服务
+      geocoderService: null,// 地址解析
+    })
+
+    const showMap = () => {
+      dialogVisible.value = true
+      init()
     }
-  },
-  methods: {
-    showMap() {
-      this.dialogVisible = true
-      this.init()
-    },
-    init(){
-      if(this.map){return}
-      this.initMap().then(TMap=>{
+
+    const init = () => {
+      if(map.value) { return }
+      initMap().then(TMapObj => {
         // 中心点
-        this.center = new TMap.LatLng(this.lat||39.908802, this.lng||116.397502)
-        this.TMap = TMap;
-        this.map = new TMap.Map("map", {
-          center: this.center, //设置地图中心点坐标
+        state.center = new TMapObj.LatLng(props.lat || 39.908802, props.lng || 116.397502)
+        TMap.value = TMapObj
+        map.value = new TMapObj.Map("map", {
+          center: state.center, //设置地图中心点坐标
           zoom: 15, //设置地图缩放级别
           viewMode: "2D",
         })
         //监听点击事件
-        this.map.on("click",this.mapClick);
+        map.value.on("click", mapClick)
         // 初始化点
-        this.initMaker(this.center)
+        initMaker(state.center)
         // 搜索服务
-        // this.searchService = new TMap.service.Search({ pageSize: 10 });
+        // state.searchService = new TMap.service.Search({ pageSize: 10 });
         // 输入建议服务
-        this.suggestService = new TMap.service.Suggestion({
+        state.suggestService = new TMapObj.service.Suggestion({
           pageSize: 10,
           regionFix: false, // 自动扩大范围到全国匹配
-        });
+        })
         // 地址解析服务
-        this.geocoderService = new TMap.service.Geocoder()
+        state.geocoderService = new TMapObj.service.Geocoder()
       })
-    },
+    }
+
     // 初始化地图
-    initMap() {
-        return new Promise((resolve) => {
+    const initMap = () => {
+      return new Promise((resolve) => {
         // 如果已加载直接返回
-        if(typeof TMap !== "undefined") {
-          // eslint-disable-next-line no-undef
-          resolve(TMap);
-          return true;
+        if(typeof window.TMap !== "undefined") {
+          resolve(window.TMap)
+          return true
         }
         // 地图异步加载回调处理
         window.onMapCallback = function () {
-          // eslint-disable-next-line no-undef
-          resolve(TMap);
-        };
+          resolve(window.TMap)
+        }
   
         // 插入script脚本
-        let TMap_URL = "https://map.qq.com/api/gljs?v=1.exp&libraries=tools,service&key="+ this.mapKey +"&callback=onMapCallback";
-        let scriptNode = document.createElement("script");
-        scriptNode.setAttribute("type", "text/javascript");
-        scriptNode.setAttribute("src", TMap_URL);
-        document.body.appendChild(scriptNode);
-      });
-    },
+        let TMap_URL = "https://map.qq.com/api/gljs?v=1.exp&libraries=tools,service&key="+ props.mapKey +"&callback=onMapCallback"
+        let scriptNode = document.createElement("script")
+        scriptNode.setAttribute("type", "text/javascript")
+        scriptNode.setAttribute("src", TMap_URL)
+        document.body.appendChild(scriptNode)
+      })
+    }
+
     // 初始化标记点
-    initMaker(latLng){
-      this.marker =  new this.TMap.MultiMarker({
-        map: this.map,
+    const initMaker = (latLng) => {
+      marker.value = new TMap.value.MultiMarker({
+        map: map.value,
         styles: {
           // 点标记样式
-          marker: new this.TMap.MarkerStyle({
+          marker: new TMap.value.MarkerStyle({
             width: 20, // 样式宽
             height: 30, // 样式高
             anchor: { x: 10, y: 30 }, // 描点位置
@@ -189,69 +197,91 @@ export default {
             id: 'centerMarker',
           },
         ],
-      });
-    },
-    // 移动地图到中心点
-    moveCenter(){
-      var data = this.marker.getGeometryById('centerMarker');
-       Object.assign(data, {
-          position: this.center,
-      });
-      this.marker.updateGeometries([data]);
-      this.nearPois = []
-    },
-    // 地图点击 更新地点
-    mapClick(event){
-      this.center = event.latLng
-
-      this.geocoderService.getAddress({
-        location: event.latLng
-      }).then(res=>{
-        this.detail.address = res.result.address
-        this.detail.province = res.result.ad_info.province
-        this.detail.city = res.result.ad_info.city
-        this.detail.district = res.result.ad_info.district
-        this.detail.adcode = res.result.ad_info.adcode
       })
-      this.moveCenter()
-    },
+    }
+
+    // 移动地图到中心点
+    const moveCenter = () => {
+      const data = marker.value.getGeometryById('centerMarker')
+      Object.assign(data, {
+        position: state.center,
+      })
+      marker.value.updateGeometries([data])
+      nearPois.value = []
+    }
+
+    // 地图点击 更新地点
+    const mapClick = (event) => {
+      state.center = event.latLng
+
+      state.geocoderService.getAddress({
+        location: event.latLng
+      }).then(res => {
+        state.detail.address = res.result.address
+        state.detail.province = res.result.ad_info.province
+        state.detail.city = res.result.ad_info.city
+        state.detail.district = res.result.ad_info.district
+        state.detail.adcode = res.result.ad_info.adcode
+      })
+      moveCenter()
+    }
     
     // 通过关键词获得推荐位置
-    getSuggestions() {
-      if(!this.detail.address){
-        this.nearPois =[]
+    const getSuggestions = () => {
+      if(!state.detail.address) {
+        nearPois.value = []
         return 
       }
-      this.suggestService.getSuggestions({ keyword: this.detail.address, location: this.map.getCenter() })
+      state.suggestService.getSuggestions({ keyword: state.detail.address, location: map.value.getCenter() })
         .then((res) => {
-          this.nearPois = res.data
+          nearPois.value = res.data
         })
-    },
-    // 建议列表选择
-    selectAddress(item) {
-      this.center = item.location
-      this.moveCenter()
-      this.map.setCenter(item.location);
+    }
 
-      this.detail.address = item.address
-      this.detail.province = item.province
-      this.detail.city = item.city
-      this.detail.district = item.district
-      this.detail.adcode = item.adcode
-    },
-    Select() {
-      this.$emit('update:lng', this.center.lng)
-      this.$emit('update:lat',this.center.lat)
-      this.$emit('update:province',this.detail.province)
-      this.$emit('update:city',this.detail.city)
-      this.$emit('update:district',this.detail.district)
-      this.$emit('update:adcode',this.detail.adcode)
-      this.$emit('update:address',this.detail.address)
-      this.$emit('change',{
-        ...this.detail,
-        ...this.center
+    // 建议列表选择
+    const selectAddress = (item) => {
+      state.center = item.location
+      moveCenter()
+      map.value.setCenter(item.location)
+
+      state.detail.address = item.address
+      state.detail.province = item.province
+      state.detail.city = item.city
+      state.detail.district = item.district
+      state.detail.adcode = item.adcode
+    }
+
+    const Select = () => {
+      emit('update:lng', state.center.lng)
+      emit('update:lat', state.center.lat)
+      emit('update:province', state.detail.province)
+      emit('update:city', state.detail.city)
+      emit('update:district', state.detail.district)
+      emit('update:adcode', state.detail.adcode)
+      emit('update:address', state.detail.address)
+      emit('change', {
+        ...state.detail,
+        ...state.center
       })
-      this.dialogVisible = false
+      dialogVisible.value = false
+    }
+
+    return {
+      dialogVisible,
+      TMap,
+      map,
+      marker,
+      nearPois,
+      ...toRefs(state),
+      showMap,
+      init,
+      initMap,
+      initMaker,
+      moveCenter,
+      mapClick,
+      getSuggestions,
+      selectAddress,
+      Select
     }
   }
 }
