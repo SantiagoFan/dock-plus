@@ -17,8 +17,7 @@
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
-    "build:docs": "vitepress build docs",
-    "publish:docs": "node build/publish-docs.js"
+    "docs:publish": "node build/publish-docs.js"
   },
   "main": "lib/dock-plus.common.js",
   "dependencies": {
