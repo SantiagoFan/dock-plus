@@ -29,7 +29,6 @@ const config = {
             { text: '二维码', link: '/component/qrcode' },
             { text: '链接展示器', link: '/component/LinkViewer' },
             { text: '背景颜色选择器', link: '/component/BgSelector' },
-            { text: 'svg 图标', link: '/component/SvgIcon' },
             { text: '标题栏', link: '/component/TitleBar' },
             { text: '文件组', link: '/component/FileGroup' },
             { text: '文件列表', link: '/component/RmFileList' }

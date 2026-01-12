@@ -1,8 +1,6 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
-import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
-import VueMarkdown from 'unplugin-vue-markdown/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -15,13 +13,6 @@ export default defineConfig({
         }
       }
     }),
-    VueMarkdown({
-      wrapperClasses: (id) => 'markdown-wrapper'
-    }),
-    createSvgIconsPlugin({
-      iconDirs: [resolve(__dirname, 'examples/icons')],
-      symbolId: 'icon-[name]',
-    })
   ],
   resolve: {
     alias: {

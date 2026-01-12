@@ -6,34 +6,7 @@ PositionSelector 是使用腾讯地图为基础的地理位置选择器，使用
 
 ## 如何使用
 ### 1.基于绑定的方式
-<div class="demo-block">
-  <position-selector-demo/>
-</div>
-```html
-  <ml-position-selector 
-    map-key="NLBBZ-MWMWX-RRX4O-TOKQH-BQP2O-NOFOW"
-    :lat.sync="position.lat"
-    :lng.sync="position.lng"
-    :address.sync="position.address" 
-    :adcode.sync="position.adcode"
-    :province.sync="position.province"
-    :city.sync="position.city"
-    :district.sync="position.district"
-    />
-```
-### 1.基于事件的方式
-<div class="demo-block">
-   <ml-position-selector 
-          map-key="NLBBZ-MWMWX-RRX4O-TOKQH-BQP2O-NOFOW"
-        />
-</div>
 
-```html
-  <ml-position-selector 
-    map-key="NLBBZ-MWMWX-RRX4O-TOKQH-BQP2O-NOFOW"
-    @change="positionChange"
-    />
-```
 
 
 
