@@ -5,6 +5,9 @@ hero:
   name: dock-plus
   text: 基于 Vue 3 和 Element Plus 的 UI 组件库
   tagline: 一套优雅、实用的 UI 组件库
+  image:
+    src: /hero.png
+    alt: Hero Image
   actions:
     - theme: brand
       text: 快速开始
