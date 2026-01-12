@@ -20,8 +20,6 @@ npm run dev:style
 
 ```
 
-浏览器访问 [http://localhost:8080](http://localhost:8080) 就可以看到所有组件的示例了
-
 ## 添加新组件和样式
 请按照 `packages` 目录下的文件夹结构添加新的组件，如需新的样式请在 `packages/theme-chalk/src` 添加。
 

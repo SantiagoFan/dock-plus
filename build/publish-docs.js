@@ -14,7 +14,14 @@ const GIT_COMMIT = execSync('git rev-parse --short HEAD').toString().replace(/\n
 const ghpages = require('gh-pages')
 execSync('npm run docs:build')
 console.info('文件准备完成')
-ghpages.publish('dist', function(err){
-  console.info(err)
-  console.info('文档发布完成')
+ghpages.publish('docs/.vitepress/dist', {
+  dotfiles: 'include',
+  disableDotfiles: false,
+  add: true  // 强制添加所有文件，包括被.gitignore忽略的文件
+}, function(err){
+  if (err) {
+    console.error('发布失败:', err);
+  } else {
+    console.info('文档发布完成');
+  }
 });

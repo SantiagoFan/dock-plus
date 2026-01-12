@@ -10,8 +10,9 @@ export default {
   ...DefaultTheme,
   enhanceApp({ app }) {
     // 使用组件库的 install 方法注册所有组件
-    app.use(DockPlus)
-
+    if(!import.meta.env.SSR){
+      app.use(DockPlus)
+    }
     // 使用element-plus
     app.use(ElementPlus)
   }
