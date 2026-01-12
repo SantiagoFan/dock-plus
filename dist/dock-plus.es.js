@@ -1,11 +1,11 @@
-import { resolveComponent as B, createElementBlock as k, openBlock as v, createVNode as b, withCtx as S, createTextVNode as M, Fragment as R, renderList as z, createBlock as K, mergeProps as ie, createElementVNode as w, ref as X, computed as ce, normalizeClass as te, toDisplayString as J, resolveDirective as we, withDirectives as ge, renderSlot as ue, getCurrentInstance as ke, createCommentVNode as N, reactive as Ce, toRefs as Se, vShow as Ve, withKeys as Pe, normalizeStyle as De } from "vue";
-const Y = (i, l) => {
-  const r = i.__vccOpts || i;
-  for (const [s, p] of l)
-    r[s] = p;
-  return r;
-}, Ee = {
-  name: "JAdvancedQuery",
+import { resolveComponent as E, createElementBlock as C, openBlock as h, createVNode as m, withCtx as w, createTextVNode as T, Fragment as N, renderList as R, createBlock as F, mergeProps as le, createElementVNode as b, ref as L, computed as he, normalizeClass as X, toDisplayString as z, watch as ot, nextTick as lt, resolveDirective as it, withDirectives as Ke, renderSlot as ge, getCurrentInstance as rt, createCommentVNode as M, reactive as at, toRefs as st, vShow as ut, withKeys as dt, normalizeStyle as ct } from "vue";
+const W = (t, e) => {
+  const o = t.__vccOpts || t;
+  for (const [n, l] of e)
+    o[n] = l;
+  return o;
+}, ft = {
+  name: "MlAdvancedQuery",
   props: {
     modelValue: {
       default: null,
@@ -17,8 +17,8 @@ const Y = (i, l) => {
     }
   },
   emits: ["update:modelValue", "change"],
-  setup(i, { emit: l }) {
-    const r = X(!1), s = X([
+  setup(t, { emit: e }) {
+    const o = L(!1), n = L([
       { label: "等于", value: "eq" },
       { label: "包含", value: "contains" },
       { label: "以..开始", value: "start" },
@@ -29,137 +29,137 @@ const Y = (i, l) => {
       { label: "大于等于", value: "egt" },
       { label: "小于", value: "lt" },
       { label: "小于等于", value: "elt" }
-    ]), p = ce({
-      get: () => i.modelValue || { list: [], condition: "and" },
-      set: (L) => l("update:modelValue", L)
-    }), _ = ce(() => p.value && Array.isArray(p.value.list) && p.value.list.length > 0), V = () => {
-      l("update:modelValue", null);
-    }, h = () => {
-      r.value = !0;
-    }, m = () => {
-      r.value = !1, _.value && l("change");
-    }, u = (L) => {
-      const U = i.fields.find((f) => f.name == L);
-      if (U) {
-        const f = y(U.type);
-        return Object.assign(f, U.props);
+    ]), l = he({
+      get: () => t.modelValue || { list: [], condition: "and" },
+      set: (y) => e("update:modelValue", y)
+    }), i = he(() => l.value && Array.isArray(l.value.list) && l.value.list.length > 0), a = () => {
+      e("update:modelValue", null);
+    }, r = () => {
+      o.value = !0;
+    }, s = () => {
+      o.value = !1, i.value && e("change");
+    }, u = (y) => {
+      const V = t.fields.find((d) => d.name == y);
+      if (V) {
+        const d = c(V.type);
+        return Object.assign(d, V.props);
       } else
         return {};
-    }, y = (L) => L == "date" ? { "value-format": "yyyy-MM-dd" } : L == "datetime" ? { "value-format": "yyyy-MM-dd HH:mm:ss" } : {};
+    }, c = (y) => y == "date" ? { "value-format": "yyyy-MM-dd" } : y == "datetime" ? { "value-format": "yyyy-MM-dd HH:mm:ss" } : {};
     return {
-      dialogVisible: r,
-      operator: s,
-      valueData: p,
-      isUse: _,
-      clear: V,
-      showDialog: h,
-      commit: m,
+      dialogVisible: o,
+      operator: n,
+      valueData: l,
+      isUse: i,
+      clear: a,
+      showDialog: r,
+      commit: s,
       getFieldProps: u,
-      getDefaultProps: y,
-      getFieldType: (L) => {
-        const U = i.fields.find((f) => f.name == L);
-        return U ? U.type : "text";
+      getDefaultProps: c,
+      getFieldType: (y) => {
+        const V = t.fields.find((d) => d.name == y);
+        return V ? V.type : "text";
       },
-      itemFieldChange: (L) => {
-        L.value = "";
+      itemFieldChange: (y) => {
+        y.value = "";
       },
       addItem: () => {
-        const L = Object.assign({ list: [], condition: "and" }, p.value);
-        L.list.push({ field: "", op: "eq", value: "" }), l("update:modelValue", L);
+        const y = Object.assign({ list: [], condition: "and" }, l.value);
+        y.list.push({ field: "", op: "eq", value: "" }), e("update:modelValue", y);
       },
-      delItem: (L) => {
-        p.value.list.splice(L, 1), l("update:modelValue", p.value);
+      delItem: (y) => {
+        l.value.list.splice(y, 1), e("update:modelValue", l.value);
       }
     };
   }
-}, Te = { class: "j-advanced-query" }, Ae = { key: 1 }, Be = { class: "dialog-footer" };
-function Le(i, l, r, s, p, _) {
-  const V = B("el-button"), h = B("el-tooltip"), m = B("el-option"), u = B("el-select"), y = B("el-form-item"), A = B("el-input-number"), D = B("el-date-picker"), Q = B("el-input"), I = B("el-empty"), L = B("el-form"), U = B("el-dialog");
-  return v(), k("div", Te, [
-    b(h, {
+}, gt = { class: "ml-advanced-query" }, ht = { key: 1 }, mt = { class: "dialog-footer" };
+function pt(t, e, o, n, l, i) {
+  const a = E("el-button"), r = E("el-tooltip"), s = E("el-option"), u = E("el-select"), c = E("el-form-item"), _ = E("el-input-number"), g = E("el-date-picker"), p = E("el-input"), k = E("el-empty"), y = E("el-form"), V = E("el-dialog");
+  return h(), C("div", gt, [
+    m(r, {
       effect: "dark",
-      disabled: !s.isUse,
+      disabled: !n.isUse,
       placement: "top-start"
     }, {
-      content: S(() => [
-        l[5] || (l[5] = M(" 已有高级查询条件生效 | ", -1)),
-        b(V, {
+      content: w(() => [
+        e[5] || (e[5] = T(" 已有高级查询条件生效 | ", -1)),
+        m(a, {
           type: "text",
-          onClick: s.clear
+          onClick: n.clear
         }, {
-          default: S(() => [...l[4] || (l[4] = [
-            M(" 清空", -1)
+          default: w(() => [...e[4] || (e[4] = [
+            T(" 清空", -1)
           ])]),
           _: 1
         }, 8, ["onClick"])
       ]),
-      default: S(() => [
-        b(V, {
-          icon: s.isUse ? "el-icon-loading" : "el-icon-finished",
-          onClick: s.showDialog,
+      default: w(() => [
+        m(a, {
+          icon: n.isUse ? "el-icon-loading" : "el-icon-finished",
+          onClick: n.showDialog,
           size: "small",
           type: "primary"
         }, {
-          default: S(() => [...l[6] || (l[6] = [
-            M(" 高级查询 ", -1)
+          default: w(() => [...e[6] || (e[6] = [
+            T(" 高级查询 ", -1)
           ])]),
           _: 1
         }, 8, ["icon", "onClick"])
       ]),
       _: 1
     }, 8, ["disabled"]),
-    b(U, {
-      modelValue: s.dialogVisible,
-      "onUpdate:modelValue": l[3] || (l[3] = (f) => s.dialogVisible = f),
+    m(V, {
+      modelValue: n.dialogVisible,
+      "onUpdate:modelValue": e[3] || (e[3] = (d) => n.dialogVisible = d),
       title: "高级查询构造器",
       width: "700px",
       modal: !1
     }, {
-      footer: S(() => [
-        w("span", Be, [
-          b(V, { onClick: s.clear }, {
-            default: S(() => [...l[8] || (l[8] = [
-              M("重置", -1)
+      footer: w(() => [
+        b("span", mt, [
+          m(a, { onClick: n.clear }, {
+            default: w(() => [...e[8] || (e[8] = [
+              T("重置", -1)
             ])]),
             _: 1
           }, 8, ["onClick"]),
-          b(V, {
-            onClick: l[2] || (l[2] = (f) => s.dialogVisible = !1)
+          m(a, {
+            onClick: e[2] || (e[2] = (d) => n.dialogVisible = !1)
           }, {
-            default: S(() => [...l[9] || (l[9] = [
-              M("取 消", -1)
+            default: w(() => [...e[9] || (e[9] = [
+              T("取 消", -1)
             ])]),
             _: 1
           }),
-          b(V, {
+          m(a, {
             type: "primary",
-            onClick: s.commit
+            onClick: n.commit
           }, {
-            default: S(() => [...l[10] || (l[10] = [
-              M("确 定", -1)
+            default: w(() => [...e[10] || (e[10] = [
+              T("确 定", -1)
             ])]),
             _: 1
           }, 8, ["onClick"])
         ])
       ]),
-      default: S(() => [
-        b(L, { inline: !0 }, {
-          default: S(() => [
-            s.isUse ? (v(), k(R, { key: 0 }, [
-              b(y, { label: "条件连接关系" }, {
-                default: S(() => [
-                  b(u, {
-                    modelValue: s.valueData.condition,
-                    "onUpdate:modelValue": l[0] || (l[0] = (f) => s.valueData.condition = f),
+      default: w(() => [
+        m(y, { inline: !0 }, {
+          default: w(() => [
+            n.isUse ? (h(), C(N, { key: 0 }, [
+              m(c, { label: "条件连接关系" }, {
+                default: w(() => [
+                  m(u, {
+                    modelValue: n.valueData.condition,
+                    "onUpdate:modelValue": e[0] || (e[0] = (d) => n.valueData.condition = d),
                     size: "small",
                     style: { width: "250px" }
                   }, {
-                    default: S(() => [
-                      b(m, {
+                    default: w(() => [
+                      m(s, {
                         label: "AND（所有条件都要求匹配）",
                         value: "and"
                       }),
-                      b(m, {
+                      m(s, {
                         label: "OR（条件中的任意一个匹配）",
                         value: "or"
                       })
@@ -169,26 +169,26 @@ function Le(i, l, r, s, p, _) {
                 ]),
                 _: 1
               }),
-              (v(!0), k(R, null, z(s.valueData.list, (f, O) => (v(), k("div", {
+              (h(!0), C(N, null, R(n.valueData.list, (d, v) => (h(), C("div", {
                 class: "row",
-                key: O
+                key: v
               }, [
-                b(y, null, {
-                  default: S(() => [
-                    b(u, {
-                      modelValue: f.field,
-                      "onUpdate:modelValue": (E) => f.field = E,
+                m(c, null, {
+                  default: w(() => [
+                    m(u, {
+                      modelValue: d.field,
+                      "onUpdate:modelValue": (f) => d.field = f,
                       size: "small",
                       style: { width: "150px" },
-                      onChange: (E) => s.itemFieldChange(f),
+                      onChange: (f) => n.itemFieldChange(d),
                       clearable: "",
                       placeholder: "请选择字段"
                     }, {
-                      default: S(() => [
-                        (v(!0), k(R, null, z(r.fields, (E) => (v(), K(m, {
-                          key: E.name,
-                          label: E.label,
-                          value: E.name
+                      default: w(() => [
+                        (h(!0), C(N, null, R(o.fields, (f) => (h(), F(s, {
+                          key: f.name,
+                          label: f.label,
+                          value: f.name
                         }, null, 8, ["label", "value"]))), 128))
                       ]),
                       _: 1
@@ -196,19 +196,19 @@ function Le(i, l, r, s, p, _) {
                   ]),
                   _: 2
                 }, 1024),
-                b(y, null, {
-                  default: S(() => [
-                    b(u, {
-                      modelValue: f.op,
-                      "onUpdate:modelValue": (E) => f.op = E,
+                m(c, null, {
+                  default: w(() => [
+                    m(u, {
+                      modelValue: d.op,
+                      "onUpdate:modelValue": (f) => d.op = f,
                       size: "small",
                       style: { width: "100px" }
                     }, {
-                      default: S(() => [
-                        (v(!0), k(R, null, z(s.operator, (E) => (v(), K(m, {
-                          key: E.value,
-                          label: E.label,
-                          value: E.value
+                      default: w(() => [
+                        (h(!0), C(N, null, R(n.operator, (f) => (h(), F(s, {
+                          key: f.value,
+                          label: f.label,
+                          value: f.value
                         }, null, 8, ["label", "value"]))), 128))
                       ]),
                       _: 1
@@ -216,56 +216,56 @@ function Le(i, l, r, s, p, _) {
                   ]),
                   _: 2
                 }, 1024),
-                b(y, null, {
-                  default: S(() => [
-                    s.getFieldType(f.field) == "number" ? (v(), K(A, ie({
+                m(c, null, {
+                  default: w(() => [
+                    n.getFieldType(d.field) == "number" ? (h(), F(_, le({
                       key: 0,
                       ref_for: !0
-                    }, s.getFieldProps(f.field), {
-                      modelValue: f.value,
-                      "onUpdate:modelValue": (E) => f.value = E,
+                    }, n.getFieldProps(d.field), {
+                      modelValue: d.value,
+                      "onUpdate:modelValue": (f) => d.value = f,
                       size: "small",
                       controls: !1,
                       style: { width: "180px" }
-                    }), null, 16, ["modelValue", "onUpdate:modelValue"])) : s.getFieldType(f.field) == "date" ? (v(), K(D, ie({
+                    }), null, 16, ["modelValue", "onUpdate:modelValue"])) : n.getFieldType(d.field) == "date" ? (h(), F(g, le({
                       key: 1,
                       type: "date"
-                    }, { ref_for: !0 }, s.getFieldProps(f.field), {
-                      modelValue: f.value,
-                      "onUpdate:modelValue": (E) => f.value = E,
+                    }, { ref_for: !0 }, n.getFieldProps(d.field), {
+                      modelValue: d.value,
+                      "onUpdate:modelValue": (f) => d.value = f,
                       size: "small",
                       style: { width: "180px" }
-                    }), null, 16, ["modelValue", "onUpdate:modelValue"])) : s.getFieldType(f.field) == "datetime" ? (v(), K(D, ie({
+                    }), null, 16, ["modelValue", "onUpdate:modelValue"])) : n.getFieldType(d.field) == "datetime" ? (h(), F(g, le({
                       key: 2,
                       type: "datetime"
-                    }, { ref_for: !0 }, s.getFieldProps(f.field), {
-                      modelValue: f.value,
-                      "onUpdate:modelValue": (E) => f.value = E,
+                    }, { ref_for: !0 }, n.getFieldProps(d.field), {
+                      modelValue: d.value,
+                      "onUpdate:modelValue": (f) => d.value = f,
                       size: "small",
                       style: { width: "180px" }
-                    }), null, 16, ["modelValue", "onUpdate:modelValue"])) : s.getFieldType(f.field) == "select" ? (v(), K(u, ie({
+                    }), null, 16, ["modelValue", "onUpdate:modelValue"])) : n.getFieldType(d.field) == "select" ? (h(), F(u, le({
                       key: 3,
                       ref_for: !0
-                    }, s.getFieldProps(f.field), {
-                      modelValue: f.value,
-                      "onUpdate:modelValue": (E) => f.value = E,
+                    }, n.getFieldProps(d.field), {
+                      modelValue: d.value,
+                      "onUpdate:modelValue": (f) => d.value = f,
                       size: "small",
                       style: { width: "180px" }
                     }), {
-                      default: S(() => [
-                        (v(!0), k(R, null, z(s.getFieldProps(f.field).options, (E) => (v(), K(m, {
-                          key: E.value,
-                          label: E.label,
-                          value: E.value
+                      default: w(() => [
+                        (h(!0), C(N, null, R(n.getFieldProps(d.field).options, (f) => (h(), F(s, {
+                          key: f.value,
+                          label: f.label,
+                          value: f.value
                         }, null, 8, ["label", "value"]))), 128))
                       ]),
                       _: 2
-                    }, 1040, ["modelValue", "onUpdate:modelValue"])) : (v(), K(Q, ie({
+                    }, 1040, ["modelValue", "onUpdate:modelValue"])) : (h(), F(p, le({
                       key: 4,
                       ref_for: !0
-                    }, s.getFieldProps(f.field), {
-                      modelValue: f.value,
-                      "onUpdate:modelValue": (E) => f.value = E,
+                    }, n.getFieldProps(d.field), {
+                      modelValue: d.value,
+                      "onUpdate:modelValue": (f) => d.value = f,
                       clearable: "",
                       placeholder: "请输入值",
                       size: "small",
@@ -274,39 +274,39 @@ function Le(i, l, r, s, p, _) {
                   ]),
                   _: 2
                 }, 1024),
-                b(y, null, {
-                  default: S(() => [
-                    b(V, {
+                m(c, null, {
+                  default: w(() => [
+                    m(a, {
                       size: "small",
                       type: "primary",
                       plain: "",
                       icon: "el-icon-plus",
-                      onClick: l[1] || (l[1] = (E) => s.addItem())
+                      onClick: e[1] || (e[1] = (f) => n.addItem())
                     }),
-                    b(V, {
+                    m(a, {
                       size: "small",
                       type: "danger",
                       plain: "",
                       icon: "el-icon-minus",
-                      onClick: (E) => s.delItem(O)
+                      onClick: (f) => n.delItem(v)
                     }, null, 8, ["onClick"])
                   ]),
                   _: 2
                 }, 1024)
               ]))), 128))
-            ], 64)) : (v(), k("div", Ae, [
-              b(I, {
+            ], 64)) : (h(), C("div", ht, [
+              m(k, {
                 style: { padding: "0" },
                 "image-size": 100,
                 description: "未添加任何查询条件"
               }, {
-                default: S(() => [
-                  b(V, {
+                default: w(() => [
+                  m(a, {
                     type: "text",
-                    onClick: s.addItem
+                    onClick: n.addItem
                   }, {
-                    default: S(() => [...l[7] || (l[7] = [
-                      M("点击添加", -1)
+                    default: w(() => [...e[7] || (e[7] = [
+                      T("点击添加", -1)
                     ])]),
                     _: 1
                   }, 8, ["onClick"])
@@ -322,13 +322,13 @@ function Le(i, l, r, s, p, _) {
     }, 8, ["modelValue"])
   ]);
 }
-const j = /* @__PURE__ */ Y(Ee, [["render", Le]]);
-j.install = function(i) {
-  i.component(j.name, j);
+const q = /* @__PURE__ */ W(ft, [["render", pt]]);
+q.install = function(t) {
+  t.component(q.name, q);
 };
-typeof window < "u" && window.Vue && window.Vue.component(j.name, j);
-const Me = {
-  name: "JBgSelector",
+typeof window < "u" && window.Vue && window.Vue.component(q.name, q);
+const yt = {
+  name: "MlBgSelector",
   props: {
     modelValue: {
       default: "",
@@ -340,8 +340,8 @@ const Me = {
     }
   },
   emits: ["update:modelValue"],
-  setup(i, { emit: l }) {
-    const r = X(!1), s = X([
+  setup(t, { emit: e }) {
+    const o = L(!1), n = L([
       { title: "魅红", name: "bg-gradual-red" },
       { title: "鎏金", name: "bg-gradual-orange" },
       { title: "翠柳", name: "bg-gradual-green" },
@@ -363,628 +363,1561 @@ const Me = {
       { title: "草灰", name: "bg-gray", color: "#aaaaaa" },
       { title: "墨黑", name: "bg-black", color: "#333333" },
       { title: "雅白", name: "bg-white", color: "#ffffff" }
-    ]), p = ce({
-      get: () => i.modelValue,
-      set: (m) => l("update:modelValue", m)
-    }), _ = ce(() => {
-      let m = "未设置";
-      for (let u = 0; u < s.value.length; u++)
-        if (s.value[u].name === p.value)
-          return s.value[u].title;
-      return m;
+    ]), l = he({
+      get: () => t.modelValue,
+      set: (s) => e("update:modelValue", s)
+    }), i = he(() => {
+      let s = "未设置";
+      for (let u = 0; u < n.value.length; u++)
+        if (n.value[u].name === l.value)
+          return n.value[u].title;
+      return s;
     });
     return {
-      visible: r,
-      list: s,
-      valueData: p,
-      title: _,
-      select: (m) => {
-        r.value = !1, l("update:modelValue", m.name);
+      visible: o,
+      list: n,
+      valueData: l,
+      title: i,
+      select: (s) => {
+        o.value = !1, e("update:modelValue", s.name);
       },
       clear: () => {
-        r.value = !1, l("update:modelValue", null);
+        o.value = !1, e("update:modelValue", null);
       }
     };
   }
-}, xe = { class: "jui-bgSelector-container" }, Ne = { class: "jui-bgSelector-container" }, Ue = ["onClick"];
-function Re(i, l, r, s, p, _) {
-  const V = B("el-popover");
-  return v(), k("div", xe, [
-    b(V, {
-      visible: s.visible,
-      "onUpdate:visible": l[1] || (l[1] = (h) => s.visible = h),
+}, wt = { class: "ml-bgSelector-container" }, bt = { class: "ml-bgSelector-container" }, _t = ["onClick"];
+function vt(t, e, o, n, l, i) {
+  const a = E("el-button"), r = E("el-table-column"), s = E("el-table"), u = E("el-popover");
+  return h(), C("div", wt, [
+    m(u, {
       placement: "right",
-      width: "333",
-      disabled: r.disabled,
+      width: 400,
       trigger: "click"
     }, {
-      reference: S(() => [
-        w("div", {
-          class: te(["item", { disabled: r.disabled, [s.valueData]: !0 }])
+      reference: w(() => [
+        m(a, { style: { "margin-right": "16px" } }, {
+          default: w(() => [...e[1] || (e[1] = [
+            T("Click to activate", -1)
+          ])]),
+          _: 1
+        })
+      ]),
+      default: w(() => [
+        m(s, { data: [] }, {
+          default: w(() => [
+            m(r, {
+              width: "150",
+              property: "date",
+              label: "date"
+            }),
+            m(r, {
+              width: "100",
+              property: "name",
+              label: "name"
+            }),
+            m(r, {
+              width: "300",
+              property: "address",
+              label: "address"
+            })
+          ]),
+          _: 1
+        })
+      ]),
+      _: 1
+    }),
+    m(u, {
+      placement: "right",
+      width: "333",
+      disabled: o.disabled,
+      trigger: "click"
+    }, {
+      reference: w(() => [
+        b("div", {
+          class: X(["item", { disabled: o.disabled, [n.valueData]: !0 }])
         }, [
-          M(J(s.title) + " ", 1),
-          l[2] || (l[2] = w("i", { class: "el-icon-arrow-right" }, null, -1))
+          T(z(n.title) + " ", 1),
+          e[2] || (e[2] = b("i", { class: "el-icon-arrow-right" }, null, -1))
         ], 2)
       ]),
-      default: S(() => [
-        w("div", Ne, [
-          (v(!0), k(R, null, z(s.list, (h, m) => (v(), k("div", {
-            key: m,
-            class: te(["item", h.name]),
-            onClick: (u) => s.select(h)
-          }, J(h.title), 11, Ue))), 128)),
-          w("div", {
+      default: w(() => [
+        b("div", bt, [
+          (h(!0), C(N, null, R(n.list, (c, _) => (h(), C("div", {
+            key: _,
+            class: X(["item", c.name]),
+            onClick: (g) => n.select(c)
+          }, z(c.title), 11, _t))), 128)),
+          b("div", {
             class: "item",
-            onClick: l[0] || (l[0] = (h) => s.clear())
-          }, [...l[3] || (l[3] = [
-            w("i", { class: "el-icon-circle-close" }, null, -1)
+            onClick: e[0] || (e[0] = (c) => n.clear())
+          }, [...e[3] || (e[3] = [
+            b("i", { class: "el-icon-circle-close" }, null, -1)
           ])])
         ])
       ]),
       _: 1
-    }, 8, ["visible", "disabled"])
+    }, 8, ["disabled"])
   ]);
 }
-const $ = /* @__PURE__ */ Y(Me, [["render", Re]]);
-$.install = function(i) {
-  i.component($.name, $);
+const j = /* @__PURE__ */ W(yt, [["render", vt]]);
+j.install = function(t) {
+  t.component(j.name, j);
 };
-typeof window < "u" && window.Vue && window.Vue.component($.name, $);
-const ve = require("clipboard");
-if (!ve)
-  throw new Error("you should npm install `clipboard` --save at first ");
-const oe = {
-  bind(i, l) {
-    if (l.arg === "success")
-      i._v_clipboard_success = l.value;
-    else if (l.arg === "error")
-      i._v_clipboard_error = l.value;
-    else {
-      const r = new ve(i, {
-        text() {
-          return l.value;
-        },
-        action() {
-          return l.arg === "cut" ? "cut" : "copy";
-        }
-      });
-      r.on("success", (s) => {
-        const p = i._v_clipboard_success;
-        p && p(s);
-      }), r.on("error", (s) => {
-        const p = i._v_clipboard_error;
-        p && p(s);
-      }), i._v_clipboard = r;
+typeof window < "u" && window.Vue && window.Vue.component(j.name, j);
+var ue = {}, Ct = function() {
+  return typeof Promise == "function" && Promise.prototype && Promise.prototype.then;
+}, Oe = {}, I = {};
+let Me;
+const St = [
+  0,
+  // Not used
+  26,
+  44,
+  70,
+  100,
+  134,
+  172,
+  196,
+  242,
+  292,
+  346,
+  404,
+  466,
+  532,
+  581,
+  655,
+  733,
+  815,
+  901,
+  991,
+  1085,
+  1156,
+  1258,
+  1364,
+  1474,
+  1588,
+  1706,
+  1828,
+  1921,
+  2051,
+  2185,
+  2323,
+  2465,
+  2611,
+  2761,
+  2876,
+  3034,
+  3196,
+  3362,
+  3532,
+  3706
+];
+I.getSymbolSize = function(e) {
+  if (!e) throw new Error('"version" cannot be null or undefined');
+  if (e < 1 || e > 40) throw new Error('"version" should be in range from 1 to 40');
+  return e * 4 + 17;
+};
+I.getSymbolTotalCodewords = function(e) {
+  return St[e];
+};
+I.getBCHDigit = function(t) {
+  let e = 0;
+  for (; t !== 0; )
+    e++, t >>>= 1;
+  return e;
+};
+I.setToSJISFunction = function(e) {
+  if (typeof e != "function")
+    throw new Error('"toSJISFunc" is not a valid function.');
+  Me = e;
+};
+I.isKanjiModeEnabled = function() {
+  return typeof Me < "u";
+};
+I.toSJIS = function(e) {
+  return Me(e);
+};
+var ye = {};
+(function(t) {
+  t.L = { bit: 1 }, t.M = { bit: 0 }, t.Q = { bit: 3 }, t.H = { bit: 2 };
+  function e(o) {
+    if (typeof o != "string")
+      throw new Error("Param is not a string");
+    switch (o.toLowerCase()) {
+      case "l":
+      case "low":
+        return t.L;
+      case "m":
+      case "medium":
+        return t.M;
+      case "q":
+      case "quartile":
+        return t.Q;
+      case "h":
+      case "high":
+        return t.H;
+      default:
+        throw new Error("Unknown EC Level: " + o);
     }
-  },
-  update(i, l) {
-    l.arg === "success" ? i._v_clipboard_success = l.value : l.arg === "error" ? i._v_clipboard_error = l.value : (i._v_clipboard.text = function() {
-      return l.value;
-    }, i._v_clipboard.action = function() {
-      return l.arg === "cut" ? "cut" : "copy";
-    });
-  },
-  unbind(i, l) {
-    l.arg === "success" ? delete i._v_clipboard_success : l.arg === "error" ? delete i._v_clipboard_error : (i._v_clipboard.destroy(), delete i._v_clipboard);
   }
-}, me = function(i) {
-  i.directive("Clipboard", oe);
-};
-window.Vue && (window.clipboard = oe, Vue.use(me));
-oe.install = me;
-var Ie = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {};
-function Oe(i) {
-  return i && i.__esModule && Object.prototype.hasOwnProperty.call(i, "default") ? i.default : i;
-}
-var _e = { exports: {} };
-(function(i, l) {
-  var r;
-  (function(s, p) {
-    i.exports = p();
-  })(Ie, function() {
-    function s(e) {
-      this.mode = _.MODE_8BIT_BYTE, this.data = e, this.parsedData = [];
-      for (var t = 0, a = this.data.length; t < a; t++) {
-        var n = [], o = this.data.charCodeAt(t);
-        o > 65536 ? (n[0] = 240 | (o & 1835008) >>> 18, n[1] = 128 | (o & 258048) >>> 12, n[2] = 128 | (o & 4032) >>> 6, n[3] = 128 | o & 63) : o > 2048 ? (n[0] = 224 | (o & 61440) >>> 12, n[1] = 128 | (o & 4032) >>> 6, n[2] = 128 | o & 63) : o > 128 ? (n[0] = 192 | (o & 1984) >>> 6, n[1] = 128 | o & 63) : n[0] = o, this.parsedData.push(n);
-      }
-      this.parsedData = Array.prototype.concat.apply([], this.parsedData), this.parsedData.length != this.data.length && (this.parsedData.unshift(191), this.parsedData.unshift(187), this.parsedData.unshift(239));
-    }
-    s.prototype = {
-      getLength: function(e) {
-        return this.parsedData.length;
-      },
-      write: function(e) {
-        for (var t = 0, a = this.parsedData.length; t < a; t++)
-          e.put(this.parsedData[t], 8);
-      }
-    };
-    function p(e, t) {
-      this.typeNumber = e, this.errorCorrectLevel = t, this.modules = null, this.moduleCount = 0, this.dataCache = null, this.dataList = [];
-    }
-    p.prototype = { addData: function(e) {
-      var t = new s(e);
-      this.dataList.push(t), this.dataCache = null;
-    }, isDark: function(e, t) {
-      if (e < 0 || this.moduleCount <= e || t < 0 || this.moduleCount <= t)
-        throw new Error(e + "," + t);
-      return this.modules[e][t];
-    }, getModuleCount: function() {
-      return this.moduleCount;
-    }, make: function() {
-      this.makeImpl(!1, this.getBestMaskPattern());
-    }, makeImpl: function(e, t) {
-      this.moduleCount = this.typeNumber * 4 + 17, this.modules = new Array(this.moduleCount);
-      for (var a = 0; a < this.moduleCount; a++) {
-        this.modules[a] = new Array(this.moduleCount);
-        for (var n = 0; n < this.moduleCount; n++)
-          this.modules[a][n] = null;
-      }
-      this.setupPositionProbePattern(0, 0), this.setupPositionProbePattern(this.moduleCount - 7, 0), this.setupPositionProbePattern(0, this.moduleCount - 7), this.setupPositionAdjustPattern(), this.setupTimingPattern(), this.setupTypeInfo(e, t), this.typeNumber >= 7 && this.setupTypeNumber(e), this.dataCache == null && (this.dataCache = p.createData(this.typeNumber, this.errorCorrectLevel, this.dataList)), this.mapData(this.dataCache, t);
-    }, setupPositionProbePattern: function(e, t) {
-      for (var a = -1; a <= 7; a++)
-        if (!(e + a <= -1 || this.moduleCount <= e + a))
-          for (var n = -1; n <= 7; n++)
-            t + n <= -1 || this.moduleCount <= t + n || (0 <= a && a <= 6 && (n == 0 || n == 6) || 0 <= n && n <= 6 && (a == 0 || a == 6) || 2 <= a && a <= 4 && 2 <= n && n <= 4 ? this.modules[e + a][t + n] = !0 : this.modules[e + a][t + n] = !1);
-    }, getBestMaskPattern: function() {
-      for (var e = 0, t = 0, a = 0; a < 8; a++) {
-        this.makeImpl(!0, a);
-        var n = m.getLostPoint(this);
-        (a == 0 || e > n) && (e = n, t = a);
-      }
-      return t;
-    }, createMovieClip: function(e, t, a) {
-      var n = e.createEmptyMovieClip(t, a), o = 1;
-      this.make();
-      for (var c = 0; c < this.modules.length; c++)
-        for (var g = c * o, d = 0; d < this.modules[c].length; d++) {
-          var C = d * o, T = this.modules[c][d];
-          T && (n.beginFill(0, 100), n.moveTo(C, g), n.lineTo(C + o, g), n.lineTo(C + o, g + o), n.lineTo(C, g + o), n.endFill());
-        }
+  t.isValid = function(n) {
+    return n && typeof n.bit < "u" && n.bit >= 0 && n.bit < 4;
+  }, t.from = function(n, l) {
+    if (t.isValid(n))
       return n;
-    }, setupTimingPattern: function() {
-      for (var e = 8; e < this.moduleCount - 8; e++)
-        this.modules[e][6] == null && (this.modules[e][6] = e % 2 == 0);
-      for (var t = 8; t < this.moduleCount - 8; t++)
-        this.modules[6][t] == null && (this.modules[6][t] = t % 2 == 0);
-    }, setupPositionAdjustPattern: function() {
-      for (var e = m.getPatternPosition(this.typeNumber), t = 0; t < e.length; t++)
-        for (var a = 0; a < e.length; a++) {
-          var n = e[t], o = e[a];
-          if (this.modules[n][o] == null)
-            for (var c = -2; c <= 2; c++)
-              for (var g = -2; g <= 2; g++)
-                c == -2 || c == 2 || g == -2 || g == 2 || c == 0 && g == 0 ? this.modules[n + c][o + g] = !0 : this.modules[n + c][o + g] = !1;
-        }
-    }, setupTypeNumber: function(e) {
-      for (var t = m.getBCHTypeNumber(this.typeNumber), a = 0; a < 18; a++) {
-        var n = !e && (t >> a & 1) == 1;
-        this.modules[Math.floor(a / 3)][a % 3 + this.moduleCount - 8 - 3] = n;
-      }
-      for (var a = 0; a < 18; a++) {
-        var n = !e && (t >> a & 1) == 1;
-        this.modules[a % 3 + this.moduleCount - 8 - 3][Math.floor(a / 3)] = n;
-      }
-    }, setupTypeInfo: function(e, t) {
-      for (var a = this.errorCorrectLevel << 3 | t, n = m.getBCHTypeInfo(a), o = 0; o < 15; o++) {
-        var c = !e && (n >> o & 1) == 1;
-        o < 6 ? this.modules[o][8] = c : o < 8 ? this.modules[o + 1][8] = c : this.modules[this.moduleCount - 15 + o][8] = c;
-      }
-      for (var o = 0; o < 15; o++) {
-        var c = !e && (n >> o & 1) == 1;
-        o < 8 ? this.modules[8][this.moduleCount - o - 1] = c : o < 9 ? this.modules[8][15 - o - 1 + 1] = c : this.modules[8][15 - o - 1] = c;
-      }
-      this.modules[this.moduleCount - 8][8] = !e;
-    }, mapData: function(e, t) {
-      for (var a = -1, n = this.moduleCount - 1, o = 7, c = 0, g = this.moduleCount - 1; g > 0; g -= 2)
-        for (g == 6 && g--; ; ) {
-          for (var d = 0; d < 2; d++)
-            if (this.modules[n][g - d] == null) {
-              var C = !1;
-              c < e.length && (C = (e[c] >>> o & 1) == 1);
-              var T = m.getMask(t, n, g - d);
-              T && (C = !C), this.modules[n][g - d] = C, o--, o == -1 && (c++, o = 7);
-            }
-          if (n += a, n < 0 || this.moduleCount <= n) {
-            n -= a, a = -a;
-            break;
-          }
-        }
-    } }, p.PAD0 = 236, p.PAD1 = 17, p.createData = function(e, t, a) {
-      for (var n = D.getRSBlocks(e, t), o = new Q(), c = 0; c < a.length; c++) {
-        var g = a[c];
-        o.put(g.mode, 4), o.put(g.getLength(), m.getLengthInBits(g.mode, e)), g.write(o);
-      }
-      for (var d = 0, c = 0; c < n.length; c++)
-        d += n[c].dataCount;
-      if (o.getLengthInBits() > d * 8)
-        throw new Error("code length overflow. (" + o.getLengthInBits() + ">" + d * 8 + ")");
-      for (o.getLengthInBits() + 4 <= d * 8 && o.put(0, 4); o.getLengthInBits() % 8 != 0; )
-        o.putBit(!1);
-      for (; !(o.getLengthInBits() >= d * 8 || (o.put(p.PAD0, 8), o.getLengthInBits() >= d * 8)); )
-        o.put(p.PAD1, 8);
-      return p.createBytes(o, n);
-    }, p.createBytes = function(e, t) {
-      for (var a = 0, n = 0, o = 0, c = new Array(t.length), g = new Array(t.length), d = 0; d < t.length; d++) {
-        var C = t[d].dataCount, T = t[d].totalCount - C;
-        n = Math.max(n, C), o = Math.max(o, T), c[d] = new Array(C);
-        for (var P = 0; P < c[d].length; P++)
-          c[d][P] = 255 & e.buffer[P + a];
-        a += C;
-        var x = m.getErrorCorrectPolynomial(T), F = new A(c[d], x.getLength() - 1), G = F.mod(x);
-        g[d] = new Array(x.getLength() - 1);
-        for (var P = 0; P < g[d].length; P++) {
-          var H = P + G.getLength() - g[d].length;
-          g[d][P] = H >= 0 ? G.get(H) : 0;
-        }
-      }
-      for (var W = 0, P = 0; P < t.length; P++)
-        W += t[P].totalCount;
-      for (var le = new Array(W), ae = 0, P = 0; P < n; P++)
-        for (var d = 0; d < t.length; d++)
-          P < c[d].length && (le[ae++] = c[d][P]);
-      for (var P = 0; P < o; P++)
-        for (var d = 0; d < t.length; d++)
-          P < g[d].length && (le[ae++] = g[d][P]);
-      return le;
-    };
-    for (var _ = { MODE_NUMBER: 1, MODE_ALPHA_NUM: 2, MODE_8BIT_BYTE: 4, MODE_KANJI: 8 }, V = { L: 1, M: 0, Q: 3, H: 2 }, h = { PATTERN000: 0, PATTERN001: 1, PATTERN010: 2, PATTERN011: 3, PATTERN100: 4, PATTERN101: 5, PATTERN110: 6, PATTERN111: 7 }, m = { PATTERN_POSITION_TABLE: [[], [6, 18], [6, 22], [6, 26], [6, 30], [6, 34], [6, 22, 38], [6, 24, 42], [6, 26, 46], [6, 28, 50], [6, 30, 54], [6, 32, 58], [6, 34, 62], [6, 26, 46, 66], [6, 26, 48, 70], [6, 26, 50, 74], [6, 30, 54, 78], [6, 30, 56, 82], [6, 30, 58, 86], [6, 34, 62, 90], [6, 28, 50, 72, 94], [6, 26, 50, 74, 98], [6, 30, 54, 78, 102], [6, 28, 54, 80, 106], [6, 32, 58, 84, 110], [6, 30, 58, 86, 114], [6, 34, 62, 90, 118], [6, 26, 50, 74, 98, 122], [6, 30, 54, 78, 102, 126], [6, 26, 52, 78, 104, 130], [6, 30, 56, 82, 108, 134], [6, 34, 60, 86, 112, 138], [6, 30, 58, 86, 114, 142], [6, 34, 62, 90, 118, 146], [6, 30, 54, 78, 102, 126, 150], [6, 24, 50, 76, 102, 128, 154], [6, 28, 54, 80, 106, 132, 158], [6, 32, 58, 84, 110, 136, 162], [6, 26, 54, 82, 110, 138, 166], [6, 30, 58, 86, 114, 142, 170]], G15: 1335, G18: 7973, G15_MASK: 21522, getBCHTypeInfo: function(e) {
-      for (var t = e << 10; m.getBCHDigit(t) - m.getBCHDigit(m.G15) >= 0; )
-        t ^= m.G15 << m.getBCHDigit(t) - m.getBCHDigit(m.G15);
-      return (e << 10 | t) ^ m.G15_MASK;
-    }, getBCHTypeNumber: function(e) {
-      for (var t = e << 12; m.getBCHDigit(t) - m.getBCHDigit(m.G18) >= 0; )
-        t ^= m.G18 << m.getBCHDigit(t) - m.getBCHDigit(m.G18);
-      return e << 12 | t;
-    }, getBCHDigit: function(e) {
-      for (var t = 0; e != 0; )
-        t++, e >>>= 1;
-      return t;
-    }, getPatternPosition: function(e) {
-      return m.PATTERN_POSITION_TABLE[e - 1];
-    }, getMask: function(e, t, a) {
-      switch (e) {
-        case h.PATTERN000:
-          return (t + a) % 2 == 0;
-        case h.PATTERN001:
-          return t % 2 == 0;
-        case h.PATTERN010:
-          return a % 3 == 0;
-        case h.PATTERN011:
-          return (t + a) % 3 == 0;
-        case h.PATTERN100:
-          return (Math.floor(t / 2) + Math.floor(a / 3)) % 2 == 0;
-        case h.PATTERN101:
-          return t * a % 2 + t * a % 3 == 0;
-        case h.PATTERN110:
-          return (t * a % 2 + t * a % 3) % 2 == 0;
-        case h.PATTERN111:
-          return (t * a % 3 + (t + a) % 2) % 2 == 0;
-        default:
-          throw new Error("bad maskPattern:" + e);
-      }
-    }, getErrorCorrectPolynomial: function(e) {
-      for (var t = new A([1], 0), a = 0; a < e; a++)
-        t = t.multiply(new A([1, u.gexp(a)], 0));
-      return t;
-    }, getLengthInBits: function(e, t) {
-      if (1 <= t && t < 10)
-        switch (e) {
-          case _.MODE_NUMBER:
-            return 10;
-          case _.MODE_ALPHA_NUM:
-            return 9;
-          case _.MODE_8BIT_BYTE:
-            return 8;
-          case _.MODE_KANJI:
-            return 8;
-          default:
-            throw new Error("mode:" + e);
-        }
-      else if (t < 27)
-        switch (e) {
-          case _.MODE_NUMBER:
-            return 12;
-          case _.MODE_ALPHA_NUM:
-            return 11;
-          case _.MODE_8BIT_BYTE:
-            return 16;
-          case _.MODE_KANJI:
-            return 10;
-          default:
-            throw new Error("mode:" + e);
-        }
-      else if (t < 41)
-        switch (e) {
-          case _.MODE_NUMBER:
-            return 14;
-          case _.MODE_ALPHA_NUM:
-            return 13;
-          case _.MODE_8BIT_BYTE:
-            return 16;
-          case _.MODE_KANJI:
-            return 12;
-          default:
-            throw new Error("mode:" + e);
-        }
-      else
-        throw new Error("type:" + t);
-    }, getLostPoint: function(e) {
-      for (var t = e.getModuleCount(), a = 0, n = 0; n < t; n++)
-        for (var o = 0; o < t; o++) {
-          for (var c = 0, g = e.isDark(n, o), d = -1; d <= 1; d++)
-            if (!(n + d < 0 || t <= n + d))
-              for (var C = -1; C <= 1; C++)
-                o + C < 0 || t <= o + C || d == 0 && C == 0 || g == e.isDark(n + d, o + C) && c++;
-          c > 5 && (a += 3 + c - 5);
-        }
-      for (var n = 0; n < t - 1; n++)
-        for (var o = 0; o < t - 1; o++) {
-          var T = 0;
-          e.isDark(n, o) && T++, e.isDark(n + 1, o) && T++, e.isDark(n, o + 1) && T++, e.isDark(n + 1, o + 1) && T++, (T == 0 || T == 4) && (a += 3);
-        }
-      for (var n = 0; n < t; n++)
-        for (var o = 0; o < t - 6; o++)
-          e.isDark(n, o) && !e.isDark(n, o + 1) && e.isDark(n, o + 2) && e.isDark(n, o + 3) && e.isDark(n, o + 4) && !e.isDark(n, o + 5) && e.isDark(n, o + 6) && (a += 40);
-      for (var o = 0; o < t; o++)
-        for (var n = 0; n < t - 6; n++)
-          e.isDark(n, o) && !e.isDark(n + 1, o) && e.isDark(n + 2, o) && e.isDark(n + 3, o) && e.isDark(n + 4, o) && !e.isDark(n + 5, o) && e.isDark(n + 6, o) && (a += 40);
-      for (var P = 0, o = 0; o < t; o++)
-        for (var n = 0; n < t; n++)
-          e.isDark(n, o) && P++;
-      var x = Math.abs(100 * P / t / t - 50) / 5;
-      return a += x * 10, a;
-    } }, u = { glog: function(e) {
-      if (e < 1)
-        throw new Error("glog(" + e + ")");
-      return u.LOG_TABLE[e];
-    }, gexp: function(e) {
-      for (; e < 0; )
-        e += 255;
-      for (; e >= 256; )
-        e -= 255;
-      return u.EXP_TABLE[e];
-    }, EXP_TABLE: new Array(256), LOG_TABLE: new Array(256) }, y = 0; y < 8; y++)
-      u.EXP_TABLE[y] = 1 << y;
-    for (var y = 8; y < 256; y++)
-      u.EXP_TABLE[y] = u.EXP_TABLE[y - 4] ^ u.EXP_TABLE[y - 5] ^ u.EXP_TABLE[y - 6] ^ u.EXP_TABLE[y - 8];
-    for (var y = 0; y < 255; y++)
-      u.LOG_TABLE[u.EXP_TABLE[y]] = y;
-    function A(e, t) {
-      if (e.length == null)
-        throw new Error(e.length + "/" + t);
-      for (var a = 0; a < e.length && e[a] == 0; )
-        a++;
-      this.num = new Array(e.length - a + t);
-      for (var n = 0; n < e.length - a; n++)
-        this.num[n] = e[n + a];
+    try {
+      return e(n);
+    } catch {
+      return l;
     }
-    A.prototype = { get: function(e) {
-      return this.num[e];
-    }, getLength: function() {
-      return this.num.length;
-    }, multiply: function(e) {
-      for (var t = new Array(this.getLength() + e.getLength() - 1), a = 0; a < this.getLength(); a++)
-        for (var n = 0; n < e.getLength(); n++)
-          t[a + n] ^= u.gexp(u.glog(this.get(a)) + u.glog(e.get(n)));
-      return new A(t, 0);
-    }, mod: function(e) {
-      if (this.getLength() - e.getLength() < 0)
-        return this;
-      for (var t = u.glog(this.get(0)) - u.glog(e.get(0)), a = new Array(this.getLength()), n = 0; n < this.getLength(); n++)
-        a[n] = this.get(n);
-      for (var n = 0; n < e.getLength(); n++)
-        a[n] ^= u.gexp(u.glog(e.get(n)) + t);
-      return new A(a, 0).mod(e);
-    } };
-    function D(e, t) {
-      this.totalCount = e, this.dataCount = t;
+  };
+})(ye);
+function He() {
+  this.buffer = [], this.length = 0;
+}
+He.prototype = {
+  get: function(t) {
+    const e = Math.floor(t / 8);
+    return (this.buffer[e] >>> 7 - t % 8 & 1) === 1;
+  },
+  put: function(t, e) {
+    for (let o = 0; o < e; o++)
+      this.putBit((t >>> e - o - 1 & 1) === 1);
+  },
+  getLengthInBits: function() {
+    return this.length;
+  },
+  putBit: function(t) {
+    const e = Math.floor(this.length / 8);
+    this.buffer.length <= e && this.buffer.push(0), t && (this.buffer[e] |= 128 >>> this.length % 8), this.length++;
+  }
+};
+var kt = He;
+function de(t) {
+  if (!t || t < 1)
+    throw new Error("BitMatrix size must be defined and greater than 0");
+  this.size = t, this.data = new Uint8Array(t * t), this.reservedBit = new Uint8Array(t * t);
+}
+de.prototype.set = function(t, e, o, n) {
+  const l = t * this.size + e;
+  this.data[l] = o, n && (this.reservedBit[l] = !0);
+};
+de.prototype.get = function(t, e) {
+  return this.data[t * this.size + e];
+};
+de.prototype.xor = function(t, e, o) {
+  this.data[t * this.size + e] ^= o;
+};
+de.prototype.isReserved = function(t, e) {
+  return this.reservedBit[t * this.size + e];
+};
+var Et = de, Je = {};
+(function(t) {
+  const e = I.getSymbolSize;
+  t.getRowColCoords = function(n) {
+    if (n === 1) return [];
+    const l = Math.floor(n / 7) + 2, i = e(n), a = i === 145 ? 26 : Math.ceil((i - 13) / (2 * l - 2)) * 2, r = [i - 7];
+    for (let s = 1; s < l - 1; s++)
+      r[s] = r[s - 1] - a;
+    return r.push(6), r.reverse();
+  }, t.getPositions = function(n) {
+    const l = [], i = t.getRowColCoords(n), a = i.length;
+    for (let r = 0; r < a; r++)
+      for (let s = 0; s < a; s++)
+        r === 0 && s === 0 || // top-left
+        r === 0 && s === a - 1 || // bottom-left
+        r === a - 1 && s === 0 || l.push([i[r], i[s]]);
+    return l;
+  };
+})(Je);
+var Ye = {};
+const Vt = I.getSymbolSize, De = 7;
+Ye.getPositions = function(e) {
+  const o = Vt(e);
+  return [
+    // top-left
+    [0, 0],
+    // top-right
+    [o - De, 0],
+    // bottom-left
+    [0, o - De]
+  ];
+};
+var qe = {};
+(function(t) {
+  t.Patterns = {
+    PATTERN000: 0,
+    PATTERN001: 1,
+    PATTERN010: 2,
+    PATTERN011: 3,
+    PATTERN100: 4,
+    PATTERN101: 5,
+    PATTERN110: 6,
+    PATTERN111: 7
+  };
+  const e = {
+    N1: 3,
+    N2: 3,
+    N3: 40,
+    N4: 10
+  };
+  t.isValid = function(l) {
+    return l != null && l !== "" && !isNaN(l) && l >= 0 && l <= 7;
+  }, t.from = function(l) {
+    return t.isValid(l) ? parseInt(l, 10) : void 0;
+  }, t.getPenaltyN1 = function(l) {
+    const i = l.size;
+    let a = 0, r = 0, s = 0, u = null, c = null;
+    for (let _ = 0; _ < i; _++) {
+      r = s = 0, u = c = null;
+      for (let g = 0; g < i; g++) {
+        let p = l.get(_, g);
+        p === u ? r++ : (r >= 5 && (a += e.N1 + (r - 5)), u = p, r = 1), p = l.get(g, _), p === c ? s++ : (s >= 5 && (a += e.N1 + (s - 5)), c = p, s = 1);
+      }
+      r >= 5 && (a += e.N1 + (r - 5)), s >= 5 && (a += e.N1 + (s - 5));
     }
-    D.RS_BLOCK_TABLE = [[1, 26, 19], [1, 26, 16], [1, 26, 13], [1, 26, 9], [1, 44, 34], [1, 44, 28], [1, 44, 22], [1, 44, 16], [1, 70, 55], [1, 70, 44], [2, 35, 17], [2, 35, 13], [1, 100, 80], [2, 50, 32], [2, 50, 24], [4, 25, 9], [1, 134, 108], [2, 67, 43], [2, 33, 15, 2, 34, 16], [2, 33, 11, 2, 34, 12], [2, 86, 68], [4, 43, 27], [4, 43, 19], [4, 43, 15], [2, 98, 78], [4, 49, 31], [2, 32, 14, 4, 33, 15], [4, 39, 13, 1, 40, 14], [2, 121, 97], [2, 60, 38, 2, 61, 39], [4, 40, 18, 2, 41, 19], [4, 40, 14, 2, 41, 15], [2, 146, 116], [3, 58, 36, 2, 59, 37], [4, 36, 16, 4, 37, 17], [4, 36, 12, 4, 37, 13], [2, 86, 68, 2, 87, 69], [4, 69, 43, 1, 70, 44], [6, 43, 19, 2, 44, 20], [6, 43, 15, 2, 44, 16], [4, 101, 81], [1, 80, 50, 4, 81, 51], [4, 50, 22, 4, 51, 23], [3, 36, 12, 8, 37, 13], [2, 116, 92, 2, 117, 93], [6, 58, 36, 2, 59, 37], [4, 46, 20, 6, 47, 21], [7, 42, 14, 4, 43, 15], [4, 133, 107], [8, 59, 37, 1, 60, 38], [8, 44, 20, 4, 45, 21], [12, 33, 11, 4, 34, 12], [3, 145, 115, 1, 146, 116], [4, 64, 40, 5, 65, 41], [11, 36, 16, 5, 37, 17], [11, 36, 12, 5, 37, 13], [5, 109, 87, 1, 110, 88], [5, 65, 41, 5, 66, 42], [5, 54, 24, 7, 55, 25], [11, 36, 12], [5, 122, 98, 1, 123, 99], [7, 73, 45, 3, 74, 46], [15, 43, 19, 2, 44, 20], [3, 45, 15, 13, 46, 16], [1, 135, 107, 5, 136, 108], [10, 74, 46, 1, 75, 47], [1, 50, 22, 15, 51, 23], [2, 42, 14, 17, 43, 15], [5, 150, 120, 1, 151, 121], [9, 69, 43, 4, 70, 44], [17, 50, 22, 1, 51, 23], [2, 42, 14, 19, 43, 15], [3, 141, 113, 4, 142, 114], [3, 70, 44, 11, 71, 45], [17, 47, 21, 4, 48, 22], [9, 39, 13, 16, 40, 14], [3, 135, 107, 5, 136, 108], [3, 67, 41, 13, 68, 42], [15, 54, 24, 5, 55, 25], [15, 43, 15, 10, 44, 16], [4, 144, 116, 4, 145, 117], [17, 68, 42], [17, 50, 22, 6, 51, 23], [19, 46, 16, 6, 47, 17], [2, 139, 111, 7, 140, 112], [17, 74, 46], [7, 54, 24, 16, 55, 25], [34, 37, 13], [4, 151, 121, 5, 152, 122], [4, 75, 47, 14, 76, 48], [11, 54, 24, 14, 55, 25], [16, 45, 15, 14, 46, 16], [6, 147, 117, 4, 148, 118], [6, 73, 45, 14, 74, 46], [11, 54, 24, 16, 55, 25], [30, 46, 16, 2, 47, 17], [8, 132, 106, 4, 133, 107], [8, 75, 47, 13, 76, 48], [7, 54, 24, 22, 55, 25], [22, 45, 15, 13, 46, 16], [10, 142, 114, 2, 143, 115], [19, 74, 46, 4, 75, 47], [28, 50, 22, 6, 51, 23], [33, 46, 16, 4, 47, 17], [8, 152, 122, 4, 153, 123], [22, 73, 45, 3, 74, 46], [8, 53, 23, 26, 54, 24], [12, 45, 15, 28, 46, 16], [3, 147, 117, 10, 148, 118], [3, 73, 45, 23, 74, 46], [4, 54, 24, 31, 55, 25], [11, 45, 15, 31, 46, 16], [7, 146, 116, 7, 147, 117], [21, 73, 45, 7, 74, 46], [1, 53, 23, 37, 54, 24], [19, 45, 15, 26, 46, 16], [5, 145, 115, 10, 146, 116], [19, 75, 47, 10, 76, 48], [15, 54, 24, 25, 55, 25], [23, 45, 15, 25, 46, 16], [13, 145, 115, 3, 146, 116], [2, 74, 46, 29, 75, 47], [42, 54, 24, 1, 55, 25], [23, 45, 15, 28, 46, 16], [17, 145, 115], [10, 74, 46, 23, 75, 47], [10, 54, 24, 35, 55, 25], [19, 45, 15, 35, 46, 16], [17, 145, 115, 1, 146, 116], [14, 74, 46, 21, 75, 47], [29, 54, 24, 19, 55, 25], [11, 45, 15, 46, 46, 16], [13, 145, 115, 6, 146, 116], [14, 74, 46, 23, 75, 47], [44, 54, 24, 7, 55, 25], [59, 46, 16, 1, 47, 17], [12, 151, 121, 7, 152, 122], [12, 75, 47, 26, 76, 48], [39, 54, 24, 14, 55, 25], [22, 45, 15, 41, 46, 16], [6, 151, 121, 14, 152, 122], [6, 75, 47, 34, 76, 48], [46, 54, 24, 10, 55, 25], [2, 45, 15, 64, 46, 16], [17, 152, 122, 4, 153, 123], [29, 74, 46, 14, 75, 47], [49, 54, 24, 10, 55, 25], [24, 45, 15, 46, 46, 16], [4, 152, 122, 18, 153, 123], [13, 74, 46, 32, 75, 47], [48, 54, 24, 14, 55, 25], [42, 45, 15, 32, 46, 16], [20, 147, 117, 4, 148, 118], [40, 75, 47, 7, 76, 48], [43, 54, 24, 22, 55, 25], [10, 45, 15, 67, 46, 16], [19, 148, 118, 6, 149, 119], [18, 75, 47, 31, 76, 48], [34, 54, 24, 34, 55, 25], [20, 45, 15, 61, 46, 16]], D.getRSBlocks = function(e, t) {
-      var a = D.getRsBlockTable(e, t);
-      if (a == null)
-        throw new Error("bad rs block @ typeNumber:" + e + "/errorCorrectLevel:" + t);
-      for (var n = a.length / 3, o = [], c = 0; c < n; c++)
-        for (var g = a[c * 3 + 0], d = a[c * 3 + 1], C = a[c * 3 + 2], T = 0; T < g; T++)
-          o.push(new D(d, C));
-      return o;
-    }, D.getRsBlockTable = function(e, t) {
-      switch (t) {
-        case V.L:
-          return D.RS_BLOCK_TABLE[(e - 1) * 4 + 0];
-        case V.M:
-          return D.RS_BLOCK_TABLE[(e - 1) * 4 + 1];
-        case V.Q:
-          return D.RS_BLOCK_TABLE[(e - 1) * 4 + 2];
-        case V.H:
-          return D.RS_BLOCK_TABLE[(e - 1) * 4 + 3];
-        default:
-          return;
+    return a;
+  }, t.getPenaltyN2 = function(l) {
+    const i = l.size;
+    let a = 0;
+    for (let r = 0; r < i - 1; r++)
+      for (let s = 0; s < i - 1; s++) {
+        const u = l.get(r, s) + l.get(r, s + 1) + l.get(r + 1, s) + l.get(r + 1, s + 1);
+        (u === 4 || u === 0) && a++;
       }
-    };
-    function Q() {
-      this.buffer = [], this.length = 0;
+    return a * e.N2;
+  }, t.getPenaltyN3 = function(l) {
+    const i = l.size;
+    let a = 0, r = 0, s = 0;
+    for (let u = 0; u < i; u++) {
+      r = s = 0;
+      for (let c = 0; c < i; c++)
+        r = r << 1 & 2047 | l.get(u, c), c >= 10 && (r === 1488 || r === 93) && a++, s = s << 1 & 2047 | l.get(c, u), c >= 10 && (s === 1488 || s === 93) && a++;
     }
-    Q.prototype = { get: function(e) {
-      var t = Math.floor(e / 8);
-      return (this.buffer[t] >>> 7 - e % 8 & 1) == 1;
-    }, put: function(e, t) {
-      for (var a = 0; a < t; a++)
-        this.putBit((e >>> t - a - 1 & 1) == 1);
-    }, getLengthInBits: function() {
-      return this.length;
-    }, putBit: function(e) {
-      var t = Math.floor(this.length / 8);
-      this.buffer.length <= t && this.buffer.push(0), e && (this.buffer[t] |= 128 >>> this.length % 8), this.length++;
-    } };
-    var I = [[17, 14, 11, 7], [32, 26, 20, 14], [53, 42, 32, 24], [78, 62, 46, 34], [106, 84, 60, 44], [134, 106, 74, 58], [154, 122, 86, 64], [192, 152, 108, 84], [230, 180, 130, 98], [271, 213, 151, 119], [321, 251, 177, 137], [367, 287, 203, 155], [425, 331, 241, 177], [458, 362, 258, 194], [520, 412, 292, 220], [586, 450, 322, 250], [644, 504, 364, 280], [718, 560, 394, 310], [792, 624, 442, 338], [858, 666, 482, 382], [929, 711, 509, 403], [1003, 779, 565, 439], [1091, 857, 611, 461], [1171, 911, 661, 511], [1273, 997, 715, 535], [1367, 1059, 751, 593], [1465, 1125, 805, 625], [1528, 1190, 868, 658], [1628, 1264, 908, 698], [1732, 1370, 982, 742], [1840, 1452, 1030, 790], [1952, 1538, 1112, 842], [2068, 1628, 1168, 898], [2188, 1722, 1228, 958], [2303, 1809, 1283, 983], [2431, 1911, 1351, 1051], [2563, 1989, 1423, 1093], [2699, 2099, 1499, 1139], [2809, 2213, 1579, 1219], [2953, 2331, 1663, 1273]];
-    function L() {
-      return typeof CanvasRenderingContext2D < "u";
+    return a * e.N3;
+  }, t.getPenaltyN4 = function(l) {
+    let i = 0;
+    const a = l.data.length;
+    for (let s = 0; s < a; s++) i += l.data[s];
+    return Math.abs(Math.ceil(i * 100 / a / 5) - 10) * e.N4;
+  };
+  function o(n, l, i) {
+    switch (n) {
+      case t.Patterns.PATTERN000:
+        return (l + i) % 2 === 0;
+      case t.Patterns.PATTERN001:
+        return l % 2 === 0;
+      case t.Patterns.PATTERN010:
+        return i % 3 === 0;
+      case t.Patterns.PATTERN011:
+        return (l + i) % 3 === 0;
+      case t.Patterns.PATTERN100:
+        return (Math.floor(l / 2) + Math.floor(i / 3)) % 2 === 0;
+      case t.Patterns.PATTERN101:
+        return l * i % 2 + l * i % 3 === 0;
+      case t.Patterns.PATTERN110:
+        return (l * i % 2 + l * i % 3) % 2 === 0;
+      case t.Patterns.PATTERN111:
+        return (l * i % 3 + (l + i) % 2) % 2 === 0;
+      default:
+        throw new Error("bad maskPattern:" + n);
     }
-    function U() {
-      var e = !1, t = navigator.userAgent;
-      if (/android/i.test(t)) {
-        e = !0;
-        var a = t.toString().match(/android ([0-9]\.[0-9])/i);
-        a && a[1] && (e = parseFloat(a[1]));
-      }
-      return e;
+  }
+  t.applyMask = function(l, i) {
+    const a = i.size;
+    for (let r = 0; r < a; r++)
+      for (let s = 0; s < a; s++)
+        i.isReserved(s, r) || i.xor(s, r, o(l, s, r));
+  }, t.getBestMask = function(l, i) {
+    const a = Object.keys(t.Patterns).length;
+    let r = 0, s = 1 / 0;
+    for (let u = 0; u < a; u++) {
+      i(u), t.applyMask(u, l);
+      const c = t.getPenaltyN1(l) + t.getPenaltyN2(l) + t.getPenaltyN3(l) + t.getPenaltyN4(l);
+      t.applyMask(u, l), c < s && (s = c, r = u);
     }
-    var f = function() {
-      var e = function(t, a) {
-        this._el = t, this._htOption = a;
-      };
-      return e.prototype.draw = function(t) {
-        var a = this._htOption, n = this._el, o = t.getModuleCount();
-        Math.floor(a.width / o), Math.floor(a.height / o), this.clear();
-        function c(P, x) {
-          var F = document.createElementNS("http://www.w3.org/2000/svg", P);
-          for (var G in x)
-            x.hasOwnProperty(G) && F.setAttribute(G, x[G]);
-          return F;
-        }
-        var g = c("svg", { viewBox: "0 0 " + String(o) + " " + String(o), width: "100%", height: "100%", fill: a.colorLight });
-        g.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns:xlink", "http://www.w3.org/1999/xlink"), n.appendChild(g), g.appendChild(c("rect", { fill: a.colorLight, width: "100%", height: "100%" })), g.appendChild(c("rect", { fill: a.colorDark, width: "1", height: "1", id: "template" }));
-        for (var d = 0; d < o; d++)
-          for (var C = 0; C < o; C++)
-            if (t.isDark(d, C)) {
-              var T = c("use", { x: String(C), y: String(d) });
-              T.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#template"), g.appendChild(T);
-            }
-      }, e.prototype.clear = function() {
-        for (; this._el.hasChildNodes(); )
-          this._el.removeChild(this._el.lastChild);
-      }, e;
-    }(), O = document.documentElement.tagName.toLowerCase() === "svg", E = O ? f : L() ? function() {
-      function e() {
-        this._elImage.src = this._elCanvas.toDataURL("image/png"), this._elImage.style.display = "block", this._elCanvas.style.display = "none";
-      }
-      if (this._android && this._android <= 2.1) {
-        var t = 1 / window.devicePixelRatio, a = CanvasRenderingContext2D.prototype.drawImage;
-        CanvasRenderingContext2D.prototype.drawImage = function(c, g, d, C, T, P, x, F, G) {
-          if ("nodeName" in c && /img/i.test(c.nodeName))
-            for (var H = arguments.length - 1; H >= 1; H--)
-              arguments[H] = arguments[H] * t;
-          else typeof F > "u" && (arguments[1] *= t, arguments[2] *= t, arguments[3] *= t, arguments[4] *= t);
-          a.apply(this, arguments);
-        };
-      }
-      function n(c, g) {
-        var d = this;
-        if (d._fFail = g, d._fSuccess = c, d._bSupportDataURI === null) {
-          var C = document.createElement("img"), T = function() {
-            d._bSupportDataURI = !1, d._fFail && d._fFail.call(d);
-          }, P = function() {
-            d._bSupportDataURI = !0, d._fSuccess && d._fSuccess.call(d);
-          };
-          C.onabort = T, C.onerror = T, C.onload = P, C.src = "data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==";
-          return;
-        } else d._bSupportDataURI === !0 && d._fSuccess ? d._fSuccess.call(d) : d._bSupportDataURI === !1 && d._fFail && d._fFail.call(d);
-      }
-      var o = function(c, g) {
-        this._bIsPainted = !1, this._android = U(), this._htOption = g, this._elCanvas = document.createElement("canvas"), this._elCanvas.width = g.width, this._elCanvas.height = g.height, c.appendChild(this._elCanvas), this._el = c, this._oContext = this._elCanvas.getContext("2d"), this._bIsPainted = !1, this._elImage = document.createElement("img"), this._elImage.alt = "Scan me!", this._elImage.style.display = "none", this._el.appendChild(this._elImage), this._bSupportDataURI = null;
-      };
-      return o.prototype.draw = function(c) {
-        var g = this._elImage, d = this._oContext, C = this._htOption, T = c.getModuleCount(), P = C.width / T, x = C.height / T, F = Math.round(P), G = Math.round(x);
-        g.style.display = "none", this.clear();
-        for (var H = 0; H < T; H++)
-          for (var W = 0; W < T; W++) {
-            var le = c.isDark(H, W), ae = W * P, fe = H * x;
-            d.strokeStyle = le ? C.colorDark : C.colorLight, d.lineWidth = 1, d.fillStyle = le ? C.colorDark : C.colorLight, d.fillRect(ae, fe, P, x), d.strokeRect(
-              Math.floor(ae) + 0.5,
-              Math.floor(fe) + 0.5,
-              F,
-              G
-            ), d.strokeRect(
-              Math.ceil(ae) - 0.5,
-              Math.ceil(fe) - 0.5,
-              F,
-              G
-            );
-          }
-        this._bIsPainted = !0;
-      }, o.prototype.makeImage = function() {
-        this._bIsPainted && n.call(this, e);
-      }, o.prototype.isPainted = function() {
-        return this._bIsPainted;
-      }, o.prototype.clear = function() {
-        this._oContext.clearRect(0, 0, this._elCanvas.width, this._elCanvas.height), this._bIsPainted = !1;
-      }, o.prototype.round = function(c) {
-        return c && Math.floor(c * 1e3) / 1e3;
-      }, o;
-    }() : function() {
-      var e = function(t, a) {
-        this._el = t, this._htOption = a;
-      };
-      return e.prototype.draw = function(t) {
-        for (var a = this._htOption, n = this._el, o = t.getModuleCount(), c = Math.floor(a.width / o), g = Math.floor(a.height / o), d = ['<table style="border:0;border-collapse:collapse;">'], C = 0; C < o; C++) {
-          d.push("<tr>");
-          for (var T = 0; T < o; T++)
-            d.push('<td style="border:0;border-collapse:collapse;padding:0;margin:0;width:' + c + "px;height:" + g + "px;background-color:" + (t.isDark(C, T) ? a.colorDark : a.colorLight) + ';"></td>');
-          d.push("</tr>");
-        }
-        d.push("</table>"), n.innerHTML = d.join("");
-        var P = n.childNodes[0], x = (a.width - P.offsetWidth) / 2, F = (a.height - P.offsetHeight) / 2;
-        x > 0 && F > 0 && (P.style.margin = F + "px " + x + "px");
-      }, e.prototype.clear = function() {
-        this._el.innerHTML = "";
-      }, e;
-    }();
-    function ye(e, t) {
-      for (var a = 1, n = be(e), o = 0, c = I.length; o <= c; o++) {
-        var g = 0;
-        switch (t) {
-          case V.L:
-            g = I[o][0];
-            break;
-          case V.M:
-            g = I[o][1];
-            break;
-          case V.Q:
-            g = I[o][2];
-            break;
-          case V.H:
-            g = I[o][3];
-            break;
-        }
-        if (n <= g)
-          break;
-        a++;
-      }
-      if (a > I.length)
-        throw new Error("Too long data");
+    return r;
+  };
+})(qe);
+var we = {};
+const J = ye, ce = [
+  // L  M  Q  H
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  2,
+  2,
+  1,
+  2,
+  2,
+  4,
+  1,
+  2,
+  4,
+  4,
+  2,
+  4,
+  4,
+  4,
+  2,
+  4,
+  6,
+  5,
+  2,
+  4,
+  6,
+  6,
+  2,
+  5,
+  8,
+  8,
+  4,
+  5,
+  8,
+  8,
+  4,
+  5,
+  8,
+  11,
+  4,
+  8,
+  10,
+  11,
+  4,
+  9,
+  12,
+  16,
+  4,
+  9,
+  16,
+  16,
+  6,
+  10,
+  12,
+  18,
+  6,
+  10,
+  17,
+  16,
+  6,
+  11,
+  16,
+  19,
+  6,
+  13,
+  18,
+  21,
+  7,
+  14,
+  21,
+  25,
+  8,
+  16,
+  20,
+  25,
+  8,
+  17,
+  23,
+  25,
+  9,
+  17,
+  23,
+  34,
+  9,
+  18,
+  25,
+  30,
+  10,
+  20,
+  27,
+  32,
+  12,
+  21,
+  29,
+  35,
+  12,
+  23,
+  34,
+  37,
+  12,
+  25,
+  34,
+  40,
+  13,
+  26,
+  35,
+  42,
+  14,
+  28,
+  38,
+  45,
+  15,
+  29,
+  40,
+  48,
+  16,
+  31,
+  43,
+  51,
+  17,
+  33,
+  45,
+  54,
+  18,
+  35,
+  48,
+  57,
+  19,
+  37,
+  51,
+  60,
+  19,
+  38,
+  53,
+  63,
+  20,
+  40,
+  56,
+  66,
+  21,
+  43,
+  59,
+  70,
+  22,
+  45,
+  62,
+  74,
+  24,
+  47,
+  65,
+  77,
+  25,
+  49,
+  68,
+  81
+], fe = [
+  // L  M  Q  H
+  7,
+  10,
+  13,
+  17,
+  10,
+  16,
+  22,
+  28,
+  15,
+  26,
+  36,
+  44,
+  20,
+  36,
+  52,
+  64,
+  26,
+  48,
+  72,
+  88,
+  36,
+  64,
+  96,
+  112,
+  40,
+  72,
+  108,
+  130,
+  48,
+  88,
+  132,
+  156,
+  60,
+  110,
+  160,
+  192,
+  72,
+  130,
+  192,
+  224,
+  80,
+  150,
+  224,
+  264,
+  96,
+  176,
+  260,
+  308,
+  104,
+  198,
+  288,
+  352,
+  120,
+  216,
+  320,
+  384,
+  132,
+  240,
+  360,
+  432,
+  144,
+  280,
+  408,
+  480,
+  168,
+  308,
+  448,
+  532,
+  180,
+  338,
+  504,
+  588,
+  196,
+  364,
+  546,
+  650,
+  224,
+  416,
+  600,
+  700,
+  224,
+  442,
+  644,
+  750,
+  252,
+  476,
+  690,
+  816,
+  270,
+  504,
+  750,
+  900,
+  300,
+  560,
+  810,
+  960,
+  312,
+  588,
+  870,
+  1050,
+  336,
+  644,
+  952,
+  1110,
+  360,
+  700,
+  1020,
+  1200,
+  390,
+  728,
+  1050,
+  1260,
+  420,
+  784,
+  1140,
+  1350,
+  450,
+  812,
+  1200,
+  1440,
+  480,
+  868,
+  1290,
+  1530,
+  510,
+  924,
+  1350,
+  1620,
+  540,
+  980,
+  1440,
+  1710,
+  570,
+  1036,
+  1530,
+  1800,
+  570,
+  1064,
+  1590,
+  1890,
+  600,
+  1120,
+  1680,
+  1980,
+  630,
+  1204,
+  1770,
+  2100,
+  660,
+  1260,
+  1860,
+  2220,
+  720,
+  1316,
+  1950,
+  2310,
+  750,
+  1372,
+  2040,
+  2430
+];
+we.getBlocksCount = function(e, o) {
+  switch (o) {
+    case J.L:
+      return ce[(e - 1) * 4 + 0];
+    case J.M:
+      return ce[(e - 1) * 4 + 1];
+    case J.Q:
+      return ce[(e - 1) * 4 + 2];
+    case J.H:
+      return ce[(e - 1) * 4 + 3];
+    default:
+      return;
+  }
+};
+we.getTotalCodewordsCount = function(e, o) {
+  switch (o) {
+    case J.L:
+      return fe[(e - 1) * 4 + 0];
+    case J.M:
+      return fe[(e - 1) * 4 + 1];
+    case J.Q:
+      return fe[(e - 1) * 4 + 2];
+    case J.H:
+      return fe[(e - 1) * 4 + 3];
+    default:
+      return;
+  }
+};
+var je = {}, be = {};
+const ie = new Uint8Array(512), me = new Uint8Array(256);
+(function() {
+  let e = 1;
+  for (let o = 0; o < 255; o++)
+    ie[o] = e, me[e] = o, e <<= 1, e & 256 && (e ^= 285);
+  for (let o = 255; o < 512; o++)
+    ie[o] = ie[o - 255];
+})();
+be.log = function(e) {
+  if (e < 1) throw new Error("log(" + e + ")");
+  return me[e];
+};
+be.exp = function(e) {
+  return ie[e];
+};
+be.mul = function(e, o) {
+  return e === 0 || o === 0 ? 0 : ie[me[e] + me[o]];
+};
+(function(t) {
+  const e = be;
+  t.mul = function(n, l) {
+    const i = new Uint8Array(n.length + l.length - 1);
+    for (let a = 0; a < n.length; a++)
+      for (let r = 0; r < l.length; r++)
+        i[a + r] ^= e.mul(n[a], l[r]);
+    return i;
+  }, t.mod = function(n, l) {
+    let i = new Uint8Array(n);
+    for (; i.length - l.length >= 0; ) {
+      const a = i[0];
+      for (let s = 0; s < l.length; s++)
+        i[s] ^= e.mul(l[s], a);
+      let r = 0;
+      for (; r < i.length && i[r] === 0; ) r++;
+      i = i.slice(r);
+    }
+    return i;
+  }, t.generateECPolynomial = function(n) {
+    let l = new Uint8Array([1]);
+    for (let i = 0; i < n; i++)
+      l = t.mul(l, new Uint8Array([1, e.exp(i)]));
+    return l;
+  };
+})(je);
+const Qe = je;
+function Ne(t) {
+  this.genPoly = void 0, this.degree = t, this.degree && this.initialize(this.degree);
+}
+Ne.prototype.initialize = function(e) {
+  this.degree = e, this.genPoly = Qe.generateECPolynomial(this.degree);
+};
+Ne.prototype.encode = function(e) {
+  if (!this.genPoly)
+    throw new Error("Encoder not initialized");
+  const o = new Uint8Array(e.length + this.degree);
+  o.set(e);
+  const n = Qe.mod(o, this.genPoly), l = this.degree - n.length;
+  if (l > 0) {
+    const i = new Uint8Array(this.degree);
+    return i.set(n, l), i;
+  }
+  return n;
+};
+var Bt = Ne, Ge = {}, Y = {}, Ie = {};
+Ie.isValid = function(e) {
+  return !isNaN(e) && e >= 1 && e <= 40;
+};
+var K = {};
+const xe = "[0-9]+", Pt = "[A-Z $%*+\\-./:]+";
+let se = "(?:[u3000-u303F]|[u3040-u309F]|[u30A0-u30FF]|[uFF00-uFFEF]|[u4E00-u9FAF]|[u2605-u2606]|[u2190-u2195]|u203B|[u2010u2015u2018u2019u2025u2026u201Cu201Du2225u2260]|[u0391-u0451]|[u00A7u00A8u00B1u00B4u00D7u00F7])+";
+se = se.replace(/u/g, "\\u");
+const Tt = "(?:(?![A-Z0-9 $%*+\\-./:]|" + se + `)(?:.|[\r
+]))+`;
+K.KANJI = new RegExp(se, "g");
+K.BYTE_KANJI = new RegExp("[^A-Z0-9 $%*+\\-./:]+", "g");
+K.BYTE = new RegExp(Tt, "g");
+K.NUMERIC = new RegExp(xe, "g");
+K.ALPHANUMERIC = new RegExp(Pt, "g");
+const At = new RegExp("^" + se + "$"), Mt = new RegExp("^" + xe + "$"), Nt = new RegExp("^[A-Z0-9 $%*+\\-./:]+$");
+K.testKanji = function(e) {
+  return At.test(e);
+};
+K.testNumeric = function(e) {
+  return Mt.test(e);
+};
+K.testAlphanumeric = function(e) {
+  return Nt.test(e);
+};
+(function(t) {
+  const e = Ie, o = K;
+  t.NUMERIC = {
+    id: "Numeric",
+    bit: 1,
+    ccBits: [10, 12, 14]
+  }, t.ALPHANUMERIC = {
+    id: "Alphanumeric",
+    bit: 2,
+    ccBits: [9, 11, 13]
+  }, t.BYTE = {
+    id: "Byte",
+    bit: 4,
+    ccBits: [8, 16, 16]
+  }, t.KANJI = {
+    id: "Kanji",
+    bit: 8,
+    ccBits: [8, 10, 12]
+  }, t.MIXED = {
+    bit: -1
+  }, t.getCharCountIndicator = function(i, a) {
+    if (!i.ccBits) throw new Error("Invalid mode: " + i);
+    if (!e.isValid(a))
+      throw new Error("Invalid version: " + a);
+    return a >= 1 && a < 10 ? i.ccBits[0] : a < 27 ? i.ccBits[1] : i.ccBits[2];
+  }, t.getBestModeForData = function(i) {
+    return o.testNumeric(i) ? t.NUMERIC : o.testAlphanumeric(i) ? t.ALPHANUMERIC : o.testKanji(i) ? t.KANJI : t.BYTE;
+  }, t.toString = function(i) {
+    if (i && i.id) return i.id;
+    throw new Error("Invalid mode");
+  }, t.isValid = function(i) {
+    return i && i.bit && i.ccBits;
+  };
+  function n(l) {
+    if (typeof l != "string")
+      throw new Error("Param is not a string");
+    switch (l.toLowerCase()) {
+      case "numeric":
+        return t.NUMERIC;
+      case "alphanumeric":
+        return t.ALPHANUMERIC;
+      case "kanji":
+        return t.KANJI;
+      case "byte":
+        return t.BYTE;
+      default:
+        throw new Error("Unknown mode: " + l);
+    }
+  }
+  t.from = function(i, a) {
+    if (t.isValid(i))
+      return i;
+    try {
+      return n(i);
+    } catch {
       return a;
     }
-    function be(e) {
-      var t = encodeURI(e).toString().replace(/\%[0-9a-fA-F]{2}/g, "a");
-      return t.length + (t.length != e ? 3 : 0);
+  };
+})(Y);
+(function(t) {
+  const e = I, o = we, n = ye, l = Y, i = Ie, a = 7973, r = e.getBCHDigit(a);
+  function s(g, p, k) {
+    for (let y = 1; y <= 40; y++)
+      if (p <= t.getCapacity(y, k, g))
+        return y;
+  }
+  function u(g, p) {
+    return l.getCharCountIndicator(g, p) + 4;
+  }
+  function c(g, p) {
+    let k = 0;
+    return g.forEach(function(y) {
+      const V = u(y.mode, p);
+      k += V + y.getBitsLength();
+    }), k;
+  }
+  function _(g, p) {
+    for (let k = 1; k <= 40; k++)
+      if (c(g, k) <= t.getCapacity(k, p, l.MIXED))
+        return k;
+  }
+  t.from = function(p, k) {
+    return i.isValid(p) ? parseInt(p, 10) : k;
+  }, t.getCapacity = function(p, k, y) {
+    if (!i.isValid(p))
+      throw new Error("Invalid QR Code version");
+    typeof y > "u" && (y = l.BYTE);
+    const V = e.getSymbolTotalCodewords(p), d = o.getTotalCodewordsCount(p, k), v = (V - d) * 8;
+    if (y === l.MIXED) return v;
+    const f = v - u(y, p);
+    switch (y) {
+      case l.NUMERIC:
+        return Math.floor(f / 10 * 3);
+      case l.ALPHANUMERIC:
+        return Math.floor(f / 11 * 2);
+      case l.KANJI:
+        return Math.floor(f / 13);
+      case l.BYTE:
+      default:
+        return Math.floor(f / 8);
     }
-    return r = function(e, t) {
-      if (this._htOption = {
-        width: 256,
-        height: 256,
-        typeNumber: 4,
-        colorDark: "#000000",
-        colorLight: "#ffffff",
-        correctLevel: V.H
-      }, typeof t == "string" && (t = {
-        text: t
-      }), t)
-        for (var a in t)
-          this._htOption[a] = t[a];
-      typeof e == "string" && (e = document.getElementById(e)), this._htOption.useSVG && (E = f), this._android = U(), this._el = e, this._oQRCode = null, this._oDrawing = new E(this._el, this._htOption), this._htOption.text && this.makeCode(this._htOption.text);
-    }, r.prototype.makeCode = function(e) {
-      this._oQRCode = new p(ye(e, this._htOption.correctLevel), this._htOption.correctLevel), this._oQRCode.addData(e), this._oQRCode.make(), this._el.title = e, this._oDrawing.draw(this._oQRCode), this.makeImage();
-    }, r.prototype.makeImage = function() {
-      typeof this._oDrawing.makeImage == "function" && (!this._android || this._android >= 3) && this._oDrawing.makeImage();
-    }, r.prototype.clear = function() {
-      this._oDrawing.clear();
-    }, r.CorrectLevel = V, r;
+  }, t.getBestVersionForData = function(p, k) {
+    let y;
+    const V = n.from(k, n.M);
+    if (Array.isArray(p)) {
+      if (p.length > 1)
+        return _(p, V);
+      if (p.length === 0)
+        return 1;
+      y = p[0];
+    } else
+      y = p;
+    return s(y.mode, y.getLength(), V);
+  }, t.getEncodedBits = function(p) {
+    if (!i.isValid(p) || p < 7)
+      throw new Error("Invalid QR Code version");
+    let k = p << 12;
+    for (; e.getBCHDigit(k) - r >= 0; )
+      k ^= a << e.getBCHDigit(k) - r;
+    return p << 12 | k;
+  };
+})(Ge);
+var We = {};
+const Be = I, Ze = 1335, It = 21522, Fe = Be.getBCHDigit(Ze);
+We.getEncodedBits = function(e, o) {
+  const n = e.bit << 3 | o;
+  let l = n << 10;
+  for (; Be.getBCHDigit(l) - Fe >= 0; )
+    l ^= Ze << Be.getBCHDigit(l) - Fe;
+  return (n << 10 | l) ^ It;
+};
+var Xe = {};
+const Ut = Y;
+function $(t) {
+  this.mode = Ut.NUMERIC, this.data = t.toString();
+}
+$.getBitsLength = function(e) {
+  return 10 * Math.floor(e / 3) + (e % 3 ? e % 3 * 3 + 1 : 0);
+};
+$.prototype.getLength = function() {
+  return this.data.length;
+};
+$.prototype.getBitsLength = function() {
+  return $.getBitsLength(this.data.length);
+};
+$.prototype.write = function(e) {
+  let o, n, l;
+  for (o = 0; o + 3 <= this.data.length; o += 3)
+    n = this.data.substr(o, 3), l = parseInt(n, 10), e.put(l, 10);
+  const i = this.data.length - o;
+  i > 0 && (n = this.data.substr(o), l = parseInt(n, 10), e.put(l, i * 3 + 1));
+};
+var Lt = $;
+const Rt = Y, Ce = [
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "J",
+  "K",
+  "L",
+  "M",
+  "N",
+  "O",
+  "P",
+  "Q",
+  "R",
+  "S",
+  "T",
+  "U",
+  "V",
+  "W",
+  "X",
+  "Y",
+  "Z",
+  " ",
+  "$",
+  "%",
+  "*",
+  "+",
+  "-",
+  ".",
+  "/",
+  ":"
+];
+function ee(t) {
+  this.mode = Rt.ALPHANUMERIC, this.data = t;
+}
+ee.getBitsLength = function(e) {
+  return 11 * Math.floor(e / 2) + 6 * (e % 2);
+};
+ee.prototype.getLength = function() {
+  return this.data.length;
+};
+ee.prototype.getBitsLength = function() {
+  return ee.getBitsLength(this.data.length);
+};
+ee.prototype.write = function(e) {
+  let o;
+  for (o = 0; o + 2 <= this.data.length; o += 2) {
+    let n = Ce.indexOf(this.data[o]) * 45;
+    n += Ce.indexOf(this.data[o + 1]), e.put(n, 11);
+  }
+  this.data.length % 2 && e.put(Ce.indexOf(this.data[o]), 6);
+};
+var Dt = ee;
+const Ft = Y;
+function te(t) {
+  this.mode = Ft.BYTE, typeof t == "string" ? this.data = new TextEncoder().encode(t) : this.data = new Uint8Array(t);
+}
+te.getBitsLength = function(e) {
+  return e * 8;
+};
+te.prototype.getLength = function() {
+  return this.data.length;
+};
+te.prototype.getBitsLength = function() {
+  return te.getBitsLength(this.data.length);
+};
+te.prototype.write = function(t) {
+  for (let e = 0, o = this.data.length; e < o; e++)
+    t.put(this.data[e], 8);
+};
+var zt = te;
+const Kt = Y, Ot = I;
+function ne(t) {
+  this.mode = Kt.KANJI, this.data = t;
+}
+ne.getBitsLength = function(e) {
+  return e * 13;
+};
+ne.prototype.getLength = function() {
+  return this.data.length;
+};
+ne.prototype.getBitsLength = function() {
+  return ne.getBitsLength(this.data.length);
+};
+ne.prototype.write = function(t) {
+  let e;
+  for (e = 0; e < this.data.length; e++) {
+    let o = Ot.toSJIS(this.data[e]);
+    if (o >= 33088 && o <= 40956)
+      o -= 33088;
+    else if (o >= 57408 && o <= 60351)
+      o -= 49472;
+    else
+      throw new Error(
+        "Invalid SJIS character: " + this.data[e] + `
+Make sure your charset is UTF-8`
+      );
+    o = (o >>> 8 & 255) * 192 + (o & 255), t.put(o, 13);
+  }
+};
+var Ht = ne, $e = { exports: {} };
+(function(t) {
+  var e = {
+    single_source_shortest_paths: function(o, n, l) {
+      var i = {}, a = {};
+      a[n] = 0;
+      var r = e.PriorityQueue.make();
+      r.push(n, 0);
+      for (var s, u, c, _, g, p, k, y, V; !r.empty(); ) {
+        s = r.pop(), u = s.value, _ = s.cost, g = o[u] || {};
+        for (c in g)
+          g.hasOwnProperty(c) && (p = g[c], k = _ + p, y = a[c], V = typeof a[c] > "u", (V || y > k) && (a[c] = k, r.push(c, k), i[c] = u));
+      }
+      if (typeof l < "u" && typeof a[l] > "u") {
+        var d = ["Could not find a path from ", n, " to ", l, "."].join("");
+        throw new Error(d);
+      }
+      return i;
+    },
+    extract_shortest_path_from_predecessor_list: function(o, n) {
+      for (var l = [], i = n; i; )
+        l.push(i), o[i], i = o[i];
+      return l.reverse(), l;
+    },
+    find_path: function(o, n, l) {
+      var i = e.single_source_shortest_paths(o, n, l);
+      return e.extract_shortest_path_from_predecessor_list(
+        i,
+        l
+      );
+    },
+    /**
+     * A very naive priority queue implementation.
+     */
+    PriorityQueue: {
+      make: function(o) {
+        var n = e.PriorityQueue, l = {}, i;
+        o = o || {};
+        for (i in n)
+          n.hasOwnProperty(i) && (l[i] = n[i]);
+        return l.queue = [], l.sorter = o.sorter || n.default_sorter, l;
+      },
+      default_sorter: function(o, n) {
+        return o.cost - n.cost;
+      },
+      /**
+       * Add a new item to the queue and ensure the highest priority element
+       * is at the front of the queue.
+       */
+      push: function(o, n) {
+        var l = { value: o, cost: n };
+        this.queue.push(l), this.queue.sort(this.sorter);
+      },
+      /**
+       * Return the highest priority element in the queue.
+       */
+      pop: function() {
+        return this.queue.shift();
+      },
+      empty: function() {
+        return this.queue.length === 0;
+      }
+    }
+  };
+  t.exports = e;
+})($e);
+var Jt = $e.exports;
+(function(t) {
+  const e = Y, o = Lt, n = Dt, l = zt, i = Ht, a = K, r = I, s = Jt;
+  function u(d) {
+    return unescape(encodeURIComponent(d)).length;
+  }
+  function c(d, v, f) {
+    const S = [];
+    let B;
+    for (; (B = d.exec(f)) !== null; )
+      S.push({
+        data: B[0],
+        index: B.index,
+        mode: v,
+        length: B[0].length
+      });
+    return S;
+  }
+  function _(d) {
+    const v = c(a.NUMERIC, e.NUMERIC, d), f = c(a.ALPHANUMERIC, e.ALPHANUMERIC, d);
+    let S, B;
+    return r.isKanjiModeEnabled() ? (S = c(a.BYTE, e.BYTE, d), B = c(a.KANJI, e.KANJI, d)) : (S = c(a.BYTE_KANJI, e.BYTE, d), B = []), v.concat(f, S, B).sort(function(A, U) {
+      return A.index - U.index;
+    }).map(function(A) {
+      return {
+        data: A.data,
+        mode: A.mode,
+        length: A.length
+      };
+    });
+  }
+  function g(d, v) {
+    switch (v) {
+      case e.NUMERIC:
+        return o.getBitsLength(d);
+      case e.ALPHANUMERIC:
+        return n.getBitsLength(d);
+      case e.KANJI:
+        return i.getBitsLength(d);
+      case e.BYTE:
+        return l.getBitsLength(d);
+    }
+  }
+  function p(d) {
+    return d.reduce(function(v, f) {
+      const S = v.length - 1 >= 0 ? v[v.length - 1] : null;
+      return S && S.mode === f.mode ? (v[v.length - 1].data += f.data, v) : (v.push(f), v);
+    }, []);
+  }
+  function k(d) {
+    const v = [];
+    for (let f = 0; f < d.length; f++) {
+      const S = d[f];
+      switch (S.mode) {
+        case e.NUMERIC:
+          v.push([
+            S,
+            { data: S.data, mode: e.ALPHANUMERIC, length: S.length },
+            { data: S.data, mode: e.BYTE, length: S.length }
+          ]);
+          break;
+        case e.ALPHANUMERIC:
+          v.push([
+            S,
+            { data: S.data, mode: e.BYTE, length: S.length }
+          ]);
+          break;
+        case e.KANJI:
+          v.push([
+            S,
+            { data: S.data, mode: e.BYTE, length: u(S.data) }
+          ]);
+          break;
+        case e.BYTE:
+          v.push([
+            { data: S.data, mode: e.BYTE, length: u(S.data) }
+          ]);
+      }
+    }
+    return v;
+  }
+  function y(d, v) {
+    const f = {}, S = { start: {} };
+    let B = ["start"];
+    for (let P = 0; P < d.length; P++) {
+      const A = d[P], U = [];
+      for (let H = 0; H < A.length; H++) {
+        const D = A[H], oe = "" + P + H;
+        U.push(oe), f[oe] = { node: D, lastCount: 0 }, S[oe] = {};
+        for (let ve = 0; ve < B.length; ve++) {
+          const O = B[ve];
+          f[O] && f[O].node.mode === D.mode ? (S[O][oe] = g(f[O].lastCount + D.length, D.mode) - g(f[O].lastCount, D.mode), f[O].lastCount += D.length) : (f[O] && (f[O].lastCount = D.length), S[O][oe] = g(D.length, D.mode) + 4 + e.getCharCountIndicator(D.mode, v));
+        }
+      }
+      B = U;
+    }
+    for (let P = 0; P < B.length; P++)
+      S[B[P]].end = 0;
+    return { map: S, table: f };
+  }
+  function V(d, v) {
+    let f;
+    const S = e.getBestModeForData(d);
+    if (f = e.from(v, S), f !== e.BYTE && f.bit < S.bit)
+      throw new Error('"' + d + '" cannot be encoded with mode ' + e.toString(f) + `.
+ Suggested mode is: ` + e.toString(S));
+    switch (f === e.KANJI && !r.isKanjiModeEnabled() && (f = e.BYTE), f) {
+      case e.NUMERIC:
+        return new o(d);
+      case e.ALPHANUMERIC:
+        return new n(d);
+      case e.KANJI:
+        return new i(d);
+      case e.BYTE:
+        return new l(d);
+    }
+  }
+  t.fromArray = function(v) {
+    return v.reduce(function(f, S) {
+      return typeof S == "string" ? f.push(V(S, null)) : S.data && f.push(V(S.data, S.mode)), f;
+    }, []);
+  }, t.fromString = function(v, f) {
+    const S = _(v, r.isKanjiModeEnabled()), B = k(S), P = y(B, f), A = s.find_path(P.map, "start", "end"), U = [];
+    for (let H = 1; H < A.length - 1; H++)
+      U.push(P.table[A[H]].node);
+    return t.fromArray(p(U));
+  }, t.rawSplit = function(v) {
+    return t.fromArray(
+      _(v, r.isKanjiModeEnabled())
+    );
+  };
+})(Xe);
+const _e = I, Se = ye, Yt = kt, qt = Et, jt = Je, Qt = Ye, Pe = qe, Te = we, Gt = Bt, pe = Ge, xt = We, Wt = Y, ke = Xe;
+function Zt(t, e) {
+  const o = t.size, n = Qt.getPositions(e);
+  for (let l = 0; l < n.length; l++) {
+    const i = n[l][0], a = n[l][1];
+    for (let r = -1; r <= 7; r++)
+      if (!(i + r <= -1 || o <= i + r))
+        for (let s = -1; s <= 7; s++)
+          a + s <= -1 || o <= a + s || (r >= 0 && r <= 6 && (s === 0 || s === 6) || s >= 0 && s <= 6 && (r === 0 || r === 6) || r >= 2 && r <= 4 && s >= 2 && s <= 4 ? t.set(i + r, a + s, !0, !0) : t.set(i + r, a + s, !1, !0));
+  }
+}
+function Xt(t) {
+  const e = t.size;
+  for (let o = 8; o < e - 8; o++) {
+    const n = o % 2 === 0;
+    t.set(o, 6, n, !0), t.set(6, o, n, !0);
+  }
+}
+function $t(t, e) {
+  const o = jt.getPositions(e);
+  for (let n = 0; n < o.length; n++) {
+    const l = o[n][0], i = o[n][1];
+    for (let a = -2; a <= 2; a++)
+      for (let r = -2; r <= 2; r++)
+        a === -2 || a === 2 || r === -2 || r === 2 || a === 0 && r === 0 ? t.set(l + a, i + r, !0, !0) : t.set(l + a, i + r, !1, !0);
+  }
+}
+function en(t, e) {
+  const o = t.size, n = pe.getEncodedBits(e);
+  let l, i, a;
+  for (let r = 0; r < 18; r++)
+    l = Math.floor(r / 3), i = r % 3 + o - 8 - 3, a = (n >> r & 1) === 1, t.set(l, i, a, !0), t.set(i, l, a, !0);
+}
+function Ee(t, e, o) {
+  const n = t.size, l = xt.getEncodedBits(e, o);
+  let i, a;
+  for (i = 0; i < 15; i++)
+    a = (l >> i & 1) === 1, i < 6 ? t.set(i, 8, a, !0) : i < 8 ? t.set(i + 1, 8, a, !0) : t.set(n - 15 + i, 8, a, !0), i < 8 ? t.set(8, n - i - 1, a, !0) : i < 9 ? t.set(8, 15 - i - 1 + 1, a, !0) : t.set(8, 15 - i - 1, a, !0);
+  t.set(n - 8, 8, 1, !0);
+}
+function tn(t, e) {
+  const o = t.size;
+  let n = -1, l = o - 1, i = 7, a = 0;
+  for (let r = o - 1; r > 0; r -= 2)
+    for (r === 6 && r--; ; ) {
+      for (let s = 0; s < 2; s++)
+        if (!t.isReserved(l, r - s)) {
+          let u = !1;
+          a < e.length && (u = (e[a] >>> i & 1) === 1), t.set(l, r - s, u), i--, i === -1 && (a++, i = 7);
+        }
+      if (l += n, l < 0 || o <= l) {
+        l -= n, n = -n;
+        break;
+      }
+    }
+}
+function nn(t, e, o) {
+  const n = new Yt();
+  o.forEach(function(s) {
+    n.put(s.mode.bit, 4), n.put(s.getLength(), Wt.getCharCountIndicator(s.mode, t)), s.write(n);
   });
-})(_e);
-var Fe = _e.exports;
-const pe = /* @__PURE__ */ Oe(Fe), He = {
-  name: "JQrcode",
+  const l = _e.getSymbolTotalCodewords(t), i = Te.getTotalCodewordsCount(t, e), a = (l - i) * 8;
+  for (n.getLengthInBits() + 4 <= a && n.put(0, 4); n.getLengthInBits() % 8 !== 0; )
+    n.putBit(0);
+  const r = (a - n.getLengthInBits()) / 8;
+  for (let s = 0; s < r; s++)
+    n.put(s % 2 ? 17 : 236, 8);
+  return on(n, t, e);
+}
+function on(t, e, o) {
+  const n = _e.getSymbolTotalCodewords(e), l = Te.getTotalCodewordsCount(e, o), i = n - l, a = Te.getBlocksCount(e, o), r = n % a, s = a - r, u = Math.floor(n / a), c = Math.floor(i / a), _ = c + 1, g = u - c, p = new Gt(g);
+  let k = 0;
+  const y = new Array(a), V = new Array(a);
+  let d = 0;
+  const v = new Uint8Array(t.buffer);
+  for (let A = 0; A < a; A++) {
+    const U = A < s ? c : _;
+    y[A] = v.slice(k, k + U), V[A] = p.encode(y[A]), k += U, d = Math.max(d, U);
+  }
+  const f = new Uint8Array(n);
+  let S = 0, B, P;
+  for (B = 0; B < d; B++)
+    for (P = 0; P < a; P++)
+      B < y[P].length && (f[S++] = y[P][B]);
+  for (B = 0; B < g; B++)
+    for (P = 0; P < a; P++)
+      f[S++] = V[P][B];
+  return f;
+}
+function ln(t, e, o, n) {
+  let l;
+  if (Array.isArray(t))
+    l = ke.fromArray(t);
+  else if (typeof t == "string") {
+    let u = e;
+    if (!u) {
+      const c = ke.rawSplit(t);
+      u = pe.getBestVersionForData(c, o);
+    }
+    l = ke.fromString(t, u || 40);
+  } else
+    throw new Error("Invalid data");
+  const i = pe.getBestVersionForData(l, o);
+  if (!i)
+    throw new Error("The amount of data is too big to be stored in a QR Code");
+  if (!e)
+    e = i;
+  else if (e < i)
+    throw new Error(
+      `
+The chosen QR Code version cannot contain this amount of data.
+Minimum version required to store current data is: ` + i + `.
+`
+    );
+  const a = nn(e, o, l), r = _e.getSymbolSize(e), s = new qt(r);
+  return Zt(s, e), Xt(s), $t(s, e), Ee(s, o, 0), e >= 7 && en(s, e), tn(s, a), isNaN(n) && (n = Pe.getBestMask(
+    s,
+    Ee.bind(null, s, o)
+  )), Pe.applyMask(n, s), Ee(s, o, n), {
+    modules: s,
+    version: e,
+    errorCorrectionLevel: o,
+    maskPattern: n,
+    segments: l
+  };
+}
+Oe.create = function(e, o) {
+  if (typeof e > "u" || e === "")
+    throw new Error("No input text");
+  let n = Se.M, l, i;
+  return typeof o < "u" && (n = Se.from(o.errorCorrectionLevel, Se.M), l = pe.from(o.version), i = Pe.from(o.maskPattern), o.toSJISFunc && _e.setToSJISFunction(o.toSJISFunc)), ln(e, l, n, i);
+};
+var et = {}, Ue = {};
+(function(t) {
+  function e(o) {
+    if (typeof o == "number" && (o = o.toString()), typeof o != "string")
+      throw new Error("Color should be defined as hex string");
+    let n = o.slice().replace("#", "").split("");
+    if (n.length < 3 || n.length === 5 || n.length > 8)
+      throw new Error("Invalid hex color: " + o);
+    (n.length === 3 || n.length === 4) && (n = Array.prototype.concat.apply([], n.map(function(i) {
+      return [i, i];
+    }))), n.length === 6 && n.push("F", "F");
+    const l = parseInt(n.join(""), 16);
+    return {
+      r: l >> 24 & 255,
+      g: l >> 16 & 255,
+      b: l >> 8 & 255,
+      a: l & 255,
+      hex: "#" + n.slice(0, 6).join("")
+    };
+  }
+  t.getOptions = function(n) {
+    n || (n = {}), n.color || (n.color = {});
+    const l = typeof n.margin > "u" || n.margin === null || n.margin < 0 ? 4 : n.margin, i = n.width && n.width >= 21 ? n.width : void 0, a = n.scale || 4;
+    return {
+      width: i,
+      scale: i ? 4 : a,
+      margin: l,
+      color: {
+        dark: e(n.color.dark || "#000000ff"),
+        light: e(n.color.light || "#ffffffff")
+      },
+      type: n.type,
+      rendererOpts: n.rendererOpts || {}
+    };
+  }, t.getScale = function(n, l) {
+    return l.width && l.width >= n + l.margin * 2 ? l.width / (n + l.margin * 2) : l.scale;
+  }, t.getImageWidth = function(n, l) {
+    const i = t.getScale(n, l);
+    return Math.floor((n + l.margin * 2) * i);
+  }, t.qrToImageData = function(n, l, i) {
+    const a = l.modules.size, r = l.modules.data, s = t.getScale(a, i), u = Math.floor((a + i.margin * 2) * s), c = i.margin * s, _ = [i.color.light, i.color.dark];
+    for (let g = 0; g < u; g++)
+      for (let p = 0; p < u; p++) {
+        let k = (g * u + p) * 4, y = i.color.light;
+        if (g >= c && p >= c && g < u - c && p < u - c) {
+          const V = Math.floor((g - c) / s), d = Math.floor((p - c) / s);
+          y = _[r[V * a + d] ? 1 : 0];
+        }
+        n[k++] = y.r, n[k++] = y.g, n[k++] = y.b, n[k] = y.a;
+      }
+  };
+})(Ue);
+(function(t) {
+  const e = Ue;
+  function o(l, i, a) {
+    l.clearRect(0, 0, i.width, i.height), i.style || (i.style = {}), i.height = a, i.width = a, i.style.height = a + "px", i.style.width = a + "px";
+  }
+  function n() {
+    try {
+      return document.createElement("canvas");
+    } catch {
+      throw new Error("You need to specify a canvas element");
+    }
+  }
+  t.render = function(i, a, r) {
+    let s = r, u = a;
+    typeof s > "u" && (!a || !a.getContext) && (s = a, a = void 0), a || (u = n()), s = e.getOptions(s);
+    const c = e.getImageWidth(i.modules.size, s), _ = u.getContext("2d"), g = _.createImageData(c, c);
+    return e.qrToImageData(g.data, i, s), o(_, u, c), _.putImageData(g, 0, 0), u;
+  }, t.renderToDataURL = function(i, a, r) {
+    let s = r;
+    typeof s > "u" && (!a || !a.getContext) && (s = a, a = void 0), s || (s = {});
+    const u = t.render(i, a, s), c = s.type || "image/png", _ = s.rendererOpts || {};
+    return u.toDataURL(c, _.quality);
+  };
+})(et);
+var tt = {};
+const rn = Ue;
+function ze(t, e) {
+  const o = t.a / 255, n = e + '="' + t.hex + '"';
+  return o < 1 ? n + " " + e + '-opacity="' + o.toFixed(2).slice(1) + '"' : n;
+}
+function Ve(t, e, o) {
+  let n = t + e;
+  return typeof o < "u" && (n += " " + o), n;
+}
+function an(t, e, o) {
+  let n = "", l = 0, i = !1, a = 0;
+  for (let r = 0; r < t.length; r++) {
+    const s = Math.floor(r % e), u = Math.floor(r / e);
+    !s && !i && (i = !0), t[r] ? (a++, r > 0 && s > 0 && t[r - 1] || (n += i ? Ve("M", s + o, 0.5 + u + o) : Ve("m", l, 0), l = 0, i = !1), s + 1 < e && t[r + 1] || (n += Ve("h", a), a = 0)) : l++;
+  }
+  return n;
+}
+tt.render = function(e, o, n) {
+  const l = rn.getOptions(o), i = e.modules.size, a = e.modules.data, r = i + l.margin * 2, s = l.color.light.a ? "<path " + ze(l.color.light, "fill") + ' d="M0 0h' + r + "v" + r + 'H0z"/>' : "", u = "<path " + ze(l.color.dark, "stroke") + ' d="' + an(a, i, l.margin) + '"/>', c = 'viewBox="0 0 ' + r + " " + r + '"', g = '<svg xmlns="http://www.w3.org/2000/svg" ' + (l.width ? 'width="' + l.width + '" height="' + l.width + '" ' : "") + c + ' shape-rendering="crispEdges">' + s + u + `</svg>
+`;
+  return typeof n == "function" && n(null, g), g;
+};
+const sn = Ct, Ae = Oe, nt = et, un = tt;
+function Le(t, e, o, n, l) {
+  const i = [].slice.call(arguments, 1), a = i.length, r = typeof i[a - 1] == "function";
+  if (!r && !sn())
+    throw new Error("Callback required as last argument");
+  if (r) {
+    if (a < 2)
+      throw new Error("Too few arguments provided");
+    a === 2 ? (l = o, o = e, e = n = void 0) : a === 3 && (e.getContext && typeof l > "u" ? (l = n, n = void 0) : (l = n, n = o, o = e, e = void 0));
+  } else {
+    if (a < 1)
+      throw new Error("Too few arguments provided");
+    return a === 1 ? (o = e, e = n = void 0) : a === 2 && !e.getContext && (n = o, o = e, e = void 0), new Promise(function(s, u) {
+      try {
+        const c = Ae.create(o, n);
+        s(t(c, e, n));
+      } catch (c) {
+        u(c);
+      }
+    });
+  }
+  try {
+    const s = Ae.create(o, n);
+    l(null, t(s, e, n));
+  } catch (s) {
+    l(s);
+  }
+}
+ue.create = Ae.create;
+ue.toCanvas = Le.bind(null, nt.render);
+ue.toDataURL = Le.bind(null, nt.renderToDataURL);
+ue.toString = Le.bind(null, function(t, e, o) {
+  return un.render(t, o);
+});
+const Z = /* @__PURE__ */ Object.assign({
+  name: "MlQrcode"
+}, {
+  __name: "qrcode",
   props: {
     text: {
       type: String,
@@ -992,70 +1925,85 @@ const pe = /* @__PURE__ */ Oe(Fe), He = {
     },
     width: {
       type: Number,
-      default: 132
+      default: 150
     },
     height: {
       type: Number,
-      default: 132
+      default: 150
+    },
+    level: {
+      type: String,
+      default: "L"
     },
     colorDark: {
       type: String,
-      default: "#000"
+      default: "#000000"
     },
     colorLight: {
       type: String,
-      default: "#fff"
+      default: "#ffffff"
     }
   },
-  data() {
-    return {
-      qrcode: null
-    };
-  },
-  watch: {
-    text: {
-      handler() {
-        this.build();
-      }
-    }
-  },
-  mounted() {
-    this.$nextTick(function() {
-      this.qrcode = new pe(this.$refs.qrCodeDiv, {
-        width: this.width,
-        height: this.height,
-        text: this.text,
-        // 二维码地址
-        colorDark: this.colorDark,
-        colorLight: this.colorLight,
-        correctLevel: pe.CorrectLevel.L
+  setup(t) {
+    const e = t, o = L(null), n = L(null);
+    return ot(() => [e.text, e.width, e.height], async () => {
+      lt(() => {
+        try {
+          n.value = null, ue.toCanvas(o.value, e.text, {
+            width: e.width,
+            height: e.height,
+            errorCorrectionLevel: e.level,
+            color: {
+              light: e.colorLight,
+              dark: e.colorDark
+            },
+            margin: 1
+          });
+        } catch (i) {
+          console.error("二维码生成失败:", i), n.value = i.message;
+        }
       });
-    });
-  },
-  methods: {
-    build() {
-      this.qrcode && this.qrcode.makeCode(this.text);
+    }, { deep: !0, immediate: !0 }), (i, a) => (h(), C("div", null, [
+      b("canvas", {
+        ref_key: "canvasRef",
+        ref: o,
+        class: "qrcode-container"
+      }, null, 512)
+    ]));
+  }
+});
+Z.install = function(t) {
+  t.component(Z.name, Z);
+};
+const dn = {
+  beforeMount(t, { value: e, arg: o }) {
+    if (o === "callback")
+      t.$copyCallback = e;
+    else {
+      t.$copyValue = e;
+      const n = () => {
+        cn(t.$copyValue), t.$copyCallback && t.$copyCallback(t.$copyValue);
+      };
+      t.addEventListener("click", n), t.$destroyCopy = () => t.removeEventListener("click", n);
     }
   }
-}, ze = {
-  id: "qrcode",
-  ref: "qrCodeDiv",
-  class: "qrcode-container",
-  style: { display: "inline-block" }
 };
-function Qe(i, l, r, s, p, _) {
-  return v(), k("div", null, [
-    w("div", ze, null, 512)
-  ]);
+function cn(t, { target: e = document.body } = {}) {
+  const o = document.createElement("textarea"), n = document.activeElement;
+  o.value = t, o.setAttribute("readonly", ""), o.style.contain = "strict", o.style.position = "absolute", o.style.left = "-9999px", o.style.fontSize = "12pt";
+  const l = document.getSelection(), i = l.rangeCount > 0 && l.getRangeAt(0);
+  e.append(o), o.select(), o.selectionStart = 0, o.selectionEnd = t.length;
+  let a = !1;
+  try {
+    a = document.execCommand("copy");
+  } catch {
+  }
+  return o.remove(), i && (l.removeAllRanges(), l.addRange(i)), n && n.focus(), a;
 }
-const ne = /* @__PURE__ */ Y(He, [["render", Qe]]);
-ne.install = function(i) {
-  i.component(ne.name, ne);
-};
-const Ge = {
-  name: "JLinkViewer",
-  components: { qrcode: ne },
-  directives: { clipboard: oe },
+const fn = {
+  name: "MlLinkViewer",
+  components: { qrcode: Z },
+  directives: { copyText: dn },
   props: {
     url: {
       type: String,
@@ -1067,10 +2015,10 @@ const Ge = {
     }
   },
   setup() {
-    const i = ke();
+    const t = rt();
     return {
       clipboardSuccess: () => {
-        i.appContext.config.globalProperties.$message({
+        t.appContext.config.globalProperties.$message({
           message: "复制成功",
           type: "success",
           duration: 1500
@@ -1078,55 +2026,55 @@ const Ge = {
       }
     };
   }
-}, Ke = { style: { "text-align": "center", padding: "10px" } };
-function Je(i, l, r, s, p, _) {
-  const V = B("el-input"), h = B("el-button"), m = B("qrcode"), u = B("el-popover"), y = we("clipboard");
-  return v(), K(u, {
-    class: "j-linkViewer",
+}, gn = { style: { "text-align": "center", padding: "10px" } };
+function hn(t, e, o, n, l, i) {
+  const a = E("el-input"), r = E("el-button"), s = E("qrcode"), u = E("el-popover"), c = it("copyText");
+  return h(), F(u, {
+    class: "ml-linkViewer",
     placement: "bottom",
     width: "286",
-    trigger: r.trigger
+    trigger: o.trigger
   }, {
-    reference: S(() => [
-      ue(i.$slots, "default")
+    reference: w(() => [
+      ge(t.$slots, "default")
     ]),
-    default: S(() => [
-      b(V, {
-        "model-value": r.url,
+    default: w(() => [
+      m(a, {
+        "model-value": o.url,
         disabled: "",
         size: "small",
         style: { width: "200px" }
       }, null, 8, ["model-value"]),
-      ge((v(), K(h, {
+      Ke((h(), F(r, {
         size: "small",
         type: "primary"
       }, {
-        default: S(() => [...l[0] || (l[0] = [
-          M("复制", -1)
+        default: w(() => [...e[0] || (e[0] = [
+          T("复制", -1)
         ])]),
         _: 1
       })), [
-        [y, r.url, "copy"],
-        [y, s.clipboardSuccess, "success"]
+        [c, o.url],
+        [c, n.clipboardSuccess, "callback"]
       ]),
-      w("div", Ke, [
-        b(m, {
+      b("div", gn, [
+        m(s, {
           width: 200,
           height: 200,
-          text: r.url
+          text: o.url
         }, null, 8, ["text"])
       ])
     ]),
     _: 3
   }, 8, ["trigger"]);
 }
-const q = /* @__PURE__ */ Y(Ge, [["render", Je]]);
-q.install = function(i) {
-  i.component(q.name, q);
+const Q = /* @__PURE__ */ W(fn, [["render", hn]]);
+Q.install = function(t) {
+  t.component(Q.name, Q);
 };
-typeof window < "u" && window.Vue && window.Vue.component(q.name, q);
-const Xe = {
-  name: "JPositionSelector",
+typeof window < "u" && window.Vue && window.Vue.component(Q.name, Q);
+const mn = {
+  name: "MlPositionSelector",
   props: {
     mapKey: {
       type: String,
@@ -1162,20 +2110,20 @@ const Xe = {
     }
   },
   emits: ["update:lng", "update:lat", "update:province", "update:city", "update:district", "update:adcode", "update:address", "change"],
-  setup(i, { emit: l }) {
-    const r = X(!1), s = X(null), p = X(null), _ = X(null), V = X([]), h = Ce({
+  setup(t, { emit: e }) {
+    const o = L(!1), n = L(null), l = L(null), i = L(null), a = L([]), r = at({
       center: {
         height: 0,
-        lng: i.lng || 116.397502,
-        lat: i.lat || 39.908802
+        lng: t.lng || 116.397502,
+        lat: t.lat || 39.908802
       },
       detail: {
         //地址临时分量
-        adcode: i.adcode || "",
-        province: i.province || "",
-        city: i.city || "",
-        district: i.district || "",
-        address: i.address || ""
+        adcode: t.adcode || "",
+        province: t.province || "",
+        city: t.city || "",
+        district: t.district || "",
+        address: t.address || ""
       },
       searchService: null,
       //关键字搜索服务
@@ -1183,36 +2131,36 @@ const Xe = {
       // 搜索建议服务
       geocoderService: null
       // 地址解析
-    }), m = () => {
-      r.value = !0, u();
+    }), s = () => {
+      o.value = !0, u();
     }, u = () => {
-      p.value || y().then((f) => {
-        h.center = new f.LatLng(i.lat || 39.908802, i.lng || 116.397502), s.value = f, p.value = new f.Map("map", {
-          center: h.center,
+      l.value || c().then((d) => {
+        r.center = new d.LatLng(t.lat || 39.908802, t.lng || 116.397502), n.value = d, l.value = new d.Map("map", {
+          center: r.center,
           //设置地图中心点坐标
           zoom: 15,
           //设置地图缩放级别
           viewMode: "2D"
-        }), p.value.on("click", Q), A(h.center), h.suggestService = new f.service.Suggestion({
+        }), l.value.on("click", p), _(r.center), r.suggestService = new d.service.Suggestion({
           pageSize: 10,
           regionFix: !1
           // 自动扩大范围到全国匹配
-        }), h.geocoderService = new f.service.Geocoder();
+        }), r.geocoderService = new d.service.Geocoder();
       });
-    }, y = () => new Promise((f) => {
+    }, c = () => new Promise((d) => {
       if (typeof window.TMap < "u")
-        return f(window.TMap), !0;
+        return d(window.TMap), !0;
       window.onMapCallback = function() {
-        f(window.TMap);
+        d(window.TMap);
       };
-      let O = "https://map.qq.com/api/gljs?v=1.exp&libraries=tools,service&key=" + i.mapKey + "&callback=onMapCallback", E = document.createElement("script");
-      E.setAttribute("type", "text/javascript"), E.setAttribute("src", O), document.body.appendChild(E);
-    }), A = (f) => {
-      _.value = new s.value.MultiMarker({
-        map: p.value,
+      let v = "https://map.qq.com/api/gljs?v=1.exp&libraries=tools,service&key=" + t.mapKey + "&callback=onMapCallback", f = document.createElement("script");
+      f.setAttribute("type", "text/javascript"), f.setAttribute("src", v), document.body.appendChild(f);
+    }), _ = (d) => {
+      i.value = new n.value.MultiMarker({
+        map: l.value,
         styles: {
           // 点标记样式
-          marker: new s.value.MarkerStyle({
+          marker: new n.value.MarkerStyle({
             width: 20,
             // 样式宽
             height: 30,
@@ -1225,105 +2173,105 @@ const Xe = {
           // 点标记数据数组
           {
             // 标记位置(纬度，经度，高度)
-            position: f,
+            position: d,
             id: "centerMarker"
           }
         ]
       });
-    }, D = () => {
-      const f = _.value.getGeometryById("centerMarker");
-      Object.assign(f, {
-        position: h.center
-      }), _.value.updateGeometries([f]), V.value = [];
-    }, Q = (f) => {
-      h.center = f.latLng, h.geocoderService.getAddress({
-        location: f.latLng
-      }).then((O) => {
-        h.detail.address = O.result.address, h.detail.province = O.result.ad_info.province, h.detail.city = O.result.ad_info.city, h.detail.district = O.result.ad_info.district, h.detail.adcode = O.result.ad_info.adcode;
-      }), D();
-    }, I = () => {
-      if (!h.detail.address) {
-        V.value = [];
+    }, g = () => {
+      const d = i.value.getGeometryById("centerMarker");
+      Object.assign(d, {
+        position: r.center
+      }), i.value.updateGeometries([d]), a.value = [];
+    }, p = (d) => {
+      r.center = d.latLng, r.geocoderService.getAddress({
+        location: d.latLng
+      }).then((v) => {
+        r.detail.address = v.result.address, r.detail.province = v.result.ad_info.province, r.detail.city = v.result.ad_info.city, r.detail.district = v.result.ad_info.district, r.detail.adcode = v.result.ad_info.adcode;
+      }), g();
+    }, k = () => {
+      if (!r.detail.address) {
+        a.value = [];
         return;
       }
-      h.suggestService.getSuggestions({ keyword: h.detail.address, location: p.value.getCenter() }).then((f) => {
-        V.value = f.data;
+      r.suggestService.getSuggestions({ keyword: r.detail.address, location: l.value.getCenter() }).then((d) => {
+        a.value = d.data;
       });
-    }, L = (f) => {
-      h.center = f.location, D(), p.value.setCenter(f.location), h.detail.address = f.address, h.detail.province = f.province, h.detail.city = f.city, h.detail.district = f.district, h.detail.adcode = f.adcode;
-    }, U = () => {
-      l("update:lng", h.center.lng), l("update:lat", h.center.lat), l("update:province", h.detail.province), l("update:city", h.detail.city), l("update:district", h.detail.district), l("update:adcode", h.detail.adcode), l("update:address", h.detail.address), l("change", {
-        ...h.detail,
-        ...h.center
-      }), r.value = !1;
+    }, y = (d) => {
+      r.center = d.location, g(), l.value.setCenter(d.location), r.detail.address = d.address, r.detail.province = d.province, r.detail.city = d.city, r.detail.district = d.district, r.detail.adcode = d.adcode;
+    }, V = () => {
+      e("update:lng", r.center.lng), e("update:lat", r.center.lat), e("update:province", r.detail.province), e("update:city", r.detail.city), e("update:district", r.detail.district), e("update:adcode", r.detail.adcode), e("update:address", r.detail.address), e("change", {
+        ...r.detail,
+        ...r.center
+      }), o.value = !1;
     };
     return {
-      dialogVisible: r,
-      TMap: s,
-      map: p,
-      marker: _,
-      nearPois: V,
-      ...Se(h),
-      showMap: m,
+      dialogVisible: o,
+      TMap: n,
+      map: l,
+      marker: i,
+      nearPois: a,
+      ...st(r),
+      showMap: s,
       init: u,
-      initMap: y,
-      initMaker: A,
-      moveCenter: D,
-      mapClick: Q,
-      getSuggestions: I,
-      selectAddress: L,
-      Select: U
+      initMap: c,
+      initMaker: _,
+      moveCenter: g,
+      mapClick: p,
+      getSuggestions: k,
+      selectAddress: y,
+      Select: V
     };
   }
-}, Ye = { class: "j-position-selector" }, We = { style: { padding: "0px 10px" } }, je = { class: "item" }, $e = { class: "map" }, qe = {
+}, pn = { class: "ml-position-selector" }, yn = { style: { padding: "0px 10px" } }, wn = { class: "item" }, bn = { class: "map" }, _n = {
   id: "map",
   ref: "container",
   style: { width: "100%", height: "500px" }
-}, Ze = { class: "address-search" }, et = {
+}, vn = { class: "address-search" }, Cn = {
   key: 0,
   class: "address-list"
-}, tt = ["onClick"], lt = { class: "address-title" }, at = { class: "address-info" }, nt = { class: "dialog-footer" };
-function ot(i, l, r, s, p, _) {
-  const V = B("el-button"), h = B("el-row"), m = B("el-col"), u = B("el-card"), y = B("el-input"), A = B("el-dialog");
-  return v(), k("div", Ye, [
-    b(u, { shadow: "hover" }, {
-      header: S(() => [
-        w("div", We, [
-          l[6] || (l[6] = w("span", null, [
-            w("i", { class: "el-icon-map-location" }),
-            M(" 地址坐标")
+}, Sn = ["onClick"], kn = { class: "address-title" }, En = { class: "address-info" }, Vn = { class: "dialog-footer" };
+function Bn(t, e, o, n, l, i) {
+  const a = E("el-button"), r = E("el-row"), s = E("el-col"), u = E("el-card"), c = E("el-input"), _ = E("el-dialog");
+  return h(), C("div", pn, [
+    m(u, { shadow: "hover" }, {
+      header: w(() => [
+        b("div", yn, [
+          e[6] || (e[6] = b("span", null, [
+            b("i", { class: "el-icon-map-location" }),
+            T(" 地址坐标")
           ], -1)),
-          b(V, {
+          m(a, {
             style: { float: "right", padding: "10px 0" },
             type: "text",
-            onClick: s.showMap
+            onClick: n.showMap
           }, {
-            default: S(() => [...l[5] || (l[5] = [
-              M("选择地址", -1)
+            default: w(() => [...e[5] || (e[5] = [
+              T("选择地址", -1)
             ])]),
             _: 1
           }, 8, ["onClick"])
         ])
       ]),
-      default: S(() => [
-        w("div", je, [
-          b(h, null, {
-            default: S(() => [
-              w("span", null, "地址：" + J(r.address ? r.address : "未设置"), 1)
+      default: w(() => [
+        b("div", wn, [
+          m(r, null, {
+            default: w(() => [
+              b("span", null, "地址：" + z(o.address ? o.address : "未设置"), 1)
             ]),
             _: 1
           }),
-          b(h, { class: "sub-info" }, {
-            default: S(() => [
-              b(m, { span: 12 }, {
-                default: S(() => [
-                  M("经度：" + J(r.lng), 1)
+          m(r, { class: "sub-info" }, {
+            default: w(() => [
+              m(s, { span: 12 }, {
+                default: w(() => [
+                  T("经度：" + z(o.lng), 1)
                 ]),
                 _: 1
               }),
-              b(m, { span: 12 }, {
-                default: S(() => [
-                  M("纬度：" + J(r.lat), 1)
+              m(s, { span: 12 }, {
+                default: w(() => [
+                  T("纬度：" + z(o.lat), 1)
                 ]),
                 _: 1
               })
@@ -1334,66 +2282,66 @@ function ot(i, l, r, s, p, _) {
       ]),
       _: 1
     }),
-    b(A, {
-      "custom-class": "j-position-selector-dialog",
-      modelValue: s.dialogVisible,
-      "onUpdate:modelValue": l[4] || (l[4] = (D) => s.dialogVisible = D),
+    m(_, {
+      "custom-class": "ml-position-selector-dialog",
+      modelValue: n.dialogVisible,
+      "onUpdate:modelValue": e[4] || (e[4] = (g) => n.dialogVisible = g),
       title: "选择地图",
       width: "1000px",
       "append-to-body": ""
     }, {
-      footer: S(() => [
-        w("span", nt, [
-          b(h, { gutter: 10 }, {
-            default: S(() => [
-              b(m, { span: 6 }, {
-                default: S(() => [
-                  b(y, {
+      footer: w(() => [
+        b("span", Vn, [
+          m(r, { gutter: 10 }, {
+            default: w(() => [
+              m(s, { span: 6 }, {
+                default: w(() => [
+                  m(c, {
                     disabled: "",
-                    modelValue: i.center.lng,
-                    "onUpdate:modelValue": l[1] || (l[1] = (D) => i.center.lng = D),
+                    modelValue: t.center.lng,
+                    "onUpdate:modelValue": e[1] || (e[1] = (g) => t.center.lng = g),
                     placeholder: "坐标经度"
                   }, {
-                    prepend: S(() => [...l[7] || (l[7] = [
-                      M("经度", -1)
+                    prepend: w(() => [...e[7] || (e[7] = [
+                      T("经度", -1)
                     ])]),
                     _: 1
                   }, 8, ["modelValue"])
                 ]),
                 _: 1
               }),
-              b(m, { span: 6 }, {
-                default: S(() => [
-                  b(y, {
+              m(s, { span: 6 }, {
+                default: w(() => [
+                  m(c, {
                     disabled: "",
-                    modelValue: i.center.lat,
-                    "onUpdate:modelValue": l[2] || (l[2] = (D) => i.center.lat = D),
+                    modelValue: t.center.lat,
+                    "onUpdate:modelValue": e[2] || (e[2] = (g) => t.center.lat = g),
                     placeholder: "坐标纬度"
                   }, {
-                    prepend: S(() => [...l[8] || (l[8] = [
-                      M("纬度", -1)
+                    prepend: w(() => [...e[8] || (e[8] = [
+                      T("纬度", -1)
                     ])]),
                     _: 1
                   }, 8, ["modelValue"])
                 ]),
                 _: 1
               }),
-              b(m, { span: 12 }, {
-                default: S(() => [
-                  b(V, {
-                    onClick: l[3] || (l[3] = (D) => s.dialogVisible = !1)
+              m(s, { span: 12 }, {
+                default: w(() => [
+                  m(a, {
+                    onClick: e[3] || (e[3] = (g) => n.dialogVisible = !1)
                   }, {
-                    default: S(() => [...l[9] || (l[9] = [
-                      M("取 消", -1)
+                    default: w(() => [...e[9] || (e[9] = [
+                      T("取 消", -1)
                     ])]),
                     _: 1
                   }),
-                  b(V, {
+                  m(a, {
                     type: "primary",
-                    onClick: s.Select
+                    onClick: n.Select
                   }, {
-                    default: S(() => [...l[10] || (l[10] = [
-                      M("确 定", -1)
+                    default: w(() => [...e[10] || (e[10] = [
+                      T("确 定", -1)
                     ])]),
                     _: 1
                   }, 8, ["onClick"])
@@ -1405,40 +2353,40 @@ function ot(i, l, r, s, p, _) {
           })
         ])
       ]),
-      default: S(() => [
-        w("div", $e, [
-          w("div", qe, null, 512),
-          w("div", Ze, [
-            b(y, {
-              modelValue: i.detail.address,
-              "onUpdate:modelValue": l[0] || (l[0] = (D) => i.detail.address = D),
-              onInput: s.getSuggestions,
+      default: w(() => [
+        b("div", bn, [
+          b("div", _n, null, 512),
+          b("div", vn, [
+            m(c, {
+              modelValue: t.detail.address,
+              "onUpdate:modelValue": e[0] || (e[0] = (g) => t.detail.address = g),
+              onInput: n.getSuggestions,
               placeholder: "请输入地址来直接查找相关位置"
             }, null, 8, ["modelValue", "onInput"])
           ]),
-          s.nearPois.length > 0 ? (v(), k("div", et, [
-            (v(!0), k(R, null, z(s.nearPois, (D, Q) => (v(), k("div", {
-              key: Q,
+          n.nearPois.length > 0 ? (h(), C("div", Cn, [
+            (h(!0), C(N, null, R(n.nearPois, (g, p) => (h(), C("div", {
+              key: p,
               class: "items",
-              onClick: (I) => s.selectAddress(D)
+              onClick: (k) => n.selectAddress(g)
             }, [
-              w("div", lt, J(D.title), 1),
-              w("div", at, J(D.address), 1)
-            ], 8, tt))), 128))
-          ])) : N("", !0)
+              b("div", kn, z(g.title), 1),
+              b("div", En, z(g.address), 1)
+            ], 8, Sn))), 128))
+          ])) : M("", !0)
         ])
       ]),
       _: 1
     }, 8, ["modelValue"])
   ]);
 }
-const Z = /* @__PURE__ */ Y(Xe, [["render", ot]]);
-Z.install = function(i) {
-  i.component(Z.name, Z);
+const G = /* @__PURE__ */ W(mn, [["render", Bn]]);
+G.install = function(t) {
+  t.component(G.name, G);
 };
-typeof window < "u" && window.Vue && window.Vue.component(Z.name, Z);
-const it = {
-  name: "JSkuSpec",
+typeof window < "u" && window.Vue && window.Vue.component(G.name, G);
+const Pn = {
+  name: "MlSkuSpec",
   props: {
     // 最多可添加规格项
     limit: {
@@ -1486,148 +2434,148 @@ const it = {
       });
     },
     // 删除规格项目
-    delSpec(i) {
-      this.value.splice(i, 1);
+    delSpec(t) {
+      this.value.splice(t, 1);
     },
     // 添加规格属性
-    addSpecTag(i) {
-      let l = this.addValues[i] || "";
-      if (!l.trim()) return;
-      l = l.trim();
-      const r = l.split(/\s+/);
-      let s = this.value[i].value.concat(r);
-      s = Array.from(new Set(s)), this.$set(this.value[i], "value", s), this.clearAddValues(i);
+    addSpecTag(t) {
+      let e = this.addValues[t] || "";
+      if (!e.trim()) return;
+      e = e.trim();
+      const o = e.split(/\s+/);
+      let n = this.value[t].value.concat(o);
+      n = Array.from(new Set(n)), this.$set(this.value[t], "value", n), this.clearAddValues(t);
     },
     // 删除规格属性
-    delSpecTag(i, l) {
-      this.disabled || this.value[i].value.splice(l, 1);
+    delSpecTag(t, e) {
+      this.disabled || this.value[t].value.splice(e, 1);
     },
     // 清空 addValues
-    clearAddValues(i) {
-      this.$set(this.addValues, i, "");
+    clearAddValues(t) {
+      this.$set(this.addValues, t, "");
     },
     // 是否输入正确
-    verify_name(i) {
-      return this.value[i].name.trim() === "";
+    verify_name(t) {
+      return this.value[t].name.trim() === "";
     },
-    verify_value(i) {
-      return this.value[i].value.length === 0;
+    verify_value(t) {
+      return this.value[t].value.length === 0;
     },
     // 验证所有字段
     verify() {
-      var i = !0;
-      return this.value.forEach((l) => {
-        l.name.trim() === "" && (i = !1), l.value.length === 0 && (i = !1);
-      }), i;
+      var t = !0;
+      return this.value.forEach((e) => {
+        e.name.trim() === "" && (t = !1), e.value.length === 0 && (t = !1);
+      }), t;
     }
   }
-}, rt = { class: "jui-sku-container" }, st = { class: "specification" }, dt = { class: "spec-list" }, ut = ["onClick"], ct = { class: "values" }, ft = { class: "el-select__tags-text" }, ht = ["onClick"], pt = {
+}, Tn = { class: "ml-sku-container" }, An = { class: "specification" }, Mn = { class: "spec-list" }, Nn = ["onClick"], In = { class: "values" }, Un = { class: "el-select__tags-text" }, Ln = ["onClick"], Rn = {
   key: 0,
   class: "item"
-}, gt = { class: "add-spec" }, vt = {
+}, Dn = { class: "add-spec" }, Fn = {
   key: 0,
   class: "example"
-}, mt = ["value"];
-function _t(i, l, r, s, p, _) {
-  const V = B("el-input"), h = B("el-button");
-  return v(), k("div", rt, [
-    w("div", st, [
-      w("ul", dt, [
-        (v(!0), k(R, null, z(r.value, (m, u) => (v(), k("li", {
+}, zn = ["value"];
+function Kn(t, e, o, n, l, i) {
+  const a = E("el-input"), r = E("el-button");
+  return h(), C("div", Tn, [
+    b("div", An, [
+      b("ul", Mn, [
+        (h(!0), C(N, null, R(o.value, (s, u) => (h(), C("li", {
           key: u,
           class: "item"
         }, [
-          w("div", {
-            class: te(["name", { is_error: _.verify_name(u) }])
+          b("div", {
+            class: X(["name", { is_error: i.verify_name(u) }])
           }, [
-            b(V, {
-              modelValue: m.name,
-              "onUpdate:modelValue": (y) => m.name = y,
-              disabled: r.disabled,
+            m(a, {
+              modelValue: s.name,
+              "onUpdate:modelValue": (c) => s.name = c,
+              disabled: o.disabled,
               size: "small",
               placeholder: "输入产品规格名称"
             }, null, 8, ["modelValue", "onUpdate:modelValue", "disabled"]),
-            l[0] || (l[0] = w("div", { class: "help_info" }, "例如:颜色,尺码", -1)),
-            ge(w("i", {
+            e[0] || (e[0] = b("div", { class: "help_info" }, "例如:颜色,尺码", -1)),
+            Ke(b("i", {
               class: "icon el-icon-circle-close",
-              onClick: (y) => _.delSpec(u)
-            }, null, 8, ut), [
-              [Ve, !r.disabled]
+              onClick: (c) => i.delSpec(u)
+            }, null, 8, Nn), [
+              [ut, !o.disabled]
             ])
           ], 2),
-          w("div", ct, [
-            (v(!0), k(R, null, z(m.value, (y, A) => (v(), k("span", {
-              key: y,
+          b("div", In, [
+            (h(!0), C(N, null, R(s.value, (c, _) => (h(), C("span", {
+              key: c,
               class: "el-tag"
             }, [
-              w("span", ft, J(y), 1),
-              w("i", {
+              b("span", Un, z(c), 1),
+              b("i", {
                 class: "el-tag__close el-icon-close",
-                onClick: (D) => _.delSpecTag(u, A)
-              }, null, 8, ht)
+                onClick: (g) => i.delSpecTag(u, _)
+              }, null, 8, Ln)
             ]))), 128)),
-            w("div", {
-              class: te(["add-attr", { is_error: _.verify_value(u) }])
+            b("div", {
+              class: X(["add-attr", { is_error: i.verify_value(u) }])
             }, [
-              b(V, {
-                modelValue: p.addValues[u],
-                "onUpdate:modelValue": (y) => p.addValues[u] = y,
+              m(a, {
+                modelValue: l.addValues[u],
+                "onUpdate:modelValue": (c) => l.addValues[u] = c,
                 size: "small",
                 placeholder: "多个产品属性以空格隔开",
                 icon: "plus",
-                disabled: r.disabled,
-                onClick: (y) => _.addSpecTag(u),
-                onKeyup: Pe((y) => _.addSpecTag(u), ["native", "enter"])
+                disabled: o.disabled,
+                onClick: (c) => i.addSpecTag(u),
+                onKeyup: dt((c) => i.addSpecTag(u), ["native", "enter"])
               }, null, 8, ["modelValue", "onUpdate:modelValue", "disabled", "onClick", "onKeyup"]),
-              l[1] || (l[1] = w("div", {
+              e[1] || (e[1] = b("div", {
                 class: "help_info",
                 style: { float: "none" }
               }, "例如:红色,蓝色,L,M等", -1))
             ], 2)
           ])
         ]))), 128)),
-        r.value.length < r.limit ? (v(), k("li", pt, [
-          w("div", gt, [
-            b(h, {
+        o.value.length < o.limit ? (h(), C("li", Rn, [
+          b("div", Dn, [
+            m(r, {
               plain: "",
-              disabled: r.disabled,
+              disabled: o.disabled,
               size: "small",
               type: "info",
-              onClick: _.addSpec
+              onClick: i.addSpec
             }, {
-              default: S(() => [...l[2] || (l[2] = [
-                M("添加规格项目", -1)
+              default: w(() => [...e[2] || (e[2] = [
+                T("添加规格项目", -1)
               ])]),
               _: 1
             }, 8, ["disabled", "onClick"])
           ])
-        ])) : N("", !0)
+        ])) : M("", !0)
       ])
     ]),
-    r.isShowCode ? (v(), k("div", vt, [
-      w("textarea", {
+    o.isShowCode ? (h(), C("div", Fn, [
+      b("textarea", {
         class: "code-area",
-        value: JSON.stringify(r.value)
-      }, null, 8, mt)
-    ])) : N("", !0)
+        value: JSON.stringify(o.value)
+      }, null, 8, zn)
+    ])) : M("", !0)
   ]);
 }
-const re = /* @__PURE__ */ Y(it, [["render", _t]]);
-re.install = function(i) {
-  i.component(re.name, re);
+const re = /* @__PURE__ */ W(Pn, [["render", Kn]]);
+re.install = function(t) {
+  t.component(re.name, re);
 };
-function yt(i) {
-  return Array.prototype.reduce.call(i, function(l, r) {
-    var s = [];
-    return l.forEach(function(p) {
-      r.forEach(function(_) {
-        s.push(p.concat([_]));
+function On(t) {
+  return Array.prototype.reduce.call(t, function(e, o) {
+    var n = [];
+    return e.forEach(function(l) {
+      o.forEach(function(i) {
+        n.push(l.concat([i]));
       });
-    }), s;
+    }), n;
   }, [[]]);
 }
-const bt = {
-  name: "JSkuTable",
+const Hn = {
+  name: "MlSkuTable",
   props: {
     defaultPrice: {
       type: Number,
@@ -1700,55 +2648,55 @@ const bt = {
   methods: {
     // 通过规格值计算sku 集合
     bulidSKUS() {
-      const i = [];
-      this.specification.forEach((s) => {
-        s.value.length > 0 && i.push(s.value);
+      const t = [];
+      this.specification.forEach((n) => {
+        n.value.length > 0 && t.push(n.value);
       });
-      const l = yt(i), r = [];
-      l.forEach((s) => {
-        if (s.length === 0) return;
-        const p = this.getOldOrCreatData(JSON.stringify(s));
-        r.push(p);
-      }), this.value.length = 0, this.value.push(...r), this.$emit("input", this.value);
+      const e = On(t), o = [];
+      e.forEach((n) => {
+        if (n.length === 0) return;
+        const l = this.getOldOrCreatData(JSON.stringify(n));
+        o.push(l);
+      }), this.value.length = 0, this.value.push(...o), this.$emit("input", this.value);
     },
     // 通过属性组合键 查询原数据 如果原来数据存在则重新赋值 不存在则创建新数据
-    getOldOrCreatData(i) {
-      let l = {
+    getOldOrCreatData(t) {
+      let e = {
         ProductCost: this.defaultPrice,
         ProductId: 0,
         ProductNo: 1,
         ProductPrice: this.defaultPrice,
-        ProductSpec: i,
+        ProductSpec: t,
         ProductStock: 999,
         isUse: !0
       };
-      return this.value.forEach((r) => {
-        r.ProductSpec === i && (l = r);
-      }), l;
+      return this.value.forEach((o) => {
+        o.ProductSpec === t && (e = o);
+      }), e;
     },
     // 获得属性值
-    getSpecValue(i, l) {
-      const r = this.specification[i].value;
-      let s;
-      this.specification[i + 1] && this.specification[i + 1].value.length ? s = l / this.countSum(i + 1) : s = l;
-      const p = Math.floor(s % r.length);
-      return p.toString() !== "NaN" ? r[p] : "";
+    getSpecValue(t, e) {
+      const o = this.specification[t].value;
+      let n;
+      this.specification[t + 1] && this.specification[t + 1].value.length ? n = e / this.countSum(t + 1) : n = e;
+      const l = Math.floor(n % o.length);
+      return l.toString() !== "NaN" ? o[l] : "";
     },
     // 根据规格索引  计算后面规格值值的数量 计算自身纵向跨度
-    countSum(i) {
-      let l = 1;
-      return this.specification.forEach((r, s) => {
-        s >= i && r.value.length && (l *= r.value.length);
-      }), l;
+    countSum(t) {
+      let e = 1;
+      return this.specification.forEach((o, n) => {
+        n >= t && o.value.length && (e *= o.value.length);
+      }), e;
     },
     // 根据传入的条件，来判断是否显示该td
-    showTd(i, l) {
-      return this.specification[i] ? l % this.countSum(i + 1) === 0 : !1;
+    showTd(t, e) {
+      return this.specification[t] ? e % this.countSum(t + 1) === 0 : !1;
     },
     // 【 批处理相关 】
     // 打开设置框
-    openBatch(i) {
-      this.disabled || (this.currentType = i, this.isSetListShow = !1);
+    openBatch(t) {
+      this.disabled || (this.currentType = t, this.isSetListShow = !1);
     },
     // 批量设置
     setBatch() {
@@ -1759,8 +2707,8 @@ const bt = {
         });
         return;
       }
-      this.value.forEach((i) => {
-        i.isUse && (i[this.currentType] = this.batchValue);
+      this.value.forEach((t) => {
+        t.isUse && (t[this.currentType] = this.batchValue);
       }), this.cancelBatch();
     },
     // 取消批量设置
@@ -1768,207 +2716,171 @@ const bt = {
       this.batchValue = "", this.currentType = "", this.isSetListShow = !0;
     }
   }
-}, wt = { class: "jui-sku-container" }, kt = { class: "example" }, Ct = {
+}, Jn = { class: "ml-sku-container" }, Yn = { class: "example" }, qn = {
   class: "stock-table el-table el-table--border",
   cellspacing: "0",
   cellpadding: "0"
-}, St = {
+}, jn = {
   key: 0,
   style: { width: "160px" }
-}, Vt = {
+}, Qn = {
   key: 1,
   style: { width: "160px" }
-}, Pt = {
+}, Gn = {
   key: 2,
   style: { width: "160px" }
-}, Dt = {
+}, xn = {
   key: 3,
   style: { width: "100px" }
-}, Et = { key: 0 }, Tt = ["rowspan"], At = { key: 0 }, Bt = { key: 1 }, Lt = { key: 2 }, Mt = { key: 3 }, xt = {
+}, Wn = { key: 0 }, Zn = ["rowspan"], Xn = { key: 0 }, $n = { key: 1 }, eo = { key: 2 }, to = { key: 3 }, no = {
   colspan: "8",
   class: "wh-foot"
-}, Nt = {
+}, oo = {
   key: 0,
   class: "set-list"
-}, Ut = {
+}, lo = {
   key: 1,
   class: "set-form"
-}, Rt = {
+}, io = {
   key: 0,
   class: "example"
-}, It = ["value"];
-function Ot(i, l, r, s, p, _) {
-  const V = B("el-input-number"), h = B("el-input"), m = B("el-switch");
-  return v(), k("div", wt, [
-    w("div", kt, [
-      w("table", Ct, [
-        w("thead", null, [
-          w("tr", null, [
-            (v(!0), k(R, null, z(r.specification, (u, y) => (v(), k("th", { key: y }, J(u.name), 1))), 128)),
-            l[6] || (l[6] = w("th", { style: { width: "160px" } }, "销售价（元）", -1)),
-            r.showProductStock ? (v(), k("th", St, "库存")) : N("", !0),
-            r.showProductNo ? (v(), k("th", Vt, "规格编码")) : N("", !0),
-            r.showProductCost ? (v(), k("th", Pt, "成本价（元）")) : N("", !0),
-            r.showEnable ? (v(), k("th", Dt, "是否启用")) : N("", !0)
+}, ro = ["value"];
+function ao(t, e, o, n, l, i) {
+  const a = E("el-input-number"), r = E("el-input"), s = E("el-switch");
+  return h(), C("div", Jn, [
+    b("div", Yn, [
+      b("table", qn, [
+        b("thead", null, [
+          b("tr", null, [
+            (h(!0), C(N, null, R(o.specification, (u, c) => (h(), C("th", { key: c }, z(u.name), 1))), 128)),
+            e[6] || (e[6] = b("th", { style: { width: "160px" } }, "销售价（元）", -1)),
+            o.showProductStock ? (h(), C("th", jn, "库存")) : M("", !0),
+            o.showProductNo ? (h(), C("th", Qn, "规格编码")) : M("", !0),
+            o.showProductCost ? (h(), C("th", Gn, "成本价（元）")) : M("", !0),
+            o.showEnable ? (h(), C("th", xn, "是否启用")) : M("", !0)
           ])
         ]),
-        r.value.length > 0 ? (v(), k("tbody", Et, [
-          (v(!0), k(R, null, z(r.value, (u, y) => (v(), k("tr", {
+        o.value.length > 0 ? (h(), C("tbody", Wn, [
+          (h(!0), C(N, null, R(o.value, (u, c) => (h(), C("tr", {
             key: u.ProductSpec
           }, [
-            (v(!0), k(R, null, z(r.specification, (A, D) => (v(), k(R, null, [
-              _.showTd(D, y) ? (v(), k("td", {
-                rowspan: _.countSum(D + 1),
-                key: D
-              }, J(_.getSpecValue(D, y)), 9, Tt)) : N("", !0)
+            (h(!0), C(N, null, R(o.specification, (_, g) => (h(), C(N, null, [
+              i.showTd(g, c) ? (h(), C("td", {
+                rowspan: i.countSum(g + 1),
+                key: g
+              }, z(i.getSpecValue(g, c)), 9, Zn)) : M("", !0)
             ], 64))), 256)),
-            w("td", null, [
-              b(V, {
+            b("td", null, [
+              m(a, {
                 modelValue: u.ProductPrice,
-                "onUpdate:modelValue": (A) => u.ProductPrice = A,
+                "onUpdate:modelValue": (_) => u.ProductPrice = _,
                 modelModifiers: { number: !0 },
                 size: "small",
                 min: 0,
                 precision: 2,
                 placeholder: "输入销售价",
-                disabled: !u.isUse || r.disabled
+                disabled: !u.isUse || o.disabled
               }, null, 8, ["modelValue", "onUpdate:modelValue", "disabled"])
             ]),
-            r.showProductStock ? (v(), k("td", At, [
-              b(V, {
+            o.showProductStock ? (h(), C("td", Xn, [
+              m(a, {
                 modelValue: u.ProductStock,
-                "onUpdate:modelValue": (A) => u.ProductStock = A,
+                "onUpdate:modelValue": (_) => u.ProductStock = _,
                 modelModifiers: { number: !0 },
                 size: "small",
                 min: 0,
                 controls: !1,
                 precision: 0,
                 placeholder: "输入库存",
-                disabled: !u.isUse || r.disabled
+                disabled: !u.isUse || o.disabled
               }, null, 8, ["modelValue", "onUpdate:modelValue", "disabled"])
-            ])) : N("", !0),
-            r.showProductNo ? (v(), k("td", Bt, [
-              b(h, {
+            ])) : M("", !0),
+            o.showProductNo ? (h(), C("td", $n, [
+              m(r, {
                 modelValue: u.ProductNo,
-                "onUpdate:modelValue": (A) => u.ProductNo = A,
+                "onUpdate:modelValue": (_) => u.ProductNo = _,
                 size: "small",
                 type: "text",
-                disabled: !u.isUse || r.disabled,
+                disabled: !u.isUse || o.disabled,
                 placeholder: "输入商品规格编号"
               }, null, 8, ["modelValue", "onUpdate:modelValue", "disabled"])
-            ])) : N("", !0),
-            r.showProductCost ? (v(), k("td", Lt, [
-              b(V, {
+            ])) : M("", !0),
+            o.showProductCost ? (h(), C("td", eo, [
+              m(a, {
                 modelValue: u.ProductCost,
-                "onUpdate:modelValue": (A) => u.ProductCost = A,
+                "onUpdate:modelValue": (_) => u.ProductCost = _,
                 modelModifiers: { number: !0 },
                 size: "small",
                 min: 0,
                 precision: 2,
-                disabled: !u.isUse || r.disabled
+                disabled: !u.isUse || o.disabled
               }, null, 8, ["modelValue", "onUpdate:modelValue", "disabled"])
-            ])) : N("", !0),
-            r.showEnable ? (v(), k("td", Mt, [
-              b(m, {
+            ])) : M("", !0),
+            o.showEnable ? (h(), C("td", to, [
+              m(s, {
                 modelValue: u.isUse,
-                "onUpdate:modelValue": (A) => u.isUse = A,
-                disabled: r.disabled
+                "onUpdate:modelValue": (_) => u.isUse = _,
+                disabled: o.disabled
               }, null, 8, ["modelValue", "onUpdate:modelValue", "disabled"])
-            ])) : N("", !0)
+            ])) : M("", !0)
           ]))), 128)),
-          w("tr", null, [
-            w("td", xt, [
-              l[7] || (l[7] = w("span", { class: "label" }, "批量设置：", -1)),
-              p.isSetListShow ? (v(), k("div", Nt, [
-                w("span", {
+          b("tr", null, [
+            b("td", no, [
+              e[7] || (e[7] = b("span", { class: "label" }, "批量设置：", -1)),
+              l.isSetListShow ? (h(), C("div", oo, [
+                b("span", {
                   class: "set-item",
-                  onClick: l[0] || (l[0] = (u) => _.openBatch("ProductPrice"))
+                  onClick: e[0] || (e[0] = (u) => i.openBatch("ProductPrice"))
                 }, "销售价"),
-                r.showProductStock ? (v(), k("span", {
+                o.showProductStock ? (h(), C("span", {
                   key: 0,
                   class: "set-item",
-                  onClick: l[1] || (l[1] = (u) => _.openBatch("ProductStock"))
-                }, "库存")) : N("", !0),
-                r.showProductCost ? (v(), k("span", {
+                  onClick: e[1] || (e[1] = (u) => i.openBatch("ProductStock"))
+                }, "库存")) : M("", !0),
+                o.showProductCost ? (h(), C("span", {
                   key: 1,
                   class: "set-item",
-                  onClick: l[2] || (l[2] = (u) => _.openBatch("ProductCost"))
-                }, "成本价")) : N("", !0)
-              ])) : (v(), k("div", Ut, [
-                b(V, {
-                  modelValue: p.batchValue,
-                  "onUpdate:modelValue": l[3] || (l[3] = (u) => p.batchValue = u),
+                  onClick: e[2] || (e[2] = (u) => i.openBatch("ProductCost"))
+                }, "成本价")) : M("", !0)
+              ])) : (h(), C("div", lo, [
+                m(a, {
+                  modelValue: l.batchValue,
+                  "onUpdate:modelValue": e[3] || (e[3] = (u) => l.batchValue = u),
                   modelModifiers: { number: !0 },
                   controls: !1,
                   size: "mini",
                   min: 0,
-                  precision: p.currentType == "ProductStock" ? 0 : 2,
+                  precision: l.currentType == "ProductStock" ? 0 : 2,
                   placeholder: "输入要设置的数量"
                 }, null, 8, ["modelValue", "precision"]),
-                w("i", {
+                b("i", {
                   class: "set-btn blue el-icon-check",
-                  onClick: l[4] || (l[4] = (...u) => _.setBatch && _.setBatch(...u))
+                  onClick: e[4] || (e[4] = (...u) => i.setBatch && i.setBatch(...u))
                 }),
-                w("i", {
+                b("i", {
                   class: "set-btn red el-icon-close",
-                  onClick: l[5] || (l[5] = (...u) => _.cancelBatch && _.cancelBatch(...u))
+                  onClick: e[5] || (e[5] = (...u) => i.cancelBatch && i.cancelBatch(...u))
                 })
               ]))
             ])
           ])
-        ])) : N("", !0)
+        ])) : M("", !0)
       ])
     ]),
-    r.isShowCode ? (v(), k("div", Rt, [
-      w("textarea", {
+    o.isShowCode ? (h(), C("div", io, [
+      b("textarea", {
         class: "code-area",
-        value: JSON.stringify(r.value)
-      }, null, 8, It)
-    ])) : N("", !0)
+        value: JSON.stringify(o.value)
+      }, null, 8, ro)
+    ])) : M("", !0)
   ]);
 }
-const se = /* @__PURE__ */ Y(bt, [["render", Ot]]);
-se.install = function(i) {
-  i.component(se.name, se);
+const ae = /* @__PURE__ */ W(Hn, [["render", ao]]);
+ae.install = function(t) {
+  t.component(ae.name, ae);
 };
-const Ft = {
-  name: "svg-icon",
-  props: {
-    iconClass: {
-      type: String,
-      required: !0
-    },
-    className: {
-      type: String
-    },
-    type: {
-      type: String,
-      default: "icon"
-    }
-  },
-  computed: {
-    iconName() {
-      return `#icon-${this.iconClass}`;
-    },
-    svgClass() {
-      return this.className ? "svg-" + this.type + " " + this.className : "svg-" + this.type;
-    }
-  }
-}, Ht = ["xlink:href"];
-function zt(i, l, r, s, p, _) {
-  return v(), k("svg", {
-    class: te(_.svgClass),
-    "aria-hidden": "true"
-  }, [
-    w("use", { "xlink:href": _.iconName }, null, 8, Ht)
-  ], 2);
-}
-const de = /* @__PURE__ */ Y(Ft, [["render", zt], ["__scopeId", "data-v-0b63b260"]]);
-de.install = function(i) {
-  i.component(de.name, de);
-};
-const Qt = {
-  name: "JTitleBar",
+const so = {
+  name: "MlTitleBar",
   props: {
     shadow: {
       // 阴影
@@ -1994,63 +2906,59 @@ const Qt = {
       default: "#00000"
     }
   }
-}, Gt = { class: "left" }, Kt = { class: "center" }, Jt = { class: "right" };
-function Xt(i, l, r, s, p, _) {
-  return v(), k("div", {
-    class: te(["j-title-bar", { shadow: r.shadow, radius: r.radius }]),
-    style: De({ background: r.background, color: r.color })
+}, uo = { class: "left" }, co = { class: "center" }, fo = { class: "right" };
+function go(t, e, o, n, l, i) {
+  return h(), C("div", {
+    class: X(["ml-title-bar", { shadow: o.shadow, radius: o.radius }]),
+    style: ct({ background: o.background, color: o.color })
   }, [
-    w("span", Gt, [
-      w("span", {
-        class: te(r.icon)
+    b("span", uo, [
+      b("span", {
+        class: X(o.icon)
       }, null, 2),
-      ue(i.$slots, "default")
+      ge(t.$slots, "default")
     ]),
-    w("span", Kt, [
-      ue(i.$slots, "center")
+    b("span", co, [
+      ge(t.$slots, "center")
     ]),
-    w("span", Jt, [
-      ue(i.$slots, "right")
+    b("span", fo, [
+      ge(t.$slots, "right")
     ])
   ], 6);
 }
-const ee = /* @__PURE__ */ Y(Qt, [["render", Xt]]);
-ee.install = function(i) {
-  i.component(ee.name, ee);
+const x = /* @__PURE__ */ W(so, [["render", go]]);
+x.install = function(t) {
+  t.component(x.name, x);
 };
-typeof window < "u" && window.Vue && window.Vue.component(ee.name, ee);
-const Yt = "0.3.5", Wt = [
-  j,
-  $,
-  oe,
+typeof window < "u" && window.Vue && window.Vue.component(x.name, x);
+const ho = "0.3.5", mo = [
   q,
+  j,
+  Q,
+  G,
   Z,
-  ne,
   re,
-  se,
-  de,
-  ee
-], he = (i) => {
-  if (he.installed) return !1;
-  Wt.forEach((l) => {
-    l.install ? i.use(l) : l.name && i.component(l.name, l);
+  ae,
+  x
+], Re = (t) => {
+  if (Re.installed) return !1;
+  mo.forEach((e) => {
+    e.install ? t.use(e) : e.name && t.component(e.name, e);
   });
 };
-typeof window < "u" && window.Vue && he(window.Vue);
-const $t = {
-  install: he,
-  version: Yt,
-  AdvancedQuery: j,
-  BgSelector: $,
-  Clipboard: oe,
-  LinkViewer: q,
-  PositionSelector: Z,
-  Qrcode: ne,
+typeof window < "u" && window.Vue && Re(window.Vue);
+const yo = {
+  install: Re,
+  version: ho,
+  AdvancedQuery: q,
+  BgSelector: j,
+  LinkViewer: Q,
+  PositionSelector: G,
+  Qrcode: Z,
   SkuSpec: re,
-  SkuTable: se,
-  SvgIcon: de,
-  TitleBar: ee
+  SkuTable: ae,
+  TitleBar: x
 };
 export {
-  $t as default
+  yo as default
 };

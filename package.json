@@ -32,6 +32,7 @@
     "autoprefixer": "^10.4.23",
     "cp-cli": "^2.0.0",
     "fast-glob": "^3.3.3",
+    "gh-pages": "^6.3.0",
     "gulp": "^5.0.0",
     "gulp-autoprefixer": "^8.0.0",
     "gulp-cssmin": "^0.2.0",
