@@ -19,5 +19,8 @@ yarn-error.log*
 *.sln
 *.sw?
 
+# npm configuration with tokens
+.npmrc
+
 /docs/.vitepress/dist
 /docs/.vitepress/cache
