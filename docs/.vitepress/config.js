@@ -2,6 +2,9 @@
 const config = {
   title: 'dock-plus',
   description: 'MinkLink 基于 Vue 3 和 Element Plus 的 UI 业务组件库',
+  head: [
+    ['link', { rel: 'icon', href: '/favicon.ico' }]
+  ],
   base: '/dock-plus/',
   themeConfig: {
     logo: '/logo.png',
