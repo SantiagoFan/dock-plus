@@ -46,7 +46,19 @@ const config = {
     },
     socialLinks: [
       { icon: 'github', link: 'https://github.com/santiago-fan/dock-plus' }
-    ]
+    ],
+    footer: {
+      message: 'Released under the MIT License.',
+      copyright: 'Copyright © 2023-present MindLink Co., Ltd. All rights reserved.'
+    },
+    search: {
+      provider: 'algolia',
+      options: {
+        appId: '1DR5PHEA4D',
+        apiKey: 'acfda78bab176c4cc8b49d512a6797c6',
+        indexName: 'dock-plus',
+      },
+    },
   },
   vite: {
     optimizeDeps: {
