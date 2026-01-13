@@ -16,33 +16,8 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'examples'),
+      '@': resolve(__dirname, 'docs'),
       '~': resolve(__dirname, 'packages')
     }
   },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: `@use "@/assets/common.scss";`
-      }
-    }
-  },
-  server: {
-    host: '0.0.0.0',
-    port: 8080,
-    open: true
-  },
-  build: {
-    rollupOptions: {
-      input: {
-        main: resolve(__dirname, 'public/index.html'),
-      },
-      output: {
-        manualChunks: {
-          vue: ['vue'],
-          'element-plus': ['element-plus']
-        }
-      }
-    }
-  }
 })

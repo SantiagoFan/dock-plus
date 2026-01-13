@@ -16,7 +16,7 @@
 
     "lib:entry": "node build/build-entry.js",
     "lib:clean": "rimraf lib",
-    "lib:build": "npm run clean && vite build --config config/vite.component.js && npm run build:theme",
+    "lib:build": "npm run lib:clean && vite build --config config/vite.component.js && npm run build:theme",
     
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
