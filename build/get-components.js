@@ -13,6 +13,6 @@ const excludes = [
 ];
 
 module.exports = function () {
-  const dirs = fs.readdirSync(path.resolve(__dirname, '../packages'));
+  const dirs = fs.readdirSync(path.resolve(__dirname, '../packages/dock-next'));
   return dirs.filter(dirName => excludes.indexOf(dirName) === -1);
 };

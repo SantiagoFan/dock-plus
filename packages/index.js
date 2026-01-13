@@ -1,14 +1,14 @@
 /*
   本文件由build/build-entry.js脚本自动生成，切勿修改
 */
-import AdvancedQuery from './advanced-query'
-import BgSelector from './bg-selector'
-import LinkViewer from './link-viewer'
-import PositionSelector from './position-selector'
-import Qrcode from './qrcode'
-import SkuSpec from './sku-spec'
-import SkuTable from './sku-table'
-import TitleBar from './title-bar'
+import AdvancedQuery from './dock-next/advanced-query'
+import BgSelector from './dock-next/bg-selector'
+import LinkViewer from './dock-next/link-viewer'
+import PositionSelector from './dock-next/position-selector'
+import Qrcode from './dock-next/qrcode'
+import SkuSpec from './dock-next/sku-spec'
+import SkuTable from './dock-next/sku-table'
+import TitleBar from './dock-next/title-bar'
 
 const version = '0.3.5'
 

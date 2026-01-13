@@ -17,7 +17,7 @@ function buildPackagesEntry() {
   const uninstallComponents = []
 
   const importList = Components.map(
-    name => `import ${uppercamelize(name)} from './${name}'`
+    name => `import ${uppercamelize(name)} from './dock-next/${name}'`
   )
   const exportList = Components.map(name => `${uppercamelize(name)}`)
   const intallList = exportList.filter(
