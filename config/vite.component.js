@@ -5,6 +5,7 @@ import { resolve } from 'path'
 export default defineConfig({
   plugins: [vue()],
   build: {
+    outDir: 'lib',  // 指定输出目录为 lib
     lib: {
       entry: resolve(__dirname, '../packages/index.js'),
       name: 'dock-plus',
