@@ -12,11 +12,11 @@
     "comp:new": "node build/create-comp.js && node build/build-entry.js",
     "comp:del": "node build/delete-comp.js && node build/build-entry.js",
     
-    "build:theme": "gulp build --gulpfile packages/theme-chalk/gulpfile.js && cp-cli packages/theme-chalk/lib lib/theme-chalk",
+    "theme:build": "gulp build --gulpfile packages/theme-chalk/gulpfile.js && cp-cli packages/theme-chalk/lib lib/theme-chalk",
 
     "lib:entry": "node build/build-entry.js",
     "lib:clean": "rimraf lib",
-    "lib:build": "npm run lib:clean && vite build --config config/vite.component.js && npm run build:theme",
+    "lib:build": "npm run lib:clean && vite build --config config/vite.component.js && npm run theme:build",
     
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
@@ -37,11 +37,11 @@
     "cp-cli": "^2.0.0",
     "fast-glob": "^3.3.3",
     "gh-pages": "^6.3.0",
-    "gulp": "^5.0.0",
-    "gulp-autoprefixer": "^8.0.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
     "gulp-cssmin": "^0.2.0",
-    "gulp-postcss": "^10.0.0",
-    "gulp-sass": "^6.0.0",
+    "gulp-sass": "^5.1.0",
+
     "rimraf": "^3.0.2",
     "sass": "^1.97.2",
     "sass-embedded": "1.89.1",

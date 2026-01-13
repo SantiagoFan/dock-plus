@@ -19,7 +19,7 @@
 <script>
 import { getCurrentInstance } from 'vue'
 import qrcode from '../qrcode'
-import copyText from '../utils/copyText'
+import copyText from '../../utils/copyText'
 
 export default {
   name: 'MlLinkViewer',
