@@ -1,6 +1,6 @@
 {
   "name": "dock-plus",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "author": "santiago_fan <san_fan@qq.com>",
   "scripts": {
@@ -23,7 +23,7 @@
     "docs:preview": "vitepress preview docs",
     "docs:publish": "node build/publish-docs.js"
   },
-  "main": "lib/dock-plus.common.js",
+  "main": "lib/dock-plus.umd.js",
   "dependencies": {
     "element-plus": "^2.10.7",
     "fs-extra": "^11.1.0",
