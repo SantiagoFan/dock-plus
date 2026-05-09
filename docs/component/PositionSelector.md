@@ -8,6 +8,8 @@ PositionSelector 是使用腾讯地图为基础的地理位置选择器，使用
 ### 1.基于绑定的方式
 
 
+<ml-position-selector></ml-position-selector>
+
 
 
 
