@@ -48,6 +48,8 @@ npm publish
 npm login --registry https://registry.npmjs.org  
 npm publish --registry https://registry.npmjs.org
 
+发布不成功404 请检查 token 是否过去，再网站上更新信息token 到.npmc
+
 
 ## 目录结构
 ```
